@@ -1,0 +1,27 @@
+<view class="plr24 pt20">
+    <view class="bw col3 font15 flex_sb plr30 ptb30 border-r1">
+        <text>设备IMEI号</text>
+        <text>{{device_no}}</text>
+    </view>
+    <block wx:for="{{list}}" wx:key="{{index}}">
+        <view class="bw col9 font12 plr30 ptb30 mt20 border-r1">
+            <view class="pb20 bdb">
+                <view class="flex_sb">
+                    <text class="col3 font15">{{item.name}}</text>
+                    <text>{{item.categoryName}}</text>
+                </view>
+                <view class="mt20">使用次数：{{item.useNum}} 次</view>
+                <view>购买价格：{{item.price}} 元</view>
+            </view>
+            <view class="pt20">
+                <view class="col3 mb20">套餐内容说明</view>
+                <view>{{item.remark}}</view>
+            </view>
+        </view>
+    </block>
+    <block wx:if='{{lock}}'>
+        <view class='tac lh80 col9'>没有更多了</view>
+    </block>
+</view>
+<login-component bind:myevent="listeningEvent" extendCode="{{extendCode}}" />
+

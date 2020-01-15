@@ -1,0 +1,39 @@
+<view>
+    <view class="bw plr24 pt20 bw title_box pos_r flex_aj">
+        <view class="img_box"><image src="/images/bg1.png"></image></view>
+        <view class="colw tac">
+            <view class="font30">{{money}}</view>
+            <view class="font12">累计</view>
+        </view>
+    </view>
+    <view class="tab_box flex bw font13 col9">
+        <block wx:for="{{list}}" wx:key="{{index}}">
+            <view class="tab-item {{o_index == index ? 'active' : ''}}" bindtap="tab_click" data-index="{{index}}">{{item}}</view>
+        </block>
+    </view>
+    <view>
+        <view class="font12 flex_aj col9 pt50 pb20">
+            <view class="date_box" bindtap="chose_date">{{
+                !form.startTime ? '选择日期' : form.startTime}}</view>
+            <view class="mlr20">-</view>
+            <view class="date_box">{{
+                !form.endTime ? '选择日期' : form.endTime}}</view>
+        </view>
+    </view>
+    <view class="chart_box pos_r"  wx:if="{{countList.length > 0}}">
+        <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
+    </view>
+    <block wx:else>
+        <view class="h80 lh80 tac col9 font15">暂无数据</view>
+    </block>
+    <view class="mtb20 mlr24 border-r1 plr30 ptb30 bw num_box" wx:if="{{countList.length > 0}}">
+        <block wx:for="{{countList}}" wx:key="{{index}}">
+            <view class="flex_sb box">
+                <text class="font15 col3">累计数：{{type == 'shopOrder' ? item.orderCount : item.money}}</text>
+                <text class="font12 col9">{{item.ctime}}</text>
+            </view>
+        </block>
+    </view>
+</view>
+<datetime-picker bind:myevent="myEvent" bind:myeventCancel="listeningCancel"  is_show="{{is_show}}"  wx:if="{{is_show}}" type_date="{{type_date[o_index]}}"/>
+<login-component bind:myevent="listeningEvent" />

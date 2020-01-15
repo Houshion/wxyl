@@ -1,0 +1,30 @@
+<view class="header_box bgf5">
+    <view class="font12 flex_aj col9">
+        <view class="date_box" bindtap="chose_date">{{
+            !form.startTime ? '选择日期' : form.startTime}}</view>
+        <view class="mlr20">-</view>
+        <view class="date_box">{{
+            !form.endTime ? '选择日期' : form.endTime}}</view>
+    </view>
+</view>
+<view class="plr24 content_box">
+    <block wx:for="{{list}}" wx:key="{{index}}">
+       <view class="plr30 ptb30 font14 col3 border-r1 bw mb20">
+           <block wx:for="{{item.spend}}" wx:key>
+               <view class="flex_sb box">
+                   <text>{{item.name}}</text>
+                   <text>￥{{item.value}}</text>
+               </view>
+           </block>
+           <view class="col9 font12 mt40">{{item.payTime}}</view>
+       </view>
+    </block>
+    <block wx:if='{{lock}}'>
+        <view class='tac lh80 col9'>没有更多了</view>
+    </block>
+</view>
+<navigator url="/pages/my_shop/add_expenditure/index" hover-class="none" class="add_box ptb20">
+    <image src="/images/add.png"></image>
+</navigator>
+<datetime-picker bind:myevent="listeningEvent" bind:myeventCancel="listeningCancel" is_show="{{is_show}}"  type_date="year-month" wx:if="{{is_show}}"/>
+<login-component bind:myevent="listeningEvent" />

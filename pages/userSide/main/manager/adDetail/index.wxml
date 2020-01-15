@@ -1,0 +1,9 @@
+<wxs src="../../../../../utils/filters.wxs" module="tools" />
+<view id="detail">
+    <view class="title overflow">{{detail.title}}</view>
+    <view class="msg flex_sb col9 mtb30">
+        <view class="time">{{tools.format(detail.ctime) || '/'}}</view>
+    </view>
+    <rich-text nodes="{{detail.content}}"></rich-text>
+</view>
+<login-component bind:myevent="listeningEvent" extendCode="{{extendCode}}" />

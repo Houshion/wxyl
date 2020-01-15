@@ -1,0 +1,20 @@
+<view class="pt20">
+    <view class="flex_sb plr24 ptb20 bw " bindtap="choice">
+        <text class="col3 font15">头像</text>
+        <image src="{{headImgUrl ? headImgUrl:'/images/head_default.png'}}" class="head_img"></image>
+    </view>
+</view>
+<form bindsubmit="formSubmit">
+    <view class="mt20">
+        <block wx:for="{{list}}" wx:key="{{index}}">
+            <view class="list flex_sb plr24 h100 bw">
+                <text class="col3 font15">{{item.title}}</text>
+                <input type="{{item.type}}" placeholder="{{item.placeholder}}" name="{{item.name}}" value="{{list_data[item.name]}}" class="col3 font15 tae" placeholder-class="col6" />
+            </view>
+        </block>
+    </view>
+    <view class="ptb60">
+        <button class="confirm" formType="submit">保存</button>
+    </view>
+</form>
+<login-component bind:myevent="listeningEvent" extendCode="{{extendCode}}" />

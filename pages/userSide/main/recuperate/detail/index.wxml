@@ -1,0 +1,15 @@
+<wxs src="../../../../../utils/filters.wxs" module="tools" />
+<view id="detail">
+    <view class="title overflow">{{article.title}}</view>
+    <view class="msg flex_sb col9 mtb30">
+        <view class="time">{{tools.format(article.ctime) || '/'}}</view>
+        <view class="config flex">
+            <image data-isCollect="{{article.isCollect}}" bind:tap="collect" class="configIcon" src="{{article.isCollect==0?'/images/i_collect.png':'/images/i_collected.png'}}" mode="aspectFit"></image>
+            <button class="shareBtn" data-id="{{articleId}}" open-type="share">
+                <image class="configIcon" src="/images/i_share.png" mode="aspectFit"></image>
+            </button>
+        </view>
+    </view>
+    <rich-text nodes="{{article.content}}"></rich-text>
+</view>
+<login-component bind:myevent="listeningEvent" extendCode="{{extendCode}}" />

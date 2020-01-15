@@ -1,0 +1,133 @@
+const app = getApp();
+const tools = app.tools;
+let form = {
+  page: 1,
+  limit: 20,
+}
+
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    show: false,
+    columns: ['充值','提现','推荐人收益','推荐店铺收益'],
+    typeList: [{
+        title: "充值",
+        value: 1,
+      },
+      {
+        title: "提现",
+        value: 2,
+      },
+      {
+        title: "推荐人收益",
+        value: 3,
+      },
+      {
+        title: "推荐店铺收益",
+        value: 4,
+      },
+    ],
+    type: 0,
+    lock: false,
+    list: []
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    this.init();
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+    wx.showNavigationBarLoading();
+    form.page = 1;
+    this.init();
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+    form.page++;
+    if (!this.data.lock) {
+      this.init();
+    }
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  },
+
+  init() {
+    form.type = this.data.typeList[this.data.type].value
+    app.wxRequest(
+      '/api/user/bills', form,
+      res => {
+        if (res.data.code == 1) {
+          let list = [...this.data.list, ...res.data.data.list]
+          this.setData({
+            list
+          })
+        } else {
+          tools.showToast(res.data.msg)
+        }
+      }
+    )
+  },
+
+  onChange(e) {
+    this.setData({
+      type: e.detail.index
+    })
+    this.init()
+  },
+  closeWin() {
+    this.setData({
+      show: false,
+    })
+  },
+
+  chooseType() {
+    this.setData({
+      show: true
+    })
+  }
+})

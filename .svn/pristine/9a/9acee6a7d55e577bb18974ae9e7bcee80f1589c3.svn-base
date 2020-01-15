@@ -1,0 +1,19 @@
+@import '/css/main.wxss';
+.list .dete_box image{
+    width: 26rpx;
+    height: 30rpx;
+}
+.list .reply_box{
+    border-radius: 40rpx;
+    padding: 5rpx 10rpx;
+}
+.list .img_box image{
+    float: left;
+    width: 200rpx;
+    height: 200rpx;
+    margin-top: 20rpx;
+    margin-right: 20rpx;
+}
+.list .img_box image:nth-child(3n){
+    margin-right: 0;
+}

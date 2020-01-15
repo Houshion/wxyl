@@ -1,0 +1,24 @@
+<wxs src="../../../utils/filters.wxs" module="tools" />
+<view class="plr24 pt20">
+    <block wx:for="{{list}}" wx:key="{{index}}">
+        <view class="mb20 border-r1 bw plr30 ptb30">
+            <view class="col3 font15">流水号：{{item.serialNo}}</view>
+            <view class="col3 font15 flex_sb mt20">
+                <text>投资金额</text>
+                <text >￥{{item.money}}</text>
+            </view>
+            <view class="col3 font15 flex_sb mt20">
+                <text>开始收益时间</text>
+                <text >{{item.incomeStartTime}}</text>
+            </view>
+            <view class="col9 font12 mt20 flex_sb">
+                <text>{{tools.format(item.ctime,'Y-m-d H:i:s') || '/'}}</text>
+                <text class="font15 color1">{{item.status == 0 ? '审核中' :  item.status == 1 ? '审核通过' : '审核失败'}}</text>
+            </view>
+        </view>
+    </block>
+    <block wx:if='{{lock}}'>
+        <view class='tac lh80 col9'>没有更多了</view>
+    </block>
+</view>
+<login-component bind:myevent="listeningEvent" extendCode="{{extendCode}}" />

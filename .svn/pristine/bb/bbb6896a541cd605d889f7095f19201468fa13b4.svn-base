@@ -1,0 +1,66 @@
+<view id="shopDetail">
+    <view class="shop">
+        <view class="flex_sb border-b pb30">
+            <view class="address" bind:tap="goMap">
+                <van-icon name="location-o" />
+                广东省东莞市南城区天安数码城
+            </view>
+            <view class="config">
+                <image wx:if="{{!collected}}" class="icon collect" src="/images/i_collect.png" mode="aspectFit" bind:tap="collect"></image>
+                <image wx:else class="icon collect" src="/images/i_collected.png" mode="aspectFit"></image>
+                <image class="icon share" src="/images/i_share.png" mode="aspectFit"></image>
+            </view>
+        </view>
+        <view class="mt30 time flex_sb">
+            <view>
+                <van-icon name="clock-o" />
+                营业时间：9:00-21:00
+            </view>
+            <view bind:tap="phoneCall">
+                <van-icon name="phone-o" class="phone" />
+            </view>
+        </view>
+    </view>
+</view>
+<view class="tab">
+    <van-tabs active="{{ active }}" bind:change="onChangeTab" color="#5ac2bb">
+        <van-tab title="我的设备">
+            <view class="deivceBoxes">
+                <view class="device" wx:for="{{deviceList}}">
+                    <view class="title flex_sb">
+                        <view class="type">{{item.type}}</view>
+                        <view class="macno">设备编号：{{item.macno}}</view>
+                    </view>
+                    <view class="package" wx:for="{{item.package}}" wx:for-item="p">
+                        <view class="flex_sb">
+                            <view class="title">{{p.name}}</view>
+                            <view class="btn">
+                                <view class="buy">购买</view>
+                            </view>
+                        </view>
+                        <view class="times col9">使用次数：{{p.times}}次</view>
+                        <view class="price col9">购买价格：{{p.price}}元</view>
+                        <view class="content">
+                            <view class="label mtb20">套餐内容说明</view>
+                            <view class="con col9">{{p.content}}</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </van-tab>
+        <van-tab title="用户评论">
+            <view id="comment">
+                <view class="comment" wx:for="{{commentList}}">
+                    <view class="userName">{{item.userName}}</view>
+                    <view class="commentMsg">{{item.content}}</view>
+                    <view class="time col9">{{item.time}}</view>
+                    <view class="imgs">
+                        <image wx:for="{{item.url}}" wx:for-item="img" class="" src="{{img}}" mode="aspectFit"></image>
+                    </view>
+                </view>
+            </view>
+        </van-tab>
+    </van-tabs>
+</view>
+
+<login-component bind:myevent="listeningEvent" />

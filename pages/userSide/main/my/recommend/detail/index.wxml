@@ -1,0 +1,19 @@
+<wxs src="../../../../../../utils/filters.wxs" module="tools" />
+<block wx:for="{{list}}" wx:key="{{index}}">
+    <view class="box">
+        <van-cell center label="{{tools.format(item.ctime,'Y-m-d') || '/'}}">
+            <view slot="title">
+                <view class="title">{{item.nickName}}</view>
+                <view class="van-cell-text flex_sb">
+                    <view>当天营收</view>
+                    <view>￥{{item.money}}</view>
+                </view>
+                <view class="van-cell-text flex_sb">
+                    <view>收益</view>
+                    <view>￥{{item.getMoney}}</view>
+                </view>
+            </view>
+        </van-cell>
+    </view>
+</block>
+<login-component bind:myevent="listeningEvent" extendCode="{{extendCode}}" />

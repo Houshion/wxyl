@@ -1,0 +1,33 @@
+<form bindsubmit="formSubmit" >
+    <view class="pt20 plr24">
+        <view class="flex_sb bw border-r1 plr30 h100 font15" bindtap="chose_timer">
+            <text class="col3">时间</text>
+            <view class="col9 flex_a">
+                <text>{{!payTime?'请选择':payTime}}</text>
+                <image src="/images/right.png" class="arrow_right ml20"></image>
+            </view>
+        </view>
+        <block wx:for="{{list}}" wx:key="{{index}}">
+            <view class="flex_sb bw border-r1 plr30 h100 font15 mt20">
+                <text class="col3">{{item.name}}</text>
+                <input type="digit" placeholder="请输入" class="col3 font15 tae" placeholder-class="col9" name="{{item.code}}" />
+            </view>
+        </block>
+    </view>
+    <view class="ptb60">
+        <button class="confirm" formType="submit">提交</button>
+    </view>
+</form>
+<van-action-sheet show="{{ show }}"  close-on-click-overlay bind:close="closeSheet">
+    <view>
+        <van-datetime-picker
+                type="year-month"
+                value="{{ currentDate }}"
+                max-date="{{ maxDate }}"
+                bind:input="onInput"
+                bind:confirm="choseConfirm"
+                bind:cancel="choseCancel"
+        />
+    </view>
+</van-action-sheet>
+<login-component bind:myevent="listeningEvent" extendCode="{{extendCode}}" />

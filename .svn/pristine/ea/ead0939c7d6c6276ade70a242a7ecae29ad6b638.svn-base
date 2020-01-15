@@ -1,0 +1,134 @@
+const app = getApp();
+const tools = app.tools;
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    form:{
+      device_type: '',
+      count: '',
+      device_index: -1,
+      count_index: -1
+    },
+    device_type_show: false,
+    count_show: false,
+    device_list: ['设备类型1', '设备类型2', '设备类型3', '设备类型4', '设备类型5'],
+    count_list: ['1', '2', '3', '4', '5'],
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
+  },
+  chose_device_type(){
+    this.setData({
+      device_type_show: true
+    })
+  },
+  chose_count(){
+    this.setData({
+      count_show: true
+    })
+  },
+  pickerDeviceValue(e){
+    console.log(e)
+    this.setData({
+      'form.device_type':e.detail.value,
+      'form.device_index':e.detail.index
+    })
+    this.setData({
+      device_type_show: false
+    })
+  },
+  pickerDeviceCancel(){
+    this.setData({
+      device_type_show: false
+    })
+  },
+  pickerCountValue(e){
+    console.log(e)
+    this.setData({
+      'form.count':e.detail.value,
+      'form.count_index':e.detail.index
+    })
+    this.setData({
+      count_show: false
+    })
+  },
+  pickerCountCancel(){
+    this.setData({
+      count_show: false
+    })
+  },
+  formSubmit: function (e) {
+    console.log('form发生了submit事件，携带数据为：', e.detail.value)
+    const {
+      device_type,
+      count
+    } = this.data;
+    const {content, price} = e.detail.value;
+    if (tools.isNull(device_type)) {
+      tools.showToast('请选择设备类型');
+    }else if (tools.isNull(content)) {
+      tools.showToast('请输入套餐内容说明');
+    }else if (tools.isNull(count)) {
+      tools.showToast('请选择使用次数');
+    }else if (tools.isNull(price)) {
+      tools.showToast('请输入价格');
+    } else{
+
+    }
+  },
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  }
+})

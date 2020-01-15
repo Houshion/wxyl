@@ -1,0 +1,72 @@
+@import '/css/main.wxss';
+
+#register {
+    padding: 40rpx;
+    background: #ffffff;
+    min-height: 100vh;
+}
+
+.inputBox {
+    margin-top: 20rpx;
+    border-bottom: 1px solid #efefef;
+}
+
+.picker {
+    padding-right: 20rpx;
+    margin-right: 20rpx;
+    border-right: 1px solid #efefef;
+}
+
+.imgCode {
+    padding: 5rpx 20rpx;
+    border-radius: 30rpx;
+    color: #ffffff;
+    background: #ddd;
+}
+
+.redError {
+    font-size: 20rpx;
+    padding: 15rpx 10rpx;
+    color: #f00;
+}
+
+.submit {
+    margin-top: 50rpx;
+}
+
+.agreement {
+    width: 200rpx;
+    margin-left: calc(50% - 100rpx);
+    margin-top: 20rpx;
+}
+
+.toAgreement {
+    color: #37b3f3;
+}
+
+.skip {
+    color: #5ac2bb;
+    text-align: center;
+    position: absolute;
+    width: calc(100% - 80rpx);
+    bottom: 50rpx
+}
+
+.alertImg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 9;
+}
+
+.alertMsg {
+    width: 100%;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    text-align: center;
+    top: 55%;
+    font-size: 36rpx;
+}

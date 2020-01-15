@@ -1,0 +1,57 @@
+<view class="managerBox">
+    <view class="title_box colw plr24 ptb30">
+        <view>
+            <van-notice-bar backgroundColor="rgba(255,255,255,0)" color="#ffffff" left-icon="volume-o" text="{{noticeText}}" />
+        </view>
+        <!-- <navigator url="../share/index" hover-class="navigator-hover" open-type="navigate"> -->
+            <button class="shareBtn" data-id="{{userInfo.extendCode}}" open-type="share">
+                <image class="share" src="/images/i_share.png" mode="aspectFit"></image>
+            </button>
+        <!-- </navigator> -->
+        <view class="mt40 font35 tac">
+            <text class="font20">￥</text>
+            {{info.investTotalMoney}}
+        </view>
+        <view class="tac font12">投资资金池累计</view>
+        <view class="invest mt50">
+            <view class="border-r color1">
+                <view class="font30">{{info.storeCount}}</view>
+                <view>店铺数量</view>
+            </view>
+            <view class="border-r color1">
+                <view class="font30">{{info.percent}}</view>
+                <view>新店筹备进度</view>
+            </view>
+        </view>
+    </view>
+    <view class="advertisement">
+        <swiper indicator-dots="{{true}}" autoplay="{{true}}" indicator-color="#cdedea" indicator-active-color="#5ac2bb">
+            <block wx:for="{{ADswiper}}" wx:key="{{index}}">
+                <swiper-item>
+                    <navigator url="../adDetail/index?id={{item.id}}" hover-class="navigator-hover" open-type="navigate">
+                        <view class="title">{{item.title}}</view>
+                        <image class="" src="{{item.img_url}}" mode="widthFix" />
+                    </navigator>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+    <view class="list_box plr24">
+        <view bind:tap="goInvest" class="navigator">
+            <view>
+                <image src="/images/icon_invest.png" class="icon"></image>
+                <view class="font13 mt10 col9">我的投资</view>
+            </view>
+            <image src="/images/right.png" class="arrow_right"></image>
+        </view>
+        <view bind:tap="goStore" class="navigator">
+            <view>
+                <image src="/images/icon_shop.png" class="icon"></image>
+                <view class="font13 mt10 col9">我的店铺</view>
+            </view>
+            <image src="/images/right.png" class="arrow_right"></image>
+        </view>
+    </view>
+</view>
+<login-component bind:myevent="listeningEvent" extendCode="{{extendCode}}" />
+<navbar index="2"></navbar>

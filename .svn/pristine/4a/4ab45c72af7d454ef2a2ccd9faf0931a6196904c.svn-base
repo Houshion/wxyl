@@ -1,0 +1,15 @@
+<view class='wrap' wx-if="{{is_show}}">
+    <view class="tac logoBox mlr50">
+        <view>
+            <image src="/images/logo.png" class="logo"></image>
+        </view>
+        <view class="font18 col3 mt20">上海五心健康</view>
+    </view>
+    <view  class="tac mb80">
+        <view class="font15 col3 mt30">请确认一下授权信息</view>
+        <view class="col9 mt20">获取你的信息（头像，信息等）</view>
+    </view>
+    <block  wx:if='{{login}}'>
+        <button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" style="width: 85%;"  class='login colw border-r1 font15'>授权</button>
+    </block>
+</view>

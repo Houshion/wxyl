@@ -1,0 +1,21 @@
+<view class="plr24 pt20">
+    <block wx:for="{{2}}" wx:key="{{index}}">
+        <view class="bw col9 font12 plr30 ptb30 mb20 border-r1">
+            <view class="pb20 bdb">
+                <view class="flex_sb">
+                    <text class="col3 font15">套餐名称</text>
+                    <text>设备类型</text>
+                </view>
+                <view class="mt20">使用次数：1/N 次</view>
+                <view>购买价格：158 元</view>
+            </view>
+            <view class="pt20">
+                <view class="col3 mb20">套餐内容说明</view>
+                <view>套餐内容说明套餐内容说明套餐内容说明套餐内容说明套餐内容说明</view>
+            </view>
+        </view>
+    </block>
+</view>
+<navigator url="/pages/my_shop/add_combo/index" hover-class="none" class="add_box ptb20">
+    <image src="/images/add.png"></image>
+</navigator>

@@ -1,0 +1,10 @@
+<view class="p20">
+    <view class="rechargeBox">
+        <view class="label">充值金额</view>
+        <view class="flex_sb line">
+            <text class="unit">￥</text>
+            <input class="input" type="text"></input>
+        </view>
+    </view>
+    <view class="confirm">微信支付</view>
+</view>

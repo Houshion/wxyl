@@ -1,0 +1,20 @@
+{
+  "pages": [
+    "pages/login/login/index",
+    "pages/login/register/index",
+    "pages/login/agreement/index",
+    "pages/my_investment/income/index",
+    "pages/my_investment/quota_list/index",
+    "pages/my_investment/recharge/index",
+    "pages/my_investment/voucher/index",
+    "pages/my_investment/index/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "上海五心医疗",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

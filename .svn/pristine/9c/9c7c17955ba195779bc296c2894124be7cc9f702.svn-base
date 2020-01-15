@@ -1,0 +1,15 @@
+<view class="pt20 plr24">
+    <block wx:for="{{list}}" wx:key="{{index}}">
+        <view class="flex_sb mb20 plr30 ptb40 font15 col3 bw border-r1" data-storeid = "{{item.id}}" bindtap="detail">
+            <view class="flex_a">
+                <image src="/images/shop.png" class="shop mr10"></image>
+                <text>{{item.name}}店铺</text>
+            </view>
+            <image src="/images/right.png" class="arrow_right"></image>
+        </view>
+    </block>
+    <block wx:if="{{lock}}">
+        <view class="h80 lh80 tac col9 font15">暂无数据</view>
+    </block>
+</view>
+<login-component bind:myevent="listeningEvent" />

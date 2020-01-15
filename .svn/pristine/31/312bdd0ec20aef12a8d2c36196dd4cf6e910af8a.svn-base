@@ -1,0 +1,4 @@
+<view class="back">
+    <image class="logo" src="/images/tuiguang.png" mode="aspectFit"></image>
+    <image class="qrcode" src="/images/qrcode.png"></image>
+</view>

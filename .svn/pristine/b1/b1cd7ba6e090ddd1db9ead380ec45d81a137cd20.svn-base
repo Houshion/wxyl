@@ -1,0 +1,12 @@
+<wxs src="../../../../../../utils/filters.wxs" module="tools" />
+<view class="box">
+    <block wx:for="{{list}}" wx:key="{{index}}">
+        <van-cell title="{{item.integral}}" label="{{tools.format(item.ctime,'Y-m-d H:i') || '/'}}" border="{{ false }}" center>
+            <view class="cred">
+                +
+                <text>{{item.money}}</text>
+            </view>
+        </van-cell>
+    </block>
+</view>
+<login-component bind:myevent="listeningEvent" />

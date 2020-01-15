@@ -1,0 +1,93 @@
+var tools = {
+    /*日期格式化*/
+    format: function (time, ff = 'Y-m-d H:i:s') {
+        if (time.length == 10) time = time * 1000;
+        if (!time) return "/"
+        var d = getDate(time);
+        return tools.formatDate(d, ff);
+    },
+    formatDate: function (now, ff) {
+        var year = now.getFullYear();
+        var month = now.getMonth() + 1 < 10 ? '0' + (now.getMonth() + 1) : now.getMonth() + 1;
+        var date = now.getDate() < 10 ? '0' + now.getDate() : now.getDate();
+        var hour = now.getHours() < 10 ? '0' + now.getHours() : now.getHours();
+        var minute = now.getMinutes() < 10 ? '0' + now.getMinutes() : now.getMinutes();
+        var second = now.getSeconds() < 10 ? '0' + now.getSeconds() : now.getSeconds();
+        if (ff == 'Y-m-d') {
+            return year + "-" + month + "-" + date;
+        } else if (ff == 'Y-m-d H:i:s') {
+            return year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second;
+        } else if (ff == 'Y-m-d H:i') {
+            return year + "-" + month + "-" + date + " " + hour + ":" + minute;
+        } else if (ff == 'Y-m') {
+            return year + "-" + month;
+        } else if (ff == 'Y') {
+            return year;
+        }
+    },
+    gender: function (val) {
+        var gender;
+        switch (val) {
+            case 0:
+                gender = "未知"
+                break;
+            case 1:
+                gender = "男"
+                break;
+            case 2:
+                gender = "女"
+                break;
+        }
+        return gender
+    },
+    countTime: function (value, dw) {
+        var theTime = parseInt(value)
+        var theTime1 = 0
+        var theTime2 = 0
+        var result
+        if (theTime > 60) {
+            theTime1 = parseInt(theTime / 60)
+            theTime = parseInt(theTime % 60)
+            if (theTime1 > 60) {
+                theTime2 = parseInt(theTime1 / 60)
+                theTime1 = parseInt(theTime1 % 60)
+            }
+        }
+        if (dw && dw == "cn") {
+            result = '' + parseInt(theTime) + '秒'
+            if (theTime1 > 0) {
+                result = '' + parseInt(theTime1) + '分' + result
+            }
+            if (theTime2 > 0) {
+                result = '' + parseInt(theTime2) + '小时' + result
+            }
+        } else if (dw && dw != "cn") {
+            result = '' + parseInt(theTime)
+            if (theTime1 > 0) {
+                result = '' + parseInt(theTime1) + dw + result
+            }
+            if (theTime2 > 0) {
+                result = '' + parseInt(theTime2) + dw + result
+            }
+        } else {
+            result = '' + (parseInt(theTime) < 10 ? "0" + theTime : parseInt(theTime))
+            if (theTime1 > 0) {
+                result = '' + (parseInt(theTime1) < 10 ? "0" + theTime1 : parseInt(theTime1)) + ':' + result
+            }
+            if (theTime2 > 0) {
+                result = '' + (parseInt(theTime2) < 10 ? "0" + theTime2 : parseInt(theTime2)) + ':' + result
+            }
+        }
+        return result
+    },
+    toFixed: function (value, num) {
+        if(value == 0) return 0
+        return value.toFiexd(num)
+    }
+};
+module.exports = {
+    format: tools.format,
+    gender: tools.gender,
+    countTime: tools.countTime,
+    toFixed: tools.toFixed
+};

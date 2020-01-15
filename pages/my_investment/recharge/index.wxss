@@ -1,0 +1,30 @@
+@import '/css/main.wxss';
+page{
+    background: #fff;
+}
+page>view{
+    padding-bottom: 140rpx;
+}
+.list_box > view{
+    border: 1px dashed #333;
+    width: 220rpx;
+    height: 120rpx;
+    border-radius: 10rpx;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 40rpx;
+    box-sizing: border-box;
+}
+.list_box .active{
+    background: #8adbd3;
+    border: none;
+}
+.list_box .active view{
+    color: #fff;
+}
+.list_box > view:nth-child(3n-1){
+    margin-left: 20rpx;
+    margin-right: 20rpx;
+}

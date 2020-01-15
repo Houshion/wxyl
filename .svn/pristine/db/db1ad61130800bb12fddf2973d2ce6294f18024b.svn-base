@@ -1,0 +1,23 @@
+<wxs src="../../../../../../utils/filters.wxs" module="tools" />
+<view class="typeChoose" bind:tap="chooseType">
+    {{typeList[type].title}}
+    <van-icon name="play" custom-class="down" />
+</view>
+<view class="box">
+    <block wx:for="{{list}}" wx:key="{{index}}">
+        <van-cell label="{{tools.format(item.ctime,'Y-m-d H:i') || '/'}}" border="{{ false }}" center>
+            <view slot="title">
+                <view>流水号：{{item.orderNo}}</view>
+                <!-- <view>{{item.type==1?"充值":item.type==2?"线下转账":item.type==3?"推荐人收益":"推荐店铺收益"}}</view> -->
+                <view>{{item.type==1?"充值":item.type==2?"提现":item.type==3?"推荐人收益":"推荐店铺收益"}}</view>
+            </view>
+            <view class="cred">
+                <text>{{item.money}}</text>
+            </view>
+        </van-cell>
+    </block>
+</view>
+<van-action-sheet show="{{ show }}" title="收支类型" round close-on-click-overlay overlay bind:close="closeWin">
+    <van-picker columns="{{ columns }}" bind:change="onChange" />
+</van-action-sheet>
+<login-component bind:myevent="listeningEvent" />

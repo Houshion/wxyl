@@ -1,0 +1,3 @@
+<van-cell is-link title="关于我们" link-type="navigateTo" url="../about/index" />
+<van-cell is-link title="帮助中心" link-type="navigateTo" url="../help/index" />
+<van-cell is-link title="意见反馈" link-type="navigateTo" url="../feedback/index" />

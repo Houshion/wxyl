@@ -1,0 +1,25 @@
+@import '/css/main.wxss';
+
+.bac {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    max-height: 100vh;
+}
+
+.btns {
+    position: absolute;
+    bottom: 20rpx;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.btns .btn {
+    width: 40%;
+    padding: 20rpx 0;
+    text-align: center;
+    border-radius: 50rpx;
+    color: #5ac2bb;
+    background: #ffffff;
+}

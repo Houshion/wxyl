@@ -1,0 +1,24 @@
+<wxs src="../../../../../../utils/filters.wxs" module="tools" />
+<image class="topBac" src="/images/usingTop.png" mode="aspectFit"></image>
+<image class="using" src="/images/using.png" mode="aspectFit"></image>
+<image class="bottomBac" src="/images/usingBottom.png" mode="aspectFit"></image>
+<view class="deviceMsg">设备IMEI：{{form.deviceNo}}</view>
+<view class="time">
+    <view wx:if="{{using}}" class="usingCount">
+        <view>使用中</view>
+        <view class="countTime">{{time}}</view>
+    </view>
+    <view wx:else class="usingCount">已结束</view>
+</view>
+<view class="bottomBtn">
+    <view class="btn btn1" bind:tap="goback" wx:if="{{using}}">返回首页</view>
+    <view class="buttons flex_sb" wx:else>
+        <view class="btn btn1" bind:tap="goback">返回首页</view>
+        <!-- <view class="btn btn2" bind:tap="useAgain">继续使用</view> -->
+        <view class="btn btn2" bind:tap="useAgain" wx:if="{{remainNum!=0}}">继续使用</view>
+    </view>
+    <navigator class="report" url="../report/index?deviceNo={{form.deviceNo}}&orderNo={{form.orderNo}}" hover-class="navigator-hover" open-type="navigate">
+        故障上报
+    </navigator>
+</view>
+<login-component bind:myevent="listeningEvent" extendCode="{{extendCode}}" />

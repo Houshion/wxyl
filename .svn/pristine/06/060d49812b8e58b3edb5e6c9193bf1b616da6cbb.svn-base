@@ -1,0 +1,19 @@
+@import '/css/main.wxss';
+
+.orderBox {
+    padding: 30rpx;
+}
+
+.order {
+    padding: 30rpx;
+    background: #ffffff;
+    box-shadow: 0 0 5px 5px #e6e6e6;
+    border-radius: 5px;
+    color: #999999;
+}
+
+.orderMsg {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}

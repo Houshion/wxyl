@@ -1,0 +1,80 @@
+@import '/css/main.wxss';
+
+#map {
+    width: 100%;
+    height: 100vh;
+}
+
+.selectCity {
+    position: absolute;
+    top: 20rpx;
+    left: 0;
+    padding: 20rpx 0;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    color: #10797f;
+    width: 200rpx;
+    text-align: center;
+    background: #e0f5f3
+}
+
+.down {
+    transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    /* IE 9 */
+    -moz-transform: rotate(90deg);
+    /* Firefox */
+    -webkit-transform: rotate(90deg);
+    /* Safari 和 Chrome */
+    -o-transform: rotate(90deg);
+    /* Opera */
+}
+
+.serachBox {
+    position: absolute;
+    left: 5%;
+    right: 5%;
+    width: 90%;
+    top: 120rpx;
+    border-radius: 30px;
+}
+
+.serachBox .search,
+.serachBox .search .van-search__content {
+    background: #ffffff;
+}
+
+.shops {
+    position: absolute;
+    left: 5%;
+    right: 5%;
+    width: calc(90% - 0rpx);
+    top: 250rpx;
+    background: #ffffff;
+    border-radius: 5px;
+}
+
+.shops .shop {
+    padding: 30rpx;
+    margin-bottom: 30rpx;
+    box-shadow: #efefef 0 1px 5px 0;
+}
+
+.shops .shop:last-child {
+    margin-bottom: 0
+}
+
+.shops .time{
+    color: #999999;
+    font-size: 24rpx;
+}
+
+.shops .address {
+    width: calc(100% - 120rpx);
+}
+
+.shops .distance {
+    width: 120rpx;
+    text-align: center;
+    color: #f69626;
+}

@@ -1,0 +1,4 @@
+<!--pages/userSide/main/my/collet/index.wxml-->
+<text>pages/userSide/main/my/collet/index.wxml</text>
+
+<login-component bind:myevent="listeningEvent" />

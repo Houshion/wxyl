@@ -1,0 +1,8 @@
+<view>
+    <van-action-sheet show="{{ is_show }}"  close-on-click-overlay bind:close="closeSheet">
+        <view>
+            <van-picker columns="{{ range }}" show-toolbar bind:confirm="pickerConfirm" bind:cancel="pickerCancel"/>
+        </view>
+    </van-action-sheet>
+
+</view>

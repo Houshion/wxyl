@@ -1,0 +1,108 @@
+const app = getApp();
+const tools = app.tools;
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    list: [
+      {name: 'bankNo',title: '银行卡号',type: 'number'},
+      {name: 'bankName',title: '银行名称',type: 'text'},
+      {name: 'realName',title: '卡号实名',type: 'text'},
+    ],
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    if(tools.getStorage('bankMsg')){
+
+    }
+  },
+  formSubmit: function (e) {
+    console.log('form发生了submit事件，携带数据为：', e.detail.value)
+    const {money, bankNo, bankName, realName} = e.detail.value;
+    if (tools.isNull(money)) {
+      tools.showToast('请输入提现金额');
+    }else if (tools.isNull(bankNo)) {
+      tools.showToast('请输入银行卡号');
+    }else if (tools.isNull(bankName)) {
+      tools.showToast('请输入银行名称');
+    }else if (tools.isNull(realName)) {
+      tools.showToast('请输入卡号实名');
+    }else{
+      tools.showLoading();
+      const form = {
+        ...e.detail.value,
+        type: this.options.type == 'shop' ? 2: 1
+      };
+      app.wxRequest(
+          '/api/withdrawRecord/saveWithdrawRecord',
+          form,
+          res => {
+            tools.hideLoading();
+            if(res.data.code == 1){
+              tools.showModal('提交成功',flag => {
+                if(flag){
+                  tools.navigateBack();
+                }
+              },false)
+            }else{
+              tools.showToast(res.data.msg)
+            }
+          }
+      )
+    }
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  }
+})

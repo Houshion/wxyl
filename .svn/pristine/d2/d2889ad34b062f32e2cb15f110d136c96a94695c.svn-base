@@ -1,0 +1,26 @@
+<view id="login">
+    <image class="logo" src="/images/logo.png" mode="scaleToFill"></image>
+    <view class="loginBox">
+        <van-cell-group>
+            <view class="inputBox">
+                <van-field value="{{ form.phone }}" placeholder="请输入用户名" border="{{ false }}">
+                    <view slot="left-icon">
+                        <cover-image class="iconImage" src="/images/phone.png" mode="aspectFill"></cover-image>
+                    </view>
+                </van-field>
+            </view>
+            <view class="inputBox">
+                <van-field value="{{ form.password }}" placeholder="请输入密码" border="{{ false }}">
+                    <view slot="left-icon">
+                        <cover-image class="iconImage" src="/images/password.png" mode="aspectFill"></cover-image>
+                    </view>
+                </van-field>
+            </view>
+            <view class="forgetPass tar" bind:tap="forgetPass">忘记密码?</view>
+        </van-cell-group>
+        <view class="submit">
+            <view class="confirm">登录</view>
+        </view>
+        <navigator url="/pages/login/register/index" class="register">注册</navigator>
+    </view>
+</view>

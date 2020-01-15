@@ -1,0 +1,43 @@
+<wxs src="../../../../../../utils/filters.wxs" module="tools" />
+<view class="orderType">
+    <van-icon class="icon" name="info-o" />
+    {{orderMsg.status==0?"未使用":orderMsg.status==1?"已使用":"已完成"}}
+</view>
+<image class="orderBac" src="/images/orderBacImg.png" mode="aspectFit"></image>
+<view class="orderBox">
+    <view class="order">
+        <view class="flex_sb">
+            <view>订单编号</view>
+            <view>{{orderMsg.orderNo}}</view>
+        </view>
+        <view class="flex_sb">
+            <view>订单日期</view>
+            <view>{{tools.format(orderMsg.citem) || '/'}}</view>
+        </view>
+        <view class="flex_sb">
+            <view>有效日期</view>
+            <view>{{tools.format(orderMsg.expireTime) || '/'}}</view>
+        </view>
+        <view class="flex_sb">
+            <view>套餐名称</view>
+            <view>{{orderMsg.comboName}}</view>
+        </view>
+        <view class="flex_sb">
+            <view>实付金额</view>
+            <view>{{orderMsg.comboPrice}}</view>
+        </view>
+        <view class="flex_sb">
+            <view>次数</view>
+            <view>{{orderMsg.useNum}}</view>
+        </view>
+        <view class="flex_sb">
+            <view>剩余次数</view>
+            <view>{{orderMsg.remainNum}}</view>
+        </view>
+        <!-- <view class="qrcode">
+            <image src="/images/qrcode.png" mode="aspectFit"></image>
+        </view> -->
+    </view>
+</view>
+
+<login-component bind:myevent="listeningEvent" />

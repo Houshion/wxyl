@@ -1,0 +1,159 @@
+const app = getApp();
+const tools = app.tools;
+
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {extendCode:'',
+    form: {
+      money: "",
+      type: 3
+    },
+    money: 0,
+    serverCharge: 0,
+    limit: 0,
+    afterMoney: 0
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    this.setData({
+      money: options.money,
+      extendCode: options.extendCode
+    })
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    this.init()
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function (options) {
+    let userInfo = tools.getStorage("userInfo");
+    if (userInfo.headImgUrl.indexOf("http") == -1) {
+      userInfo.headImgUrl = tools.globalData.url + userInfo.headImgUrl
+    }
+    var shareObj = {
+      path: '/pages/userSide/main/my/index/index?extendCode=' + userInfo.extendCode, // 默认是当前页面，必须是以‘/’开头的完整路径
+      imgUrl: '/images/shareBac.png', //转发时显示的图片路径，支持网络和本地，不传则使用当前页默认截图。
+      success: function (res) { // 转发成功之后的回调　　　　　
+        if (res.errMsg == 'shareAppMessage:ok') {}
+      },
+      fail: function () { // 转发失败之后的回调
+        if (res.errMsg == 'shareAppMessage:fail cancel') {
+          // 用户取消转发
+        } else if (res.errMsg == 'shareAppMessage:fail') {
+          // 转发失败，其中 detail message 为详细失败信息
+        }
+      },
+      complete: function () {
+        // 转发结束之后的回调（转发成不成功都会执行）
+      }
+    };
+    // 来自页面内的按钮的转发
+    if (options.from == 'button') {
+      var dataid = options.target.dataset; //上方data-id=shareBtn设置的值
+      // 此处可以修改 shareObj 中的内容
+      shareObj.path = '/pages/userSide/main/my/index/index?extendCode=' + dataid.id;
+    }
+    // 返回shareObj
+    return shareObj;
+  },
+
+  getNum(e) {
+    this.setData({
+      'form.money': Number(e.detail.value),
+      afterMoney: (e.detail.value - (e.detail.value * (this.data.serverCharge / 100))).toFixed(2)
+    })
+  },
+
+  confirm() {
+    let {
+      money
+    } = this.data
+
+    if (this.data.form.money > money) {
+      return tools.showToast("提现金额不能大于钱包余额")
+    }
+    wx.showModal({
+      title: '温馨提示',
+      content: '此次提现金额为' + this.data.form.money + "元，是否继续？",
+      confirmColor: "#5ac2bb",
+      success(res) {
+        if (res.confirm) {
+          app.wxRequest(
+            '/api/withdrawRecord/saveWithdrawRecord', this.data.form,
+            res => {
+              if (res.data.code == 1) {
+                tools.showToast("操作成功，等待审核...")
+              } else {
+                tools.showToast(res.data.msg)
+              }
+            }
+          )
+        }
+      }
+    })
+  },
+
+  init() {
+    app.wxRequest(
+      '/api/aboutUs/getAbout', this.data.form,
+      res => {
+        if (res.data.code == 1) {
+          console.log(res.data.data)
+          this.setData({
+            serverCharge: res.data.data.withdraw_ratio,
+            limit: res.data.data.withdraw_limit,
+          })
+        } else {
+          tools.showToast(res.data.msg)
+        }
+      }
+    )
+  }
+})

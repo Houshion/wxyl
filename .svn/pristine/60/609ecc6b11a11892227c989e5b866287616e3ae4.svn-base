@@ -1,0 +1,9 @@
+@import '/css/main.wxss';
+.form_box .list + .list{
+    border-top: 1px solid #e5e5e5;
+}
+.head{
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+}

@@ -1,0 +1,146 @@
+const app = getApp();
+const tools = app.tools;
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    lispic: [], //图片列表
+    lispic_path: [], //图片列表路径
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+  listeningEvent(e){
+
+  },
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
+  },
+  /**
+   * 上传图片
+   */
+  choice() {
+    let that = this;
+    app.uploadFile('', function(flag, idx, msg, data) {
+      if (flag == 1) {
+        let res = msg.tempFilePaths;
+        if (that.data.lispic.length < 8) {
+          that.setData({
+            lispic: that.data.lispic.concat(res)
+          });
+        } else {
+          tools.showModal('最多只能上传8张图片...', () => {}, false);
+          return false;
+        }
+
+      } else if (flag == 2) {
+        tools.hideLoading();
+        if (that.data.lispic_path.length < 8) {
+          that.data.lispic_path.push(msg);
+        }
+      }
+    }, {token: tools.getStorage('token')}, 8 - that.data.lispic.length)
+  },
+  indexpic_delete(e) { //删除图片
+    const {
+      lispic,
+      lispic_path
+    } = this.data;
+    tools.showModal('是否删除图片？', (flag) => {
+      if (flag) {
+        lispic.splice(e.currentTarget.dataset.index, 1);
+        lispic_path.splice(e.currentTarget.dataset.index, 1);
+        this.setData({
+          lispic,
+          lispic_path
+        });
+      }
+    });
+  },
+  formSubmit: function (e) {
+    console.log('form发生了submit事件，携带数据为：', e.detail.value)
+    const {
+      lispic_path
+    } = this.data;
+    const {deviceNo, content} = e.detail.value;
+    if (tools.isNull(deviceNo)) {
+      tools.showToast('请输入设备IMEI');
+    }else if (tools.isNull(content)) {
+      tools.showToast('请具体描述故障');
+    }else if(lispic_path.length <= 0){
+      tools.showToast('请选择图片');
+    }else{
+      tools.showLoading();
+      app.wxRequest(
+          '/api/troubleRecord/saveTroubleRecord',
+          {
+            storeId: tools.globalData.storeId,
+            ...e.detail.value,
+            imgUrl: lispic_path.join(',')
+          },
+          res => {
+            tools.hideLoading();
+            if(res.data.code == 1){
+             tools.showModal('提交成功', (flag) => {
+               if(flag){
+                 tools.navigateBack()
+               }
+             },false)
+            }else{
+              tools.showToast(res.data.msg)
+            }
+          }
+      )
+    }
+  },
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  }
+})

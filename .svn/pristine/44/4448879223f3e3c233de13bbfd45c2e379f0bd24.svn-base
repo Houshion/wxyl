@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "店铺详情",
+  "usingComponents": {
+    "van-icon": "/miniprogram_npm/vant-weapp/icon/index",
+    "van-tab": "/miniprogram_npm/vant-weapp/tab/index",
+    "van-tabs": "/miniprogram_npm/vant-weapp/tabs/index",
+    "login-component": "/components/login-component/login-component"
+  }
+}

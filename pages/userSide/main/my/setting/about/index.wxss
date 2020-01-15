@@ -1,0 +1,30 @@
+@import "/css/main";
+
+.logoBox {
+    background: #ffffff;
+    width: 100%;
+    height: 500rpx;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+}
+
+.logoBox image,
+.logoBox view {
+    width: 100%;
+    text-align: center;
+}
+
+.logo {
+    width: 200rpx !important;
+    height: 200rpx;
+    border-radius: 10px;
+}
+
+.appName {
+    margin-top: 20rpx;
+    color: #999999;
+}

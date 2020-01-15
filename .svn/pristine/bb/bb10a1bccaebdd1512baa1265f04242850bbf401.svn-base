@@ -1,0 +1,37 @@
+<view class="orderType"><van-icon class="icon" name="info-o" />使用中</view>
+<image class="orderBac" src="/images/orderBacImg.png" mode="aspectFit"></image>
+<view class="orderBox">
+    <view class="order">
+        <view class="flex_sb">
+            <view>订单编号</view>
+            <view>2015498465165421651</view>
+        </view>
+        <view class="flex_sb">
+            <view>订单日期</view>
+            <view>2015498465165421651</view>
+        </view>
+        <view class="flex_sb">
+            <view>有效日期</view>
+            <view>2015498465165421651</view>
+        </view>
+        <view class="flex_sb">
+            <view>套餐名称</view>
+            <view>2015498465165421651</view>
+        </view>
+        <view class="flex_sb">
+            <view>实付金额</view>
+            <view>2015498465165421651</view>
+        </view>
+        <view class="flex_sb">
+            <view>次数</view>
+            <view>2015498465165421651</view>
+        </view>
+        <view class="flex_sb">
+            <view>已使用次数</view>
+            <view>2015498465165421651</view>
+        </view>
+        <view class="qrcode">
+            <image src="/images/qrcode.png" mode="aspectFit"></image>
+        </view>
+    </view>
+</view>

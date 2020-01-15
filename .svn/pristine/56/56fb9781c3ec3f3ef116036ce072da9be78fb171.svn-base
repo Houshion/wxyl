@@ -1,0 +1,25 @@
+<wxs src="../../../../../../utils/filters.wxs" module="tools" />
+<van-search shape="round" background="#fff" custom-class="search" value="{{ searchShopName }}" placeholder="搜索订单" use-action-slot>
+    <view slot="action" bind:tap="onSearch">搜索</view>
+</van-search>
+<van-tabs color="#5ac2bb" active="{{ active }}" bind:change="onChange">
+    <van-tab title="未使用">
+        <view class="orderBox">
+            <block wx:for="{{orderList}}">
+                <view class="order">
+                    <view class="orderMsg">
+                        <view>
+                            <view>订单编号：{{item.orderNo}}</view>
+                            <view>订单日期：{{tools.format(item.citem) || '/'}}</view>
+                            <view>有效日期：{{tools.format(item.expireTime) || '/'}}</view>
+                        </view>
+                        <view class="color1">未使用</view>
+                    </view>
+                    <view></view>
+                </view>
+            </block>
+        </view>
+    </van-tab>
+    <van-tab title="使用中">内容 2</van-tab>
+    <van-tab title="已使用">内容 3</van-tab>
+</van-tabs>

@@ -1,0 +1,28 @@
+@import '/css/main.wxss';
+
+.rechargeBox {
+    background: #ffffff;
+    padding: 50rpx;
+    border-radius: 5px;
+}
+
+.line {
+    border-bottom: 1px solid #efefef;
+}
+
+.unit {
+    font-size: 40rpx;
+    font-weight: bold;
+    margin: 30rpx 0;
+    width: 50rpx;
+    text-align: center;
+}
+
+.input {
+    width: calc(100% - 50rpx);
+    font-size: 40rpx;
+}
+
+.confirm {
+    margin-top: 60rpx;
+}

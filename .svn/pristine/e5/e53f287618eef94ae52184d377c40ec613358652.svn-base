@@ -1,0 +1,11 @@
+<view id="detail">
+    <view class="title overflow">2017年全国一不你搜人均阿斯利康的金凤凰爱时间的话礼金卡很大方接口了阿乐四大皆空风</view>
+    <view class="msg flex_sb col9 mtb30">
+        <view class="time">2019-11-11 11:11</view>
+        <view class="config">
+            <image bind:tap="collect" class="configIcon" src="/images/i_collect.png" mode="aspectFit"></image>
+            <image bind:tap="share" class="configIcon" src="/images/i_share.png" mode="aspectFit"></image>
+        </view>
+    </view>
+    <rich-text nodes="{{content}}"></rich-text>
+</view>

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "添加套餐",
+  "usingComponents": {
+    "common-picker": "/components/picker/index",
+    "login-component": "/components/login-component/login-component"
+  }
+}

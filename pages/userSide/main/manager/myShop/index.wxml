@@ -1,0 +1,2 @@
+<van-cell is-link title="新店加盟管理" link-type="navigateTo" url="../apply/index?type=2" />
+<van-cell is-link title="加盟店申请" link-type="navigateTo" url="../apply/index?type=3" />

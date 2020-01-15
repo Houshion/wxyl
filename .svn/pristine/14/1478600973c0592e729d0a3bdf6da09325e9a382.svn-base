@@ -1,0 +1,9 @@
+<view class="logoBox">
+    <image class="logo" src="{{aboutMsg.logoImgUrl}}" mode="scaleToFill" />
+    <view class="appName">{{aboutMsg.appName}}</view>
+</view>
+<view class="mt20">
+    <van-cell title="当前版本" value="{{aboutMsg.appVersion}}" />
+    <van-cell title="客服电话" value="{{aboutMsg.serviceTel}}" />
+</view>
+<login-component bind:myevent="listeningEvent" />

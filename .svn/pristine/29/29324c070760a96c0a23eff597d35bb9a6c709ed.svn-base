@@ -1,0 +1,39 @@
+<view wx:if="{{type_date == 'date' || type_date == 'year-month'}}">
+    <van-action-sheet show="{{ show }}"  close-on-click-overlay bind:close="closeSheet" z-index="10">
+        <view>
+            <van-datetime-picker
+                    type="{{type_date}}"
+                    value="{{ currentDate }}"
+                    min-date="{{ minDate }}"
+                    max-date="{{ maxDate }}"
+                    bind:input="onInput"
+                    bind:confirm="confirm"
+                    bind:cancel="cancel"
+            />
+        </view>
+    </van-action-sheet>
+    <van-action-sheet show="{{ end_show }}"  close-on-click-overlay bind:close="endCloseSheet">
+        <view>
+            <van-datetime-picker
+                    type="{{type_date}}"
+                    value="{{ endDate }}"
+                    min-date="{{ currentDate }}"
+                    max-date="{{ maxDate }}"
+                    bind:input="endOnInput"
+                    bind:confirm="endConfirm"
+                    bind:cancel="endCancel"
+            />
+        </view>
+    </van-action-sheet>
+</view>
+<view wx:if="{{type_date == 'year'}}">
+    <van-action-sheet show="{{ show }}"  close-on-click-overlay bind:close="endCloseSheet">
+        <view>
+            <van-picker columns="{{ columns }}" bind:change="onChange" show-toolbar bind:confirm="pickerConfirm" bind:cancel="pickerCancel"/>
+        </view>
+    </van-action-sheet>
+
+</view>
+
+
+

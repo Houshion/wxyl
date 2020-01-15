@@ -1,0 +1,28 @@
+<view class="header_box bgf5">
+    <view class="search_box flex_a plr30 bw">
+        <image src="/images/search.png" class="search"></image>
+        <input type="text" placeholder="请输入需要搜索的店铺名称" class="h80 col3 font13  flex1 plr10" placeholder-class="col9" bindinput="bindKeyInput" value="{{search}}" bindconfirm="bindconfirm"/>
+        <image src="/images/cancel.png" class="cancel" wx-if="{{search}}" bindtap="cancel"></image>
+    </view>
+</view>
+<view class="content_box plr24">
+    <radio-group  bindchange="radioChange">
+        <label wx:for="{{list}}" wx:key="{{index}}" class="flex_sb list ptb30 plr30 border-r1 bw mb20">
+            <view class="font15 col3">
+                <view>店铺名称：{{item.name}}</view>
+                <view>联系电话：{{item.phone}}</view>
+                <view class="font12 col9 flex_a">
+                    <image src="/images/addr.png" class="addr mr20"></image>
+                    <text>{{item.province + item.city + item.addr}}</text>
+                </view>
+            </view>
+            <radio class="radio"  value="{{item.id}}" checked="{{item.checked}}" color="#90ded6"></radio>
+        </label>
+        <block wx:if='{{lock}}'>
+            <view class='tac lh80 col9'>没有更多了</view>
+        </block>
+    </radio-group>
+</view>
+<view class="ptb30 pos_f_b bgf5">
+    <view class="confirm" bindtap="confirm">激活设备</view>
+</view>

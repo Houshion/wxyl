@@ -1,0 +1,28 @@
+<map id="map" longitude="{{center.lng}}" latitude="{{center.lat}}" scale="14" markers="{{markers}}" bindmarkertap="markertap" show-location></map>
+<cover-view class="shopList" scroll-top="0" bind:tap="goList">店铺列表</cover-view>
+<cover-view class="coverBox">
+    <cover-view class="flex_aj selectCity bgc1" bind:tap="getCity">
+        <cover-image class="location" src="/images/addr_1.png" bindload="" binderror="" />
+        {{center.city}}
+    </cover-view>
+    <!-- <cover-view class="serachBox">
+        <van-search shape="round" background="#ffffff" custom-class="search" value="{{ searchShopName }}" use-action-slot placeholder="请输入店铺名称" bind:change="onChange">
+            <cover-view slot="action" bind:tap="init">搜索</cover-view>
+        </van-search>
+    </cover-view>
+    <cover-view class="shops">
+        <cover-view class="shop" wx:for="{{shopsList}}">
+            <cover-view class="flex_sb border-b pb30">
+                <cover-view class="address">
+                    <cover-image class="location" src="/images/addr_1.png" bindload="" binderror="" />
+                    {{item.name}}
+                </cover-view>
+                <cover-view class="distance">[{{item.distance}}km]</cover-view>
+            </cover-view>
+            <cover-view class="mt30 time">
+                <cover-image class="location" src="/images/i_time.png" bindload="" binderror="" />
+                营业时间：{{item.business_hours}}
+            </cover-view>
+        </cover-view>
+    </cover-view> -->
+</cover-view>

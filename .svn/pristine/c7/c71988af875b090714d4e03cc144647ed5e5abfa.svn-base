@@ -1,0 +1,23 @@
+@import "/css/main";
+
+.box {
+    padding: 30rpx;
+}
+
+.list {
+    background: #ffffff;
+    padding: 30rpx;
+    border-radius: 5px;
+    margin-bottom: 30rpx;
+}
+
+.time {
+    color: #999999;
+}
+
+.cancel {
+    color: #999999;
+    border: 1px solid #999999;
+    border-radius: 50rpx;
+    padding: 0 10rpx;
+}

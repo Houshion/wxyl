@@ -1,0 +1,32 @@
+<wxs src="../../../../../../utils/filters.wxs" module="tools" />
+<view class="msgBox" hover-class="none" hover-stop-propagation="false">
+    <view class="mainBox">
+        <view class="flex_sb font12">
+            <view>加入时间：{{tools.format(vipMsg.ctime,'Y-m-d') || '/'}}</view>
+            <view>会员等级：『{{vipMsg.level}}』</view>
+        </view>
+        <view class="moneyBox">
+            <view class="w100">
+                ￥
+                <text>{{vipMsg.useableMoney}}</text>
+            </view>
+            <view class="w100">我的余额</view>
+        </view>
+    </view>
+    <view class="cover">
+        <image src="/images/vipBac.png" mode="widthFix" />
+        <view class="btns">
+            <navigator class="btn btn1" url="../withdraw/index?money={{vipMsg.useableMoney}}" hover-class="navigator-hover" open-type="navigate">
+                提现
+            </navigator>
+            <navigator class="btn btn2" url="../recharge/index" hover-class="navigator-hover" open-type="navigate">
+                充值
+            </navigator>
+        </view>
+    </view>
+</view>
+<view class="list">
+    <van-cell is-link title="会员积分" value="{{vipMsg.integral}}" link-type="navigateTo" url="../detail/index" />
+    <van-cell is-link title="交易账单" link-type="navigateTo" url="../list/index" />
+</view>
+<login-component bind:myevent="listeningEvent" />

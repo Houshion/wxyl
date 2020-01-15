@@ -1,0 +1,67 @@
+<wxs src="../../../../../utils/filters.wxs" module="tools" />
+<view id="shopDetail">
+    <view class="shop">
+        <view class="flex_sb border-b pb30">
+            <view class="address" bind:tap="goMap">
+                <van-icon name="location-o" />
+                {{storeMsg.addr}}
+            </view>
+            <view class="config">
+                <image wx:if="{{isCollect==0}}" class="icon collect" src="/images/i_collect.png" mode="aspectFit" bind:tap="collect"></image>
+                <image wx:else class="icon collect" src="/images/i_collected.png" mode="aspectFit"></image>
+                <image class="icon share" src="/images/i_share.png" mode="aspectFit"></image>
+            </view>
+        </view>
+        <view class="mt30 time flex_sb">
+            <view>
+                <van-icon name="clock-o" />
+                营业时间：{{storeMsg.business_hours}}
+            </view>
+            <view bind:tap="phoneCall">
+                <van-icon name="phone-o" class="phone" />
+            </view>
+        </view>
+    </view>
+</view>
+<view class="tab">
+    <van-tabs active="{{ active }}" bind:change="onChangeTab" color="#5ac2bb">
+        <van-tab title="我的设备">
+            <view class="deivceBoxes">
+                <view class="device" wx:for="{{deviceList}}">
+                    <view class="title flex_sb">
+                        <view class="type">{{item.device_name}}</view>
+                        <view class="macno">设备编号：{{item.device_no}}</view>
+                    </view>
+                    <view class="package" wx:for="{{item.comboList}}" wx:for-item="p">
+                        <view class="flex_sb">
+                            <view class="title">{{p.name}}</view>
+                            <view class="btn">
+                                <view class="buy">购买</view>
+                            </view>
+                        </view>
+                        <view class="times col9">使用次数：{{p.use_num}}次</view>
+                        <view class="price col9">购买价格：{{p.price}}元</view>
+                        <view class="content">
+                            <view class="label mtb20">套餐内容说明</view>
+                            <view class="con col9">{{p.remark}}</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </van-tab>
+        <van-tab title="用户评论">
+            <view id="comment">
+                <view class="comment" wx:for="{{commentList}}">
+                    <view class="userName">{{item.userName}}</view>
+                    <view class="commentMsg">{{item.replyContent}}</view>
+                    <view class="time col9">{{tools.format(item.ctime,'Y-m-d') || '/'}}</view>
+                    <view class="imgs">
+                        <image wx:for="{{item.imgUrl}}" wx:for-item="img" class="" src="{{img}}" mode="aspectFit"></image>
+                    </view>
+                </view>
+            </view>
+        </van-tab>
+    </van-tabs>
+</view>
+
+<login-component bind:myevent="listeningEvent" />

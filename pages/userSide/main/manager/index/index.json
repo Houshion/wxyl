@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "管理",
+  "usingComponents": {
+    "navbar": "/components/navbar/index",
+    "van-icon": "/miniprogram_npm/vant-weapp/icon/index",
+    "van-notice-bar": "/miniprogram_npm/vant-weapp/notice-bar/index",
+    "login-component": "/components/login-component/login-component"
+  }
+}

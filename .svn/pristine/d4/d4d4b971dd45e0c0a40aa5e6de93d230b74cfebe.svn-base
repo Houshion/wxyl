@@ -1,0 +1,5 @@
+<!--pages/userSide/main/my/setting/about/index.wxml-->
+<text>pages/userSide/main/my/setting/about/index.wxml</text>
+
+
+<login-component bind:myevent="listeningEvent" />

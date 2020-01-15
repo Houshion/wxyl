@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "开支管理",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "datetime-picker": "/components/datetime-picker/index",
+    "login-component": "/components/login-component/login-component"
+  }
+}

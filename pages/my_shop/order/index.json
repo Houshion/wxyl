@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "订单列表",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "login-component": "/components/login-component/login-component"
+  }
+}

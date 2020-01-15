@@ -1,0 +1,26 @@
+<view>
+    <block wx:for="{{3}}" wx:key="{{index}}">
+        <van-swipe-cell id="swipe-cell" right-width="{{ 100 }}">
+        <view class="plr24 ptb30 list flex_a bdb">
+            <view class="device_box"><image src="/images/device.png"></image></view>
+            <view class="ml20 col3 flex1">
+                <view class="font12">设备序列号：</view>
+                <view class="font15 ">NM56648465453</view>
+            </view>
+        </view>
+        <view slot="right" class="right_box flex_a">
+            <view bindtap="check">
+                <image src="/images/check.png" class="check"></image>
+                <view class="col6 font10 mt10">查看</view>
+            </view>
+            <view bindtap="dele">
+                <image src="/images/dele.png" class="dele"></image>
+                <view class="col6 font10 mt10">删除</view>
+            </view>
+        </view>
+        </van-swipe-cell>
+    </block>
+    <navigator url="/pages/my_shop/feedback/index" hover-class="none" class="feedback tac ptb30">
+        <view class="font12">故障上报</view>
+    </navigator>
+</view>

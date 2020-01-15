@@ -1,0 +1,32 @@
+<view class="swiper">
+    <swiper indicator-dots autoplay interval="2000" duration="500">
+        <swiper-item wx:for="{{swiperImgs}}">
+            <cover-image class="swiperImg" src="{{item.img_url}}"></cover-image>
+        </swiper-item>
+    </swiper>
+</view>
+<view class="tab">
+    <van-tabs color="#5ac2bb" active="{{ active }}" bind:change="onChange">
+        <block wx:for="{{tabs}}">
+            <van-tab title="{{item.name}}">
+                <view class="list">
+                    <view wx:for="{{list}}">
+                        <navigator class="listItem" url="/pages/userSide/main/recuperate/detail/index">
+                            <cover-image class="listImg" src="{{item.img}}" bindload="" binderror=""></cover-image>
+                            <view class="msg">
+                                <view class="title w100">{{item.title}}</view>
+                                <view class="tags w100">
+                                    <span class="tag">{{item.tags}}</span>
+                                </view>
+                                <view class="time w100">发布时间：{{item.time}}</view>
+                            </view>
+                        </navigator>
+                    </view>
+                </view>
+            </van-tab>
+        </block>
+    </van-tabs>
+</view>
+<navigator class="recharge" url="/pages/userSide/main/recuperate/recharge/index">
+    <image class="rechargeImg" src="/images/i_recharge.png" mode="aspectFit"></image>
+</navigator>

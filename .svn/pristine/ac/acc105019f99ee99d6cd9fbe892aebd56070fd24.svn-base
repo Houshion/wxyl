@@ -1,0 +1,38 @@
+<wxs src="../../../../../utils/filters.wxs" module="tools" />
+<van-tabs color="#5ac2bb" active="{{ active }}" bind:change="onChange">
+    <block wx:for="{{tabs}}" wx:key="{{index}}" wx:for-item="tab">
+        <van-tab title="{{tab}}">
+            <view class="box">
+                <block wx:for="{{list}}" wx:key="{{index}}">
+                    <view class="list" wx:if="{{type==1}}">
+                        <view class="flex_sb border-b mb20 pb20">
+                            <view>
+                                <van-icon name="newspaper-o" />
+                                {{item.title}}
+                            </view>
+                            <view class="cancel" bind:tap="cancel" data-id="{{item.id}}">取消收藏</view>
+                        </view>
+                        <view class="time">
+                            <van-icon name="clock-o" />
+                            发布时间：{{item.time}}
+                        </view>
+                    </view>
+                    <view class="list" wx:else>
+                        <view class="flex_sb border-b mb20 pb20">
+                            <view>
+                                <van-icon name="location-o" />
+                                {{item.name}}
+                            </view>
+                            <view class="cancel" bind:tap="cancel" data-id="{{item.id}}">取消收藏</view>
+                        </view>
+                        <view class="time">
+                            <van-icon name="clock-o" />
+                            营业时间：{{item.time}}
+                        </view>
+                    </view>
+                </block>
+            </view>
+        </van-tab>
+    </block>
+</van-tabs>
+<login-component bind:myevent="listeningEvent" />

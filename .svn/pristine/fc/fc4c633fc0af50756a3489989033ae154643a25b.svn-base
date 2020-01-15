@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "评论列表",
+  "usingComponents": {
+    "van-action-sheet": "/miniprogram_npm/vant-weapp/action-sheet/index"
+  }
+}

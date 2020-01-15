@@ -1,0 +1,23 @@
+<wxs src="../../../../../utils/filters.wxs" module="tools" />
+<view class="box">
+    <block wx:for="{{list}}" wx:key="{{index}}">
+        <view class="list">
+            <view class="title">{{item.name}}</view>
+            <view class="flex_sb mb20 border-b pb15">
+                <text class="name">{{item.combo_name}}</text>
+                <text class="price">￥{{item.combo_price}}</text>
+            </view>
+            <view class="content">{{item.content}}</view>
+            <view class="time">{{tools.format(item.ctime,'Y-m-d H:i') || '/'}}</view>
+            <view class="imgs">
+                <block wx:for="{{item.imgUrl}}" wx:key="{{index}}">
+                    <image class="img" src="{{item}}" mode="widthFix" />
+                </block>
+            </view>
+            <view class="col6 font14 pb20" wx:if="{{item.replyContent}}">
+                商家回复：{{item.replyContent}}
+            </view>
+        </view>
+    </block>
+</view>
+<login-component bind:myevent="listeningEvent" />

@@ -1,0 +1,127 @@
+@import '/css/main.wxss';
+
+#shopDetail {
+    padding: 30rpx;
+    background: #ffffff;
+}
+
+.shop {
+    padding: 30rpx;
+    box-shadow: #efefef 0 0 5px 2px;
+    border-radius: 5px;
+}
+
+.shop .time {
+    color: #999999;
+    font-size: 24rpx;
+}
+
+.shop .address {
+    width: calc(100% - 120rpx)
+}
+
+.shop .config {
+    width: 120rpx;
+}
+
+.shop .config .icon {
+    width: 40rpx;
+    height: 40rpx;
+    /* margin: 0 10rpx; */
+}
+
+.phone {
+    font-size: 36rpx;
+    color: #f69626;
+}
+
+.shop .distance {
+    width: 120rpx;
+    text-align: center;
+    color: #f69626;
+}
+
+.deivceBoxes {
+    padding: 30rpx;
+    border-radius: 5px;
+}
+
+.deivceBoxes .device {
+    padding: 30rpx;
+    background: #ffffff;
+    margin-bottom: 20rpx;
+}
+
+.deivceBoxes .device>.title {
+    font-size: 22rpx;
+    color: #999999;
+    padding-bottom: 20rpx;
+    margin-bottom: 20rpx;
+    border-bottom: 1px solid #efefef;
+}
+
+.deivceBoxes .package {
+    border-bottom: 1px solid #efefef;
+    padding-bottom: 20rpx;
+    margin-bottom: 20rpx;
+}
+
+.deivceBoxes .package:last-child {
+    border: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.deivceBoxes .package .buy {
+    width: 100rpx;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 30px;
+    padding: 10rpx 20rpx;
+    background: linear-gradient(to right, #5ac2bb, #8fded6);
+}
+
+.deivceBoxes .package .title {
+    font-size: 32rpx;
+}
+
+#comment {
+    padding: 0 30rpx
+}
+
+.comment {
+    padding: 30rpx 0;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.comment .userName {
+    margin: 10rpx 0;
+    font-size: 30rpx;
+}
+
+.comment .time {
+    margin: 10rpx 0;
+}
+
+.imgs image{
+    width: 220rpx;
+    height: 220rpx;
+    margin-right: 18rpx;
+    border-radius: 5px;
+    margin-bottom: 15rpx;
+}
+
+.imgs image:nth-child(3n){
+    margin-right: 0;
+}
+
+.radioIcon {
+    width: 50rpx;
+    height: 50rpx;
+    margin-right: 20rpx;
+}
+
+.shareBtn {
+    width: auto !important;
+    padding: 0 14px !important;
+}

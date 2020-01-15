@@ -1,0 +1,22 @@
+@import '/css/main.wxss';
+
+#detail {
+    padding: 20rpx;
+    background: #ffffff;
+}
+
+.title {
+    font-size: 38rpx;
+    font-weight: bold;
+}
+
+.configIcon {
+    width: 42rpx;
+    height: 42rpx;
+    margin-left: 20rpx;
+}
+
+.shareBtn {
+    width: auto !important;
+    padding: 0 14px !important;
+}

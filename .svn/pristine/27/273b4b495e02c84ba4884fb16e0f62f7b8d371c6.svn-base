@@ -1,0 +1,11 @@
+<view class="back">
+    <image class="logo" src="/images/tuiguang.png" mode="aspectFit"></image>
+    <view class="qrcodeBox">
+        <image class="qrcode" src="/images/qrcode.png"></image>
+        <view>五心医疗APP下载</view>
+    </view>
+    <view class="inviteCode">
+        <view class="font30">Z54202T</view>
+        <view>我的邀请码</view>
+    </view>
+</view>

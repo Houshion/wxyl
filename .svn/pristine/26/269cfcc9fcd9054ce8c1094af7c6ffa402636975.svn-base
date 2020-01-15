@@ -1,0 +1,29 @@
+<view class="header_box bgf5">
+    <view class="search_box flex_a plr30 bw">
+        <image src="/images/search.png" class="search"></image>
+        <input type="text" placeholder="搜索" class="h80 col3 font13  flex1 plr10" placeholder-class="col9" bindinput="bindKeyInput" value="{{search}}"/>
+        <image src="/images/cancel.png" class="cancel" wx-if="{{sure_search}}" bindtap="cancel"></image>
+    </view>
+</view>
+<view class="plr24 content_box">
+    <block wx:for="{{4}}" wx:key="{{index}}">
+       <view class="plr30 ptb30 font14 col3 border-r1 bw mb20">
+           <view class="flex_sb">
+               <text>水费</text>
+               <text>￥52.00</text>
+           </view>
+           <view class="flex_sb mt20">
+               <text>电费</text>
+               <text>￥52.00</text>
+           </view>
+           <view class="flex_sb mt20">
+               <text>煤气费</text>
+               <text>￥52.00</text>
+           </view>
+           <view class="col9 font12 mt40">2019.11</view>
+       </view>
+    </block>
+</view>
+<navigator url="/pages/my_shop/add_expenditure/index" hover-class="none" class="add_box ptb20">
+    <image src="/images/add.png"></image>
+</navigator>

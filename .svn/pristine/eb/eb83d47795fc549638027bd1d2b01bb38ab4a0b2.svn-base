@@ -1,0 +1,54 @@
+@import '/css/common.wxss';
+
+.confirm{
+    width: 600rpx !important;
+    margin: 0 auto;
+    height: 88rpx;
+    border-radius: 48rpx;
+    color: #fff;
+    border: none;
+    font-size: 32rpx;
+    background: linear-gradient(to right,#5ac2bb, #8fded6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.confirm:active{
+    box-shadow: 0 2px 5px 1px #666;
+    transform: translateY(2px);
+    font-size: 34rpx;
+}
+.hover_class{
+  background: #ccc;
+}
+.btn_box{
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  border-radius: 48rpx;
+  font-size: 32rpx;
+}
+.bg-5b{
+    background-color: #5b4900;
+}
+.col-5b{
+    color: #5b4900;
+}
+.border-5b{
+    border:1px solid #5b4900;
+}
+.bg-63{
+    background-color: #637e3d;
+}
+.col-63{
+    color: #637e3d;
+}
+.border-63{
+    border:1px solid #637e3d;
+}
+.bgfa{
+    background-color: #fafafa;
+}
+.van-picker__cancel,.van-picker__confirm {
+    color: #5ac2bb !important;
+}

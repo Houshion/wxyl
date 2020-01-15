@@ -1,0 +1,37 @@
+<view class="plr24 pt20">
+    <view class="title_box pos_r">
+        <view class="img_box"><image src="/images/bg.png"></image></view>
+        <view class="main_box plr40 ptb30">
+            <view class="font12 color2">账户余额</view>
+            <view class="color1 mt10">
+                <text class="font12">￥</text>
+                <text class="font24">580</text>
+            </view>
+            <view class="mt10 font12">
+                <text class="handle_btn btn">转入投资</text>
+                <text class="handle_btn ml20 btn">提现</text>
+            </view>
+        </view>
+    </view>
+    <view class="mt20">
+        <view>
+            <van-action-sheet show="{{ show }}" title="标题" close-on-click-overlay bind:close="closeSheet">
+                <view>内容</view>
+            </van-action-sheet>
+        </view>
+        <block wx:for="{{3}}" wx:key="{{index}}">
+            <view class="bw plr30 ptb30 border-r1 col3 font14 mb20">
+                <view class="flex_sb">
+                    <text>平台营收</text>
+                    <text>￥45654</text>
+                </view>
+                <view class="col9 font12 mt20">盈利分红公式</view>
+                <view class="flex_sb mt10">
+                    <text>今日分红</text>
+                    <text>￥45654</text>
+                </view>
+                <view class="col9 font12 mt30">2019-11-22 17:15</view>
+            </view>
+        </block>
+    </view>
+</view>

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "店铺管理",
+  "usingComponents": {
+    "timedivision-picker": "/components/timedivision-picker/index",
+    "login-component": "/components/login-component/login-component"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "充值",
+  "usingComponents": {
+    "login-component": "/components/login-component/login-component"
+  }
+}

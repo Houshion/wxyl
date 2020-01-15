@@ -1,0 +1,7 @@
+@import '/css/main.wxss';
+
+.headImg {
+    width: 70rpx;
+    height: 70rpx;
+    border-radius: 50%;
+}

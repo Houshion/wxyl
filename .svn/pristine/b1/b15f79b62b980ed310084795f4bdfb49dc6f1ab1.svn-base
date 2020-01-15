@@ -1,0 +1,59 @@
+@import '/css/main.wxss';
+.title_box{
+    height: 233rpx;
+    position: relative;
+    z-index: 1;
+}
+.title_box .img_box{
+    position: absolute;
+    left: 24rpx;
+    top:0;
+    right: 24rpx;
+    z-index: -1;
+}
+.title_box .img_box image{
+    width: 100%;
+    height: 233rpx;
+}
+.tab_box{
+    padding: 0 60rpx;
+}
+.tab_box .tab-item{
+    height: 80rpx;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    position: relative;
+}
+.tab_box .active{
+    color: #5ac2bb;
+}
+.tab_box .active:before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80rpx;
+    height: 1px;
+    background: #5ac2bb;
+}
+.date_box{
+    border-radius: 10rpx;
+    padding:13rpx  0;
+    width: 200rpx;
+    text-align: center;
+    background: #fff;
+}
+.num_box .box + .box{
+    margin-top: 30rpx;
+}
+.chart_box{
+    width: 100%;
+    height: 400rpx;
+}
+ec-canvas {
+    width: 100%;
+    height: 100%;
+}

@@ -1,0 +1,137 @@
+<wxs src="../../../../../../utils/filters.wxs" module="tools" />
+<!-- <van-search shape="round" background="#fff" custom-class="search" value="{{ searchShopName }}" placeholder="搜索订单" use-action-slot>
+    <view slot="action" bind:tap="onSearch">搜索</view>
+</van-search> -->
+<van-tabs color="#5ac2bb" active="{{ active }}" bind:change="onChange">
+    <van-tab title="未使用">
+        <view class="orderBox">
+            <block wx:for="{{orderListUnuse}}" wx:key="index" wx:if="{{item.payStatus > 0}}">
+                <view class="order">
+                    <navigator class="useDevice" url="../detail/index?id={{item.id}}" hover-class="navigator-hover" open-type="navigate">
+                        <view class="orderMsg">
+                            <view>
+                                <view class="mb20">订单编号：{{item.orderNo}}</view>
+                                <view class="mb20">订单日期：{{tools.format(item.citem) || '/'}}</view>
+                                <view class="mb20">
+                                    有效日期：{{tools.format(item.expireTime) || '/'}}
+                                </view>
+                                <view class="mb20">适用店铺：{{item.storeName}}</view>
+                            </view>
+                            <view>
+                                <view class="color1">未使用</view>
+                                <view class="back" wx:if="{{item.payStatus > 1}}">
+                                    （{{item.payStatus == 2? '退款中': "已退款"}}）
+                                </view>
+                            </view>
+                        </view>
+                        <view class="package">
+                            <view class="packageMsg">
+                                <view class="title col0 font15">{{item.comboName}}</view>
+                                <view>
+                                    <text class="mr20">次数：{{item.useNum}}</text>
+                                    <text>剩余次数：{{item.remainNum}}</text>
+                                </view>
+                                <view class="mt30">￥{{item.comboPrice}}</view>
+                            </view>
+                        </view>
+                    </navigator>
+                    <view class="config" wx:if="{{item.payStatus == 1}}">
+                        <view class="fullback" bind:tap="fullback" data-price="{{item.comboPrice}}" data-id="{{item.id}}">
+                            退款
+                        </view>
+                        <view class="useDevice" hover-class="none" hover-stop-propagation="false" data-deviceNo="{{item.deviceNo}}" data-orderId="{{item.id}}" data-orderNo="{{item.orderNo}}" bind:tap="useDevice">
+                            使用设备
+                        </view>
+                        <!-- <navigator class="useDevice" url="../using/index?deviceNo={{item.deviceNo}}&orderId={{item.id}}" hover-class="navigator-hover" open-type="navigate">
+                            使用设备
+                        </navigator> -->
+                    </view>
+                </view>
+            </block>
+        </view>
+    </van-tab>
+    <van-tab title="已使用">
+        <view class="orderBox">
+            <block wx:for="{{orderListUsing}}" wx:key="index" wx:if="{{item.payStatus > 0}}">
+                <view class="order">
+                    <navigator class="useDevice" url="../detail/index?id={{item.id}}" hover-class="navigator-hover" open-type="navigate">
+                        <view class="orderMsg">
+                            <view>
+                                <view class="mb20">订单编号：{{item.orderNo}}</view>
+                                <view class="mb20">订单日期：{{tools.format(item.citem) || '/'}}</view>
+                                <view class="mb20">
+                                    有效日期：{{tools.format(item.expireTime) || '/'}}
+                                </view>
+                                <view class="mb20">适用店铺：{{item.storeName}}</view>
+                            </view>
+                            <view>
+                                <view class="color1">已使用</view>
+                                <view class="back" wx:if="{{item.payStatus > 1}}">
+                                    （{{item.payStatus == 2? '退款中': "已退款"}}）
+                                </view>
+                            </view>
+                        </view>
+                        <view class="package">
+                            <view class="packageMsg">
+                                <view class="title col0 font15">{{item.comboName}}</view>
+                                <view>
+                                    <text class="mr20">次数：{{item.useNum}}</text>
+                                    <text>剩余次数：{{item.remainNum}}</text>
+                                </view>
+                                <view class="mt30">￥{{item.comboPrice}}</view>
+                            </view>
+                        </view>
+                    </navigator>
+                    <view class="config" wx:if="{{item.payStatus == 1}}">
+                        <view class="fullback" bind:tap="fullback" data-price="{{item.comboPrice}}" data-id="{{item.id}}" data-remain="{{item.remainNum}}" data-use="{{item.useNum}}">
+                            退款
+                        </view>
+                        <view class="useDevice" hover-class="none" hover-stop-propagation="false" data-deviceNo="{{item.deviceNo}}" data-orderId="{{item.id}}" data-orderNo="{{item.orderNo}}" bind:tap="useDevice">
+                            使用设备
+                        </view>
+                        <!-- <navigator class="useDevice" url="../using/index?deviceNo={{item.deviceNo}}&orderId={{item.id}}" hover-class="navigator-hover" open-type="navigate">
+                            使用设备
+                        </navigator> -->
+                    </view>
+                </view>
+            </block>
+        </view>
+    </van-tab>
+    <van-tab title="已完成">
+        <view class="orderBox">
+            <block wx:for="{{orderListUsed}}" wx:key="index" wx:if="{{item.payStatus > 0}}">
+                <view class="order">
+                    <navigator class="useDevice" url="../detail/index?id={{item.id}}" hover-class="navigator-hover" open-type="navigate">
+                        <view class="orderMsg">
+                            <view>
+                                <view class="mb20">订单编号：{{item.orderNo}}</view>
+                                <view class="mb20">订单日期：{{tools.format(item.citem) || '/'}}</view>
+                                <view class="mb20">
+                                    有效日期：{{tools.format(item.expireTime) || '/'}}
+                                </view>
+                                <view class="mb20">适用店铺：{{item.storeName}}</view>
+                            </view>
+                            <view class="color1">已使用</view>
+                        </view>
+                        <view class="package">
+                            <view class="packageMsg">
+                                <view class="title col0 font15">{{item.comboName}}</view>
+                                <view>
+                                    <text class="mr20">次数：{{item.useNum}}</text>
+                                    <text>剩余次数：{{item.remainNum}}</text>
+                                </view>
+                                <view class="mt30">￥{{item.comboPrice}}</view>
+                            </view>
+                        </view>
+                    </navigator>
+                    <view class="config" wx:if="{{item.commentStatus==0}}">
+                        <navigator class="fullback comment" url="../comment/index?orderId={{item.id}}" hover-class="navigator-hover" open-type="navigate">
+                            评论
+                        </navigator>
+                    </view>
+                </view>
+            </block>
+        </view>
+    </van-tab>
+</van-tabs>
+<login-component bind:myevent="listeningEvent" />

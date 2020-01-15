@@ -1,0 +1,63 @@
+@import '/css/main.wxss';
+
+.orderBox {
+    padding: 30rpx;
+}
+
+.order {
+    padding: 30rpx;
+    background: #ffffff;
+    box-shadow: 0 0 5px 5px #e6e6e6;
+    border-radius: 5px;
+    color: #999999;
+}
+
+.orderMsg {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.package {
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    align-content: space-between;
+    padding: 20rpx;
+}
+
+.package .orderImg {
+    width: 140rpx;
+    height: 140rpx;
+    margin-right: 20rpx;
+}
+
+.config {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30rpx;
+}
+
+.config .fullback {
+    padding: 5rpx 20rpx;
+    color: #999999;
+    border: 1px solid #999999;
+    border-radius: 30rpx;
+    margin-right: 30rpx;
+}
+
+.config .useDevice {
+    padding: 5rpx 20rpx;
+    background: #5ac2bb;
+    color: #ffffff;
+    border-radius: 30rpx;
+}
+
+.back {
+    color: #f00;
+    font-size: 20rpx;
+}
+
+.comment {
+    margin-right: 0 !important;
+}

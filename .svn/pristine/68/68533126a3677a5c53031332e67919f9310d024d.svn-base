@@ -1,0 +1,7 @@
+<image class="bac" src="/images/shareBac.png" mode="widthFix" />
+<view class="btns">
+    <navigator url="../apply/index?type=1" class="btn">我要投资</navigator>
+    <navigator url="../myShop/index" class="btn">新店加盟</navigator>
+</view>
+
+<login-component bind:myevent="listeningEvent" extendCode="{{extendCode}}" />

@@ -1,0 +1,18 @@
+<form bindsubmit="formSubmit">
+    <view class="logo_box tac">
+        <image src="/images/logo.png"></image>
+    </view>
+    <view class="bw border-r1 plr24 mlr60">
+        <view class="flex_a bdb">
+            <image src="/images/phone.png" class="phone"></image>
+            <input type="number" placeholder="请输入手机号码" class="col3 font14 h110 flex1 ml40" placeholder-class="col9" name="account" value="{{form.account}}"/>
+        </view>
+        <view class="flex_a">
+            <image src="/images/password.png" class="password"></image>
+            <input type="password" placeholder="请输入密码" class="col3 font14 h110 flex1 ml40" placeholder-class="col9"  name="password" value="{{form.password}}"/>
+        </view>
+    </view>
+    <view class="ptb60">
+        <button formType="submit" class="confirm">登录</button>
+    </view>
+</form>

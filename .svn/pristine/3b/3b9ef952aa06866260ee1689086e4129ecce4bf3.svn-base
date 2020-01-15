@@ -1,0 +1,51 @@
+<view class="plr24 pt20">
+    <view class="title_box pos_r">
+        <view class="img_box"><image src="/images/bg.png"></image></view>
+        <view class="main_box plr40 ptb30">
+            <view class="font12 color2">{{type== 'shop' ? '投资分红' : '账户余额'}}</view>
+            <view class="color1 mt10">
+                <text class="font12">￥</text>
+                <text class="font24">{{userIncomeMoney}}</text>
+            </view>
+            <view class="mt10 font12">
+                <text class="handle_btn btn" bindtap="invest" wx:if="{{type == ''}}">转入投资</text>
+                <navigator url="/pages/my_investment/withdraw/index?type={{type}}" class="handle_btn ml20 btn">提现</navigator>
+            </view>
+        </view>
+    </view>
+    <view class="mt20">
+        <view class="flex_sb">
+            <text class="col3 font15">营利列表</text>
+            <view class="font12 flex_a col9" wx:if="{{type == ''}}">
+                <view class="date_box" bindtap="chose_date">{{
+                    !form.startTime ? '选择日期' : form.startTime}}</view>
+                <view class="mlr20">-</view>
+                <view class="date_box">{{
+                    !form.endTime ? '选择日期' : form.endTime}}</view>
+            </view>
+        </view>
+        <block wx:for="{{list}}" wx:key="{{index}}">
+            <view class="bw plr30 ptb30 border-r1 col3 font14 mtb20">
+                <view class="flex_sb" wx:if="{{type == ''}}">
+                    <text>平台营收</text>
+                    <text>￥{{item.oncePrice}}</text>
+                </view>
+                <view class="flex_sb" wx:else>
+                    <text>店铺营收</text>
+                    <text>￥{{item.storeMoney}}</text>
+                </view>
+                <view class="col9 font12 mt20">营利分红公式</view>
+                <view class="flex_sb mt10" >
+                    <text wx:if="{{type == ''}}">今日分红</text>
+                    <text wx:else>今日收益</text>
+                    <text>￥{{item.shareMoney}}</text>
+                </view>
+                <view class="col9 font12 mt30">{{item.ctime}}</view>
+            </view>
+        </block>
+        <block wx:if='{{lock}}'>
+            <view class='tac lh80 col9'>没有更多了</view>
+        </block>
+    </view>
+</view>
+<datetime-picker bind:myevent="listeningEvent" bind:myeventCancel="listeningCancel" is_show="{{is_show}}"  wx-if="{{is_show}}"/>

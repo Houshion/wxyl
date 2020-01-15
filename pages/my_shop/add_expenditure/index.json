@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "开支管理",
+  "usingComponents": {
+    "van-action-sheet": "/miniprogram_npm/vant-weapp/action-sheet/index",
+    "van-datetime-picker": "/miniprogram_npm/vant-weapp/datetime-picker/index",
+    "login-component": "/components/login-component/login-component"
+  }
+}

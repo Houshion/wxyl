@@ -1,0 +1,25 @@
+<form bindsubmit="formSubmit" class="db form_box">
+    <block wx:for="{{list}}" wx:key="index">
+        <view class="ptb30 list bw plr24">
+            <view class="font16 col3">{{item.title}}</view>
+            <input type="{{item.type}}" placeholder="请输入" placeholder-class="font12 col6" class="font14 col3 pt20" name="{{item.name}}"/>
+        </view>
+    </block>
+    <view class="mt20 bw pl24">
+        <view class="col3 font16 pt20">上传交款凭证</view>
+        <view class="pt20 font0 clearfix">
+            <block wx:if="{{lispic.length>0}}" wx:for="{{lispic}}" wx:key>
+                <view class='pic_wrap'>
+                    <image class="pic" src="{{item}}" bindtap='indexpic_delete' data-index='{{index}}'></image>
+                </view>
+            </block>
+            <view class='pic_wrap' bindtap='choice'>
+                <image class="pic" src="/images/add_img.png"></image>
+            </view>
+        </view>
+    </view>
+    <view class="ptb30">
+        <button class="confirm" formType="submit">上传充值凭证</button>
+    </view>
+</form>
+<login-component bind:myevent="listeningEvent" extendCode="{{extendCode}}" />

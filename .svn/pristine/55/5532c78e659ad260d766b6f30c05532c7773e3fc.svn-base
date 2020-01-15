@@ -1,0 +1,15 @@
+<view id="register">
+    <van-cell-group>
+        <view class="inputBox">
+            <van-field value="{{ form.phone }}" placeholder="请输入用户名" border="{{ false }}">
+                
+            </van-field>
+        </view>
+        <view class="inputBox">
+            <van-field value="{{ form.password }}" placeholder="请输入密码" border="{{ false }}">
+                
+            </van-field>
+        </view>
+        <view class="forgetPass tar" bind:tap="forgetPass">忘记密码?</view>
+    </van-cell-group>
+</view>

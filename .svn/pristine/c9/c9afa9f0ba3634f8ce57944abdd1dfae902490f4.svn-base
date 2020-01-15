@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "认证",
+  "usingComponents": {
+    "van-field": "/miniprogram_npm/vant-weapp/field/index",
+    "common-picker": "/components/picker/index"
+  }
+}

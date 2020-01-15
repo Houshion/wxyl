@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "设备管理",
+  "usingComponents": {
+    "van-swipe-cell": "/miniprogram_npm/vant-weapp/swipe-cell/index"
+  }
+}

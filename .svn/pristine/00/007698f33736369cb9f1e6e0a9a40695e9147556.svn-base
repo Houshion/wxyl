@@ -1,0 +1,36 @@
+@import '/css/main.wxss';
+.tab_box{
+    padding: 0 24rpx;
+}
+.tab_box .tab-item{
+    height: 90rpx;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    position: relative;
+}
+.tab_box .active{
+    color: #5ac2bb;
+}
+.tab_box .active:before{
+    content: '';
+    position: absolute;
+    bottom: 8rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 52rpx;
+    height: 8rpx;
+    background: #5ac2bb;
+    border-radius: 0 0 40rpx 40rpx;
+}
+.content_box{
+    padding-top: 90rpx;
+}
+.list .main_content>view + view{
+    margin-top: 10rpx;
+}
+.addr{
+    width: 20rpx;
+    height: 24rpx;
+}

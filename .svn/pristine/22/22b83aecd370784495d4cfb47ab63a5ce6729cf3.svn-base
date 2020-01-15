@@ -1,0 +1,13 @@
+@import '/css/main.wxss';
+
+.changeBox {
+    padding: 30rpx;
+}
+
+.hide {
+    display:none
+}
+
+input{
+    text-align: left;
+}

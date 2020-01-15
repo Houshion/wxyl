@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "位置选择",
+  "usingComponents": {
+    "van-index-bar": "/miniprogram_npm/vant-weapp/index-bar/index",
+    "van-index-anchor": "/miniprogram_npm/vant-weapp/index-anchor/index"
+  }
+}

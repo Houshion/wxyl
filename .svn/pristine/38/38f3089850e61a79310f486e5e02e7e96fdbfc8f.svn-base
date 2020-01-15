@@ -1,0 +1,25 @@
+<form bindsubmit="formSubmit">
+    <van-cell title="{{typeLists[type]}}" bind:tap="onShowType" is-link />
+    <view class="mt20 bw pl24 border-r1">
+        <view class="col3 font16 ptb30 pr24">
+            <textarea placeholder="请输入评论" class="col3 font14 w100" placeholder-class="col6" name="content"></textarea>
+        </view>
+        <view class="font0 clearfix">
+            <block wx:if="{{lispic.length>0}}" wx:for="{{lispic}}" wx:key>
+                <view class='pic_wrap'>
+                    <image class="pic" src="{{item}}" bindtap='indexpic_delete' data-index='{{index}}'></image>
+                </view>
+            </block>
+            <view class='pic_wrap' bindtap='choice'>
+                <image class="pic" src="/images/add_img.png"></image>
+            </view>
+        </view>
+    </view>
+    <view class="ptb60">
+        <button class="confirm" formType="submit">提交</button>
+    </view>
+    <van-action-sheet show="{{ showType }}" title="反馈类型" close-on-click-overlay bind:close="closeSheet">
+        <van-picker columns="{{ typeLists }}" bind:change="getType" />
+    </van-action-sheet>
+</form>
+<login-component bind:myevent="listeningEvent" />

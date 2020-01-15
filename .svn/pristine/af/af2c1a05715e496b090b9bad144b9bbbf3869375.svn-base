@@ -1,0 +1,34 @@
+{
+  "pages": [
+    "pages/my_investment/index/index",
+    "pages/my_investment/statistics_content/index",
+    "pages/my_shop/add_combo/index",
+    "pages/my_shop/shop_data/index",
+    "pages/my_shop/index/index",
+    "pages/my_shop/combo_list/index",
+    "pages/my_shop/add_expenditure/index",
+    "pages/my_shop/expenditure/index",
+    "pages/my_shop/comment_list/index",
+    "pages/my_shop/order/index",
+    "pages/my_shop/device_manage/index",
+    "pages/my_shop/feedback/index",
+    "pages/my_shop/check_device/index",
+    "pages/my_shop/center/index",
+    "pages/my_shop/clerk_list/index",
+    "pages/my_shop/add_clerk/index",
+    "pages/my_investment/voucher/index",
+    "pages/my_investment/statistics/index",
+    "pages/my_investment/income/index",
+    "pages/my_investment/withdraw/index",
+    "pages/my_investment/quota_list/index",
+    "pages/my_investment/recharge/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "上海五心医疗",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

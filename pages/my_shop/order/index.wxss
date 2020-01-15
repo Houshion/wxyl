@@ -1,0 +1,36 @@
+@import '/css/main.wxss';
+.header_box{
+    padding: 30rpx 60rpx;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 99;
+}
+.search_box{
+    box-shadow: 0 0 2px #ccc;
+    border-radius: 40rpx;
+}
+.search_box .search{
+    width: 20rpx;
+    height: 22rpx;
+}
+.search_box .cancel{
+    width: 30rpx;
+    height: 30rpx;
+}
+.content_box{
+    padding-top: 140rpx;
+}
+.content_box .list{
+   box-shadow: 0px 0px 1px #ccc;
+}
+.list .img_box{
+    width: 120rpx;
+    height: 120rpx;
+    background: #fff;
+}
+.list .img_box image{
+    width: 120rpx;
+    height: 120rpx;
+}

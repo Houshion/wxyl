@@ -1,0 +1,106 @@
+@import '/css/main.wxss';
+
+.topBac {
+    position: fixed;
+    top: -200rpx;
+    width: 100%;
+    left: 0;
+    height: 100vh;
+}
+
+.bottomBac {
+    position: fixed;
+    bottom: -10rpx;
+    width: 100%;
+    left: 0;
+    height: 100rpx;
+}
+
+.time,
+.using {
+    position: fixed;
+    width: 450rpx;
+    height: 450rpx;
+    top: 300rpx;
+    left: calc((100% - 450rpx) / 2);
+}
+
+.using {
+    -webkit-transition-property: -webkit-transform;
+    -webkit-transition-duration: 1s;
+    -moz-transition-property: -moz-transform;
+    -moz-transition-duration: 1s;
+    -webkit-animation: rotate 10s linear infinite;
+    -moz-animation: rotate 10s linear infinite;
+    -o-animation: rotate 10s linear infinite;
+    animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg)
+    }
+
+    to {
+        transform: rotate(360deg)
+    }
+}
+
+.time,
+.usingCount {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    /* flex-wrap: wrap; */
+    text-align: center;
+    flex-direction: column
+}
+
+.usingCount>view {
+    width: 100%;
+}
+
+.usingCount>view.countTime {
+    color: #f69626;
+    font-size: 40rpx;
+}
+
+.deviceMsg {
+    text-align: center;
+    padding-top: 250rpx;
+}
+
+.bottomBtn {
+    position: absolute;
+    bottom: 100rpx;
+    width: 80%;
+    margin: 0 10%;
+}
+
+.bottomBtn .btn {
+    padding: 15rpx;
+    border-radius: 30px;
+    width: 100%;
+    text-align: center;
+}
+
+.bottomBtn .btn.btn1 {
+    border: 1px solid #5ac2bb;
+    color: #5ac2bb;
+}
+
+.bottomBtn .btn.btn2 {
+    background: #5ac2bb;
+    color: #ffffff;
+}
+
+.bottomBtn .buttons .btn {
+    width: 48%;
+}
+
+.bottomBtn .report {
+    color: #f69626;
+    text-decoration: underline;
+    text-align: center;
+    margin-top: 30rpx;
+}

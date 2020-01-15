@@ -1,0 +1,32 @@
+<view class="header_box bgf5">
+    <view class="search_box flex_a plr30 bw">
+        <image src="/images/search.png" class="search"></image>
+        <input type="text" placeholder="搜索订单号" class="h80 col3 font13  flex1 plr10" placeholder-class="col9" bindinput="bindKeyInput" value="{{search}}" bindconfirm="bindconfirm"/>
+        <image src="/images/cancel.png" class="cancel" wx-if="{{search}}" bindtap="cancel"></image>
+    </view>
+</view>
+<view class="plr24 content_box mt20">
+    <block wx:for="{{list}}" wx:key="{{index}}">
+        <view class="col9 bw list border-r1 mb20">
+            <view class="flex_sb font12 h90 plr30">
+                <text>订单编号：{{item.orderNo}}</text>
+                <text class="color1">{{item.status==0 ? '未使用 ': item.status == 1? '使用中' : '已完成'}}</text>
+            </view>
+            <view class="ptb20 flex_a bgf5 plr30">
+                <view class="img_box mr20"><image src="/images/qrcode.png"></image></view>
+                <view>
+                    <view class="col3 font14">{{item.comboName}}</view>
+                    <view class="font10 mt10">
+                        <text>次数： {{item.remainNum}}次</text>
+                        <text class="ml20">已使用次数： {{item.useNum}}次</text>
+                    </view>
+                    <view class="font12 mt20">￥{{item.comboPrice}}</view>
+                </view>
+            </view>
+            <view class="col3 font14 h90 flex_a plr30">会员名称：{{item.nickName}}</view>
+        </view>
+    </block>
+    <block wx:if='{{lock}}'>
+        <view class='tac lh80 col9'>没有更多了</view>
+    </block>
+</view>

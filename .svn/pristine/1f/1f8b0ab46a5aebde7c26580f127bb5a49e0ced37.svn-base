@@ -1,0 +1,13 @@
+@import '/css/main.wxss';
+.addr{
+    width: 20rpx;
+    height: 24rpx;
+}
+.confirm{
+    width: 300rpx !important;
+}
+.confirm:last-child{
+    margin-left: 30rpx;
+    background: #e0fffc;
+    color: #5cc3bc;
+}

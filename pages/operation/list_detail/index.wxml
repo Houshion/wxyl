@@ -1,0 +1,40 @@
+<wxs src="../../../utils/filters.wxs" module="tools" />
+<view class="main_box plr20 pt40 pb30 font13 col3 ">
+    <view class="flex_sb">
+        <text class="col6">维修编号</text>
+        <text>{{info.orderNo}}</text>
+    </view>
+    <view class="flex_sb mt50">
+        <text class="col6">{{type ? '维修时间' : '创建时间'}}</text>
+        <text>{{type ? tools.format(info.disposeTime) : tools.format(info.ctime)}}</text>
+    </view>
+    <view class="flex_sb mt50">
+        <text class="col6">设备编号</text>
+        <text>{{info.deviceNo}}</text>
+    </view>
+    <view class="flex_sb mt50">
+        <text class="col6">设备地址</text>
+        <text>{{info.address}}</text>
+    </view>
+    <view class="flex_sb mt50">
+        <text class="col6">维修状态</text>
+        <text>{{info.status == 0 ? '待维修' : '维修成功'}}</text>
+    </view>
+    <view class="mt50">
+        <block>
+            <text class="col6">{{info.status == 0 ? '报障描述' : '维修描述'}}</text>
+            <view class="content mt50">
+                {{info.status == 0 ? info.content : info.disposeContent}}
+            </view>
+        </block>
+        <view class="mt40 img_box clearfix">
+            <block wx:for="{{info.status == 0 ? info.imgUrl : info.disposeImg}}" wx:key="{{index}}">
+                <view><image src="{{item}}" class="qrcode_img"></image></view>
+            </block>
+        </view>
+    </view>
+    <view class="flex_a mt40" wx:if="{{ !type }}">
+        <navigator url="/pages/operation/record/index?id={{id}}&deviceNo={{info.deviceNo}}&address={{info.address}}" class="confirm">填写维修记录</navigator>
+        <view class="confirm" bindtap="hande_btn">立即维修</view>
+    </view>
+</view>

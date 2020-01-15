@@ -1,0 +1,30 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+
+.tip {
+  font-size: 32rpx;
+  color: #999;
+  padding-top: 36rpx;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.tip image {
+  width: 188rpx;
+  height: 200rpx;
+}
+.tip view{
+  margin-top: 20rpx;
+}
+.arrow_r{
+  width: 14rpx;
+  height: 26rpx;
+}

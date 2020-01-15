@@ -1,0 +1,37 @@
+<view class="col9 ptb30 plr30 font14 bw">
+    <view>
+        <text class="col3">设备编号：</text>
+        <text>{{deviceNo}}</text>
+    </view>
+    <view class="mt10">
+        <text class="col3">地址：</text>
+        <text>{{address}}</text>
+    </view>
+</view>
+<form bindsubmit="formSubmit" >
+    <view class="plr24 mt40">
+        <view class="flex_a">
+            <text class="line mlr30"></text>
+            <text class="font15 col3">维修记录描述</text>
+        </view>
+        <view class="mt20 bw pl24 border-r1">
+            <view class="col3 font16 ptb30 pr24">
+                <textarea  placeholder="请输入维修记录描述" class="col3 font14 w100 textarea" placeholder-class="col6" name="disposeContent"></textarea>
+            </view>
+            <view class="font0 clearfix">
+                <block wx:if="{{lispic.length>0}}" wx:for="{{lispic}}" wx:key>
+                    <view class='pic_wrap'>
+                        <image class="pic" src="{{item}}" bindtap='indexpic_delete' data-index='{{index}}'></image>
+                    </view>
+                </block>
+                <view class='pic_wrap' bindtap='choice'>
+                    <image class="pic" src="/images/add_img.png"></image>
+                </view>
+            </view>
+            <view class="pb40 col6 font12">温馨提示：最多只能上传4张图片</view>
+        </view>
+        <view class="ptb60">
+            <button class="confirm" formType="submit">保存</button>
+        </view>
+    </view>
+</form>

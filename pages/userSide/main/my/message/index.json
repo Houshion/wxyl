@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "系统消息",
+  "usingComponents": {
+    "login-component": "/components/login-component/login-component"
+  }
+}

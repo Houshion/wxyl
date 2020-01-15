@@ -1,0 +1,44 @@
+<form bindsubmit="formSubmit" >
+    <view class="plr24 pt20">
+        <view class="flex_sb bw border-r1 plr30 h100 font15" bindtap="chose_device_type">
+            <text class="col3">设备类型</text>
+            <view class="col9 flex_a">
+                <text>{{!form.device_type?'请选择':form.device_type}}</text>
+                <image src="/images/right.png" class="arrow_right ml20"></image>
+            </view>
+        </view>
+        <view class="flex_sb bw border-r1 plr30 h100 font15 mt20" >
+            <text class="col3">套餐名称</text>
+            <input type="text" placeholder="请输入" class="col3 font15 tae" placeholder-class="col9" name="name"/>
+        </view>
+        <view class="bw border-r1 plr30 font15 ptb30 mt20" >
+            <view class="col3">套餐内容说明</view>
+            <textarea name="remark" placeholder="请输入" class="font15 col3 w100 mt10 h200" placeholder-class="col9"></textarea>
+        </view>
+        <view class="flex_sb bw border-r1 plr30 h100 font15 mt20" bindtap="chose_count">
+            <text class="col3">使用次数</text>
+            <view class="col9 flex_a">
+                <text>{{!form.useNum?'请选择':form.useNum}}</text>
+                <image src="/images/right.png" class="arrow_right ml20"></image>
+            </view>
+        </view>
+        <view class="flex_sb bw border-r1 plr30 h100 font15 mt20" >
+            <text class="col3">价格</text>
+            <input type="digit" placeholder="请输入" class="col3 font15 tae" placeholder-class="col9" name="price"/>
+        </view>
+        <view class="flex_sb bw border-r1 plr30 h100 font15 mt20" >
+            <text class="col3">有效天数</text>
+            <input type="number" placeholder="请输入" class="col3 font15 tae" placeholder-class="col9" name="usableDay"/>
+        </view>
+        <view class="flex_sb bw border-r1 plr30 h100 font15 mt20" >
+            <text class="col3">使用时长（分钟）</text>
+            <input type="number" placeholder="请输入" class="col3 font15 tae" placeholder-class="col9" name="useTime"/>
+        </view>
+    </view>
+    <view class="ptb60">
+        <button class="confirm" formType="submit">提交</button>
+    </view>
+</form>
+<common-picker bind:pickerValue="pickerDeviceValue" bind:pickerCancel="pickerDeviceCancel" is_show="{{device_type_show}}" range="{{device_list}}"  wx:if="{{device_type_show}}"/>
+<common-picker bind:pickerValue="pickerCountValue" bind:pickerCancel="pickerCountCancel" is_show="{{count_show}}" range="{{count_list}}"  wx:if="{{count_show}}"/>
+<login-component bind:myevent="listeningEvent" />

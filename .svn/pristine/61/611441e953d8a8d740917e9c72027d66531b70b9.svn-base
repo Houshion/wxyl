@@ -1,0 +1,205 @@
+const app = getApp();
+const tools = app.tools;
+import areaList from "./area"
+
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    userInfo: '',
+    genderOption: [{
+        name: '男',
+        value: 1
+      },
+      {
+        name: '女',
+        value: 2
+      },
+    ],
+    genderShow: false,
+    showBirth: false,
+    showAddr: false,
+    areaList: ''
+
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    this.getUserInfo()
+    this.setData({
+      areaList: areaList
+    })
+    console.log(userInfo)
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function (options) {
+
+  },
+
+  changeMsg(e) {
+    const type = e.currentTarget.dataset.type
+    wx.navigateTo({
+      url: './changeMsg/index?type=' + type,
+    })
+  },
+
+  changeGender() {
+    this.setData({
+      genderShow: true
+    })
+  },
+  genderClose() {
+    this.setData({
+      genderShow: false
+    })
+  },
+  genderSelect(e) {
+    this.submit({
+      userId: this.data.userInfo.userId,
+      sex: e.detail.value
+    })
+  },
+  closeBirth() {
+    this.setData({
+      showBirth: false
+    })
+  },
+
+  submit(form) {
+    this.closeBirth()
+    this.genderClose()
+    this.addressClose()
+    app.wxRequest(
+      '/api/user/updateUser', form,
+      res => {
+        tools.hideLoading();
+        tools.showToast(res.data.msg)
+        this.getUserInfo()
+        if (res.data.code == 1) {
+          setTimeout(() => {
+            this.onShow()
+          }, 1500);
+        }
+      }
+    )
+  },
+
+  getUserInfo() {
+    app.wxRequest(
+      '/api/user/userInfo', {},
+      res => {
+        tools.hideLoading();
+        if (res.data.code == 1) {
+          console.log(res.data.data)
+          let userInfo = res.data.data;
+          if (userInfo.headImgUrl.indexOf("http") == -1) {
+            userInfo.headImgUrl = tools.globalData.url + userInfo.headImgUrl
+          }
+          this.setData({
+            userInfo
+          })
+          tools.setStorage('userInfo', userInfo);
+        }
+      }
+    )
+  },
+
+  changeAddress() {
+    this.setData({
+      showAddr: true
+    })
+  },
+  addressClose() {
+    this.setData({
+      showAddr: false
+    })
+  },
+  pickAddress(e) {
+    console.log(e)
+    let addr = e.detail.values[0].name + "/" + e.detail.values[1].name + "/" + e.detail.values[2].name;
+    this.submit({
+      userId: this.data.userInfo.userId,
+      addr,
+      addrCode: e.detail.values[2].code
+    })
+  },
+
+  changeHead() {
+    let that = this;
+    app.uploadFile('', function (flag, idx, msg, data) {
+      if (flag == 1) {
+        let res = msg.tempFilePaths;
+        console.log(res)
+        that.setData({
+          'userInfo.headImgUrl': res
+        });
+      } else if (flag == 2) {
+        tools.hideLoading();
+        console.log(msg)
+        app.wxRequest(
+          '/api/user/updateUser', {
+            headImgUrl: msg,
+            userId: that.data.userInfo.userId
+          },
+          res => {
+            tools.hideLoading();
+            if (res.data.code == 1) {
+              that.getUserInfo()
+            }
+          }
+        )
+      }
+    }, {
+      token: tools.getStorage('token')
+    }, 1)
+  }
+})

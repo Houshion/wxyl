@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "交易账单",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "login-component": "/components/login-component/login-component",
+    "van-cell": "/miniprogram_npm/vant-weapp/cell/index",
+    "van-action-sheet": "/miniprogram_npm/vant-weapp/action-sheet/index",
+    "van-picker": "/miniprogram_npm/vant-weapp/picker/index",
+    "van-icon": "/miniprogram_npm/vant-weapp/icon/index"
+  }
+}

@@ -1,0 +1,93 @@
+@import '/css/main.wxss';
+
+page {
+    background: #fff;
+}
+
+.title_box {
+    border-radius: 0 0 40rpx 40rpx;
+    background: linear-gradient(#5cc3bc, #92dfd7);
+}
+
+.invest {
+    width: 90%;
+    margin: auto;
+    background: #ffffff;
+    display: flex;
+    border-radius: 10px;
+    padding: 30rpx 0;
+    margin-top: 30rpx;
+}
+
+.invest>view {
+    flex: 1;
+    text-align: center;
+    border-right: 1px solid #efefef;
+}
+
+.invest>view:last-child {
+    border-right: none;
+}
+
+.list_box>.navigator {
+    width: 330rpx;
+    height: 170rpx;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 0px 4px #ccc;
+    background: #fff;
+    padding: 0 20rpx;
+    border-radius: 10rpx;
+    margin-top: 40rpx;
+    box-sizing: border-box;
+}
+
+.list_box>.navigator:nth-child(2n+1) {
+    margin-right: 40rpx;
+}
+
+.list_box .icon {
+    width: 60rpx;
+    height: 60rpx;
+}
+
+.list_box .icon3 {
+    width: 61rpx;
+    height: 50rpx;
+}
+
+.share {
+    position: absolute;
+    width: 40rpx;
+    height: 40rpx;
+    right: 30rpx;
+}
+
+.advertisement {
+    width: calc(100% - 48rpx);
+    margin: 24rpx auto 0;
+    padding: 24rpx;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 4px #ccc;
+}
+
+.advertisement .title{
+    font-size: 30rpx;
+    font-weight: bold;
+}
+
+.swiperImg {
+    width: 100%;
+    height: 200rpx;
+}
+
+.managerBox {
+    padding-bottom: 250rpx;
+}
+
+.shareBtn {
+    width: auto !important;
+    padding: 0 14px !important;
+}

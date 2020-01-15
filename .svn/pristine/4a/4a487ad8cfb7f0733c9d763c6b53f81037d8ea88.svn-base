@@ -1,0 +1,130 @@
+// pages/userSide/main/recuperate/detail/index.js
+const app = getApp();
+const tools = app.tools;
+
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    articleId: 0,
+    article: {}
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    this.setData({
+      articleId: options.id
+    })
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    this.init()
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+    console.log(321)
+  },
+
+  /**
+   * 分享事件
+   */
+  share() {
+    this.onShareAppMessage()
+  },
+
+  /**
+   * 收藏文章
+   */
+  collect() {
+    const that = this
+    app.wxRequest(
+      '/api/userCollect/add', {
+        type: 1,
+        id: this.data.articleId
+      },
+      res => {
+        if(res.data.code == 1){
+          wx.showModal({
+            title: '收藏成功',
+            content: '可在收藏列表查看',
+            confirmText: '返回',
+            showCancel: false,
+            confirmColor: '#5ac2bb',
+            success() {
+              that.init()
+            }
+          })
+        }else {
+          tools.showToast(res.data.msg)
+        }
+      }
+    )
+    
+  },
+
+  listeningEvent() {
+    this.onShow()
+  },
+
+  init() {
+    app.wxRequest(
+      '/api/article/articleDetail', {
+        articleId: this.data.articleId
+      },
+      res => {
+        if(res.data.code == 1){
+          this.setData({
+            article: res.data.data
+          })
+        }else {
+          tools.showToast(res.data.msg)
+        }
+      }
+    )
+  }
+})

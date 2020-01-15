@@ -1,0 +1,14 @@
+<view class="ptb30">
+    <block wx:for="{{list}}" wx:key="{{index}}">
+        <view class="list_box" data-index="{{index}}" bindtap="hangle_click">
+            <image src="/images/bg3.png" class="bg_box"></image>
+            <view class="content_box flex_aj flex_d">
+                <image src="{{item.image}}" class="{{item.class_name}}"></image>
+                <view class="tac colw font15 mt30">{{item.title}}</view>
+            </view>
+        </view>
+    </block>
+</view>
+<view class="ptb20">
+    <view class="confirm" bindtap="exit_login">退出登录</view>
+</view>

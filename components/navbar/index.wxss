@@ -1,0 +1,77 @@
+@import '/css/main.wxss';
+
+.navbar {
+    position: relative;
+    z-index: 80;
+}
+
+.navbar .navBarImg {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 97;
+}
+
+.navbar .scan {
+    width: 250rpx;
+    margin: 0 calc((100% - 250rpx) / 2);
+    position: fixed;
+    bottom: 0;
+    z-index: 98;
+}
+
+.navbar .btns {
+    display: flex
+}
+
+.navbar .text,
+.navbar .icon {
+    width: 40rpx;
+    position: fixed;
+    bottom: 50rpx;
+    text-align: center;
+    z-index: 99;
+}
+
+.navbar .text {
+    width: 60rpx;
+    bottom: 10rpx;
+    color: #abbbba;
+}
+
+.navbar .text.color1 {
+    color: #5ac2bb!important;
+}
+
+.navbar .text.ky {
+    left: 60rpx;
+}
+
+.navbar .icon.ky {
+    left: 70rpx;
+}
+
+.navbar .text.fy {
+    left: 180rpx;
+}
+
+.navbar .icon.fy {
+    left: 190rpx;
+}
+
+.navbar .text.gl {
+    right: 180rpx;
+}
+
+.navbar .icon.gl {
+    right: 190rpx;
+}
+
+.navbar .text.wd {
+    right: 60rpx;
+}
+
+.navbar .icon.wd {
+    right: 70rpx;
+}

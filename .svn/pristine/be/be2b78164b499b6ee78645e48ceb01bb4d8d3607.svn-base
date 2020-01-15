@@ -1,0 +1,20 @@
+<view class="message">
+    <navigator url="/pages/userSide/main/my/myInfo/index" hover-class="navigator-hover" open-type="navigate">
+        <image class="centerBack" src="/images/centerBacImg.png" mode="aspectFit"></image>
+        <view class="msg">
+            <image class="headImg" src="{{userInfo.headImgUrl}}" mode="aspectFit"></image>
+            <view class="ml20">
+                <view class="name font20">{{userInfo.nickName}}</view>
+            </view>
+        </view>
+    </navigator>
+    <view class="lists plr24 mt50">
+        <block wx:for="{{lists}}" wx:key="{{index}}">
+            <van-cell title="{{item.title}}" is-link link-type="navigateTo" url="{{item.url}}">
+                <image class="slotIcon" slot="icon" src="{{item.img}}" mode="aspectFit"></image>
+            </van-cell>
+        </block>
+    </view>
+</view>
+<login-component bind:myevent="listeningEvent" />
+<navbar index="3"></navbar>

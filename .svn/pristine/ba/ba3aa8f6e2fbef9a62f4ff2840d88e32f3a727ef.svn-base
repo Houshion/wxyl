@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "交易账单",
+  "usingComponents": {
+    "login-component": "/components/login-component/login-component"
+  }
+}

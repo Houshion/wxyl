@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "店员列表",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "van-swipe-cell": "/miniprogram_npm/vant-weapp/swipe-cell/index"
+  }
+}

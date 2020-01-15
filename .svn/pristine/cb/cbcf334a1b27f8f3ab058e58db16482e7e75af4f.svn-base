@@ -1,0 +1,14 @@
+<van-tabs color="#5ac2bb" active="{{ active }}" bind:change="onChange">
+    <block wx:for="{{tabs}}" wx:key="{{index}}" wx:for-item="tab">
+        <van-tab title="{{tab.name}}">
+            <van-collapse value="{{ activeNames }}" bind:change="changeCollapse">
+                <block wx:for="{{list}}" wx:for-item="li" wx:for-index="lindex" wx:key="{{lindex}}">
+                    <van-collapse-item title="{{li.title}}" name="{{lindex}}" icon="question">
+                        <rich-text nodes="{{li.content}}"></rich-text>
+                    </van-collapse-item>
+                </block>
+            </van-collapse>
+        </van-tab>
+    </block>
+</van-tabs>
+<login-component bind:myevent="listeningEvent" />

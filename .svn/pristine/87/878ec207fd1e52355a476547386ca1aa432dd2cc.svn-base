@@ -1,0 +1,28 @@
+<view class="pt20 plr24">
+    <form bindsubmit="formSubmit">
+    <view class="bw border-r1 plr60 pt40 pb80">
+        <view class="font16 col9">
+            提现金额
+            <text style="font-size:12px;color:red">
+                (实际到账:{{form.money==0?0:form.money-serverCharge/100}},手续费:{{serverCharge}}%)
+            </text>
+        </view>
+        <view class="mt40 ptb40 bdb flex_a">
+            <text class="font24 col3">￥</text>
+            <input type="number" class="col3 font24" bindinput="getNum"/>
+        </view>
+        <view class="col3 mt20">钱包余额：{{money}}</view>
+        <view class="col3 mt20">最小提现额度为{{limit}}的整数倍</view>
+    </view>
+        <block wx:for="{{list}}" wx:key="{{index}}">
+            <view class="border-r1 bw flex_sb plr30 mt20">
+                <text class="col3 font15">{{item.title}}</text>
+                <input type="{{item.number}}" placeholder="请输入" class="col3 font15 h100 tae" placeholder-class="col9" name="{{item.name}}"/>
+            </view>
+        </block>
+        <view class="ptb60">
+            <button formType="submit" class="confirm">提现</button>
+        </view>
+    </form>
+</view>
+<login-component bind:myevent="listeningEvent" />

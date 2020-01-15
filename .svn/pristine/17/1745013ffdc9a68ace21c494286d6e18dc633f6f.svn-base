@@ -1,0 +1,31 @@
+<view class="coverBox">
+    <view class="flex_aj selectCity bgc1" bind:tap="showCity">
+        <image class="location" src="/images/addr_1.png" bindload="" binderror="" />
+        {{center.city}}
+    </view>
+    <view class="serachBox">
+        <van-search shape="round" background="#ffffff" custom-class="search" value="{{ searchShopName }}" use-action-slot placeholder="请输入店铺名称" bind:change="onChange">
+            <view slot="action" bind:tap="init">搜索</view>
+        </van-search>
+    </view>
+    <view class="shops">
+        <view class="shop" wx:for="{{shopsList}}" bind:tap="goShop" data-id="{{item.id}}">
+            <view class="flex_sb border-b pb30">
+                <view class="address">
+                    <image class="location" src="/images/addr_1.png" bindload="" binderror="" />
+                    {{item.name}}
+                </view>
+                <view class="distance">
+                    [{{item.distance<1000?item.distance:item.distance/1000}}{{item.distance<1000?'m':"km"}}]
+                </view>
+            </view>
+            <view class="mt30 time">
+                <image class="location" src="/images/i_time.png" bindload="" binderror="" />
+                营业时间：{{item.business_hours}}
+            </view>
+        </view>
+    </view>
+    <van-popup show="{{ show }}" position="bottom" custom-style="height: 500rpx;" bind:close="onClose">
+        <van-picker show-toolbar columns="{{ columns }}" bind:change="onChange" bind:cancel="onClose" bind:confirm="onConfirm" />
+    </van-popup>
+</view>

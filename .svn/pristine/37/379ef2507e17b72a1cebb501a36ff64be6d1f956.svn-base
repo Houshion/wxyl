@@ -1,0 +1,18 @@
+<view class='wrap' wx-if="{{is_show}}">
+    <view class="tac logoBox mlr50">
+        <view>
+            <image src="/images/logo.png" class="logo"></image>
+        </view>
+        <view class="font18 col3 mt20">浙江新塘智能床垫</view>
+    </view>
+    <view  class="tac mb80">
+        <view class="font15 col3 mt30">请确认一下授权信息</view>
+        <view class="col9 mt20">获取你的信息（头像，信息等）</view>
+    </view>
+    <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class='login colw border-r1 font15' style='width:85%' wx:if='{{get_phone}}'>获取手机号码</button>
+    <block  wx:if='{{login}}'>
+        <button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" style="width: 85%;"  class='login colw border-r1 font15'>授权</button>
+    </block>
+
+
+</view>

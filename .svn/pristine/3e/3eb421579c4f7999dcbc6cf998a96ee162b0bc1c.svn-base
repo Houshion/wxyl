@@ -1,0 +1,13 @@
+<view class="back">
+    <image class="logo" src="/images/tuiguang.png" mode="aspectFit"></image>
+    <view class="qrcodeBox">
+        <image class="qrcode" src="{{userInfo.extendCodeImg}}"></image>
+        <view>扫码进入系统</view>
+    </view>
+    <view class="inviteCode">
+        <view class="font30">{{userInfo.extendCode}}</view>
+        <view>我的邀请码</view>
+    </view>
+</view>
+
+<login-component bind:myevent="listeningEvent" />

@@ -1,0 +1,29 @@
+<view class="header_box bgf5">
+    <view class="search_box flex_a plr30 bw">
+        <image src="/images/search.png" class="search"></image>
+        <input type="text" placeholder="搜索" class="h80 col3 font13  flex1 plr10" placeholder-class="col9" bindinput="bindKeyInput" value="{{search}}"/>
+        <image src="/images/cancel.png" class="cancel" wx-if="{{sure_search}}" bindtap="cancel"></image>
+    </view>
+</view>
+<view class="plr24 content_box mt20">
+    <block wx:for="{{4}}" wx:key="{{index}}">
+        <view class="col9 bw list border-r1 mb20">
+            <view class="flex_sb font12 h90 plr30">
+                <text>订单编号：46454645</text>
+                <text class="color1">使用中</text>
+            </view>
+            <view class="ptb20 flex_a bgf5 plr30">
+                <view class="img_box mr20"><image src="/images/qrcode.png"></image></view>
+                <view>
+                    <view class="col3 font14">套餐名称</view>
+                    <view class="font10 mt10">
+                        <text>次数： 1次</text>
+                        <text>已使用次数： 1次</text>
+                    </view>
+                    <view class="font12 mt20">￥396.00</view>
+                </view>
+            </view>
+            <view class="col3 font14 h90 flex_a plr30">会员名称：小倩</view>
+        </view>
+    </block>
+</view>

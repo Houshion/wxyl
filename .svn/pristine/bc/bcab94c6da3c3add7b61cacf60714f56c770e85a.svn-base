@@ -1,0 +1,9 @@
+<view class="pt20 plr24">
+    <block wx:for="{{list}}" wx:key="{{index}}">
+        <navigator url="{{item.url}}" class="flex_sb mb20 plr30 ptb30 font15 col3 bw border-r1">
+            <text>{{item.title}}</text>
+            <image src="/images/right.png" class="arrow_right"></image>
+        </navigator>
+    </block>
+</view>
+<login-component bind:myevent="listeningEvent" />

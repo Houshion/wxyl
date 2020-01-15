@@ -1,0 +1,29 @@
+<view class="pt20 plr24">
+    <block wx:for="{{3}}" wx:key="{{index}}">
+        <view class="border-r1 bw plr30 list mb20">
+            <view class="ptb30 flex_sb">
+                <text class="col3 font15">勇仔</text>
+                <view class="flex_a">
+                    <view class="font12 colw bgc1 reply_box btn" bindtap="reply">回复评论</view>
+                    <view class="dete_box ptb10 plr20 flex_a" bindtap="dele_btn"><image src="/images/dele.png"></image></view>
+                </view>
+            </view>
+            <view class="col6 font14">回复评论回复评论回复评论回复评论</view>
+            <view class="col9 font12 mt30">2019-11-26 10:55</view>
+            <view class="pb20 img_box clearfix">
+                <block wx:for="{{3}}" wx:key="{{index}}">
+                    <image src="/images/qrcode.png"></image>
+                </block>
+            </view>
+        </view>
+    </block>
+</view>
+<van-action-sheet show="{{ show }}"  close-on-click-overlay bind:close="closeSheet">
+    <view class="flex_a bgf5 pl24 ptb20">
+        <view class="flex_a bw border-r4 plr20 flex1">
+            <input type="text" placeholder="回复评论" class="font12 col3 h90 w100" placeholder-class="col9" bindinput="reply_value" value="{{content}}"/>
+        </view>
+        <view class="h90 color1 flex_a plr24" bindtap="reply_comment">发送</view>
+    </view>
+</van-action-sheet>
+

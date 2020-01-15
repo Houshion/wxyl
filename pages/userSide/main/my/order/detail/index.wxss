@@ -1,0 +1,51 @@
+@import '/css/main.wxss';
+
+.orderType {
+    height: 100rpx;
+    line-height: 200rpx;
+    text-align: center;
+    font-size: 40rpx;
+    color: #ffffff;
+    position: relative;
+    z-index: 3;
+}
+
+.orderType .icon {
+    line-height: 200rpx;
+    font-size: 40rpx;
+    z-index: 3;
+    margin-right: 10rpx;
+}
+
+.orderBac {
+    width: 100%;
+    height: 310rpx;
+    position: absolute;
+    top: 0;
+    z-index: 2;
+}
+
+.orderBox {
+    padding: 30rpx;
+    background: #ffffff;
+}
+
+.orderBox .order{
+    border-radius: 5px;
+    box-shadow: 0 0 5px 4px #e6e6e6;
+    padding: 120rpx 30rpx 30rpx;
+}
+
+.orderBox .order .flex_sb {
+    padding: 20rpx 0;
+}
+
+.qrcode {
+    text-align: center;
+}
+
+.qrcode image {
+    width: 250rpx;
+    height: 250rpx;
+    margin: auto;
+}

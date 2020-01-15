@@ -1,0 +1,97 @@
+const app = getApp();
+const tools = app.tools;
+
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    orderList: [{
+      "id": "1",
+      "orderNo": "12121212",
+      "userId": "1",
+      "comboName": "",
+      "comboPrice": 0,
+      "useNum": 0,
+      "remainNum": 0,
+      "expireTime": "",
+      "payStatus": 1,
+      "status": 0,
+      "commentStatus": 0,
+      "investorId": "0",
+      "merchId": "0",
+      "referrerId": "0",
+      "storeId": "2",
+      "recommendUserId": "0",
+      "refundMoney": "0",
+      "platformMoney": "0",
+      "investorMoney": "0",
+      "storeMoney": "0",
+      "recommendStoreMoney": "0",
+      "recommendConsumeMoney": "0",
+      "platformRatio": "0",
+      "investorRatio": "0",
+      "storeRatio": "0",
+      "recommendStoreRatio": "0",
+      "recommendConsumeRatio": "0",
+      "citem": 1574150336000
+    }]
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  }
+})

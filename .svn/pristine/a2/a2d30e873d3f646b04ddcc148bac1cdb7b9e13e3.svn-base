@@ -1,0 +1,41 @@
+@import '/css/main.wxss';
+page{
+    background: #fff;
+}
+.title_box{
+    height: 440rpx;
+    border-radius: 0 0 40rpx 40rpx;
+    background: linear-gradient(#5cc3bc,#92dfd7);
+}
+.btn_box navigator{
+    width: 200rpx;
+    height: 70rpx;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 44rpx;
+}
+.list_box > navigator{
+    width: 330rpx;
+    height: 170rpx;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 0px 4px #ccc;
+    background: #fff;
+    padding: 0 20rpx;
+    border-radius: 10rpx;
+    margin-top: 40rpx;
+    box-sizing: border-box;
+}
+.list_box > navigator:nth-child(2n+1){
+    margin-right: 40rpx;
+}
+.list_box .icon{
+    width: 60rpx;
+    height: 60rpx;
+}
+.list_box .icon3{
+    width: 61rpx;
+    height: 50rpx;
+}

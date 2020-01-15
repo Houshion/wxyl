@@ -1,0 +1,12 @@
+@import '/css/main.wxss';
+.add_box{
+    position: fixed;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    z-index: 99;
+}
+.add_box image{
+    width: 134rpx;
+    height: 134rpx;
+}

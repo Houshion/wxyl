@@ -1,0 +1,12 @@
+<view class="lists">
+    <navigator url="/pages/userSide/main/service/map/index" class="list" wx:for="{{list}}">
+        <view class="name flex_a">
+            <image class="icon" src="/images/i_flag.png" mode="aspectFit"></image>
+            <text class="ml10">{{item.name}}</text>
+        </view>
+        <view class="checkShop">查看周边设备</view>
+    </navigator>
+</view>
+
+<login-component bind:myevent="listeningEvent" />
+<navbar index="1"></navbar>

@@ -1,0 +1,7 @@
+<image class="bac" src="/images/shareBac.png" mode="widthFix" />
+<view class="btns">
+    <view class="btn">我要投资</view>
+    <view class="btn">新店加盟</view>
+</view>
+
+<login-component bind:myevent="listeningEvent" />

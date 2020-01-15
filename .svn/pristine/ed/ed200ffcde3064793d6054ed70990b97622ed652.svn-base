@@ -1,0 +1,19 @@
+<view class="header_box bw">
+    <view class="search_box flex_a plr30">
+        <image src="/images/search.png" class="search"></image>
+        <input type="text" placeholder="搜索" class="h80 col3 font13  flex1 plr10" placeholder-class="col9" bindinput="bindKeyInput" value="{{search}}"/>
+        <image src="/images/cancel.png" class="cancel" wx-if="{{sure_search}}" bindtap="cancel"></image>
+    </view>
+</view>
+<view class="plr24 content_box">
+    <block wx:for="{{3}}" wx:key="{{index}}">
+        <view class="list flex_a ptb30">
+            <view class="head_box"><image src="/images/img0.png"></image></view>
+            <text class="col3 font14 flex1 ml20">店员名称</text>
+            <navigator url="/pages/my_shop/add_clerk/index?type=edit" class="edit_box ptb20 plr20"><image src="/images/edit.png"></image></navigator>
+        </view>
+    </block>
+</view>
+<navigator url="/pages/my_shop/add_clerk/index" hover-class="none" class="add_box ptb20">
+    <image src="/images/add.png"></image>
+</navigator>

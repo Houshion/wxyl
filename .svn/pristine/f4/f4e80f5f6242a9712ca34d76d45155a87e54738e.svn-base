@@ -1,0 +1,24 @@
+<view class="plr24">
+    <view class="font12 col6 pt30">转投资金额</view>
+    <view class="list_box">
+        <block wx:for="{{list}}" wx:key="{{index}}">
+            <view class="col9 {{o_index == index ? 'active' : ''}}"  data-index="{{index}}" bindtap="chose_btn">
+                <view class="col3">
+                    <text class="font20">{{item.price}}</text>
+                    <text class="font14">万元</text>
+                </view>
+                <view class="font12">方式{{index*1 + 1}}</view>
+            </view>
+        </block>
+    </view>
+    <view class="mt40">
+        <block wx:for="{{list}}" wx:key="{{index}}" wx:if="{{o_index == index}}">
+            <view class="col6 font12">方式{{o_index*1 + 1}}介绍</view>
+            <view class="col3 font14 mt20">{{list[o_index].remark}}</view>
+        </block>
+    </view>
+    <view class="h140 flex_a bw pos_f_b">
+        <view class="confirm" bindtap="confirm">微信支付</view>
+    </view>
+</view>
+<login-component bind:myevent="listeningEvent" />

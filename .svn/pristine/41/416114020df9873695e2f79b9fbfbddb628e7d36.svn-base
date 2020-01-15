@@ -1,0 +1,36 @@
+<view class="deivceBoxes">
+    <view class="device" wx:for="{{deviceList}}">
+        <view class="package">
+            <view class="message border-b pb20 flex_sb">
+                <view class="">
+                    <view class="title mb20">{{item.name}}</view>
+                    <view class="times col9">使用次数：{{item.useNum}}次</view>
+                    <view class="price col9">购买价格：{{item.price}}元</view>
+                </view>
+                <view class="btn" hover-class="none" hover-stop-propagation="false">
+                    <view class="col9" hover-class="none" hover-stop-propagation="false">
+                        {{item.typeName}}
+                    </view>
+                    <view class="buy" data-index="{{index}}" bind:tap="showPay" hover-class="none" hover-stop-propagation="false">
+                        支付
+                    </view>
+                </view>
+            </view>
+            <view class="content">
+                <view class="label mtb20">套餐内容说明</view>
+                <view class="con col9">{{item.remark}}</view>
+            </view>
+        </view>
+    </view>
+    <van-action-sheet show="{{ show }}" title="选择支付方式" cancel-text="确认支付" bind:cancel='pay' bind:close="closeWin" close-on-click-overlay>
+        <van-radio-group value="{{ result }}" bind:change="onChange">
+            <van-cell-group>
+                <van-cell wx:for="{{ payList }}" wx:key="{{index}}" title="{{item.title}}" clickable data-name="{{item.type}}" bind:click="onClick">
+                    <van-radio slot="right-icon" name="{{item.type}}" checked-color="#f69626" />
+                    <image slot="icon" class="radioIcon" src="{{item.icon}}" mode="aspectFit" />
+                </van-cell>
+            </van-cell-group>
+        </van-radio-group>
+    </van-action-sheet>
+</view>
+<login-component bind:myevent="listeningEvent" extendCode="{{extendCode}}" val="{{login_status}}" wx-if="{{login_status}}" />

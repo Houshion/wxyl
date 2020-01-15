@@ -1,0 +1,68 @@
+@import '/css/main.wxss';
+
+.deivceBoxes {
+    padding: 30rpx;
+    border-radius: 5px;
+}
+
+.deivceBoxes .device {
+    padding: 30rpx;
+    background: #ffffff;
+    margin-bottom: 20rpx;
+}
+
+.deivceBoxes .device>.title {
+    font-size: 22rpx;
+    color: #999999;
+    padding-bottom: 20rpx;
+    margin-bottom: 20rpx;
+    border-bottom: 1px solid #efefef;
+}
+
+.deivceBoxes .package {
+    border-bottom: 1px solid #efefef;
+    padding-bottom: 20rpx;
+    margin-bottom: 20rpx;
+}
+
+.deivceBoxes .package:last-child {
+    border: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.deivceBoxes .package .btn {
+    height: 140rpx;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: flex-end;
+}
+
+.deivceBoxes .package .btn view {
+    width: 100%;
+    text-align: right;
+}
+
+.deivceBoxes .package .btn view.buy {
+    width: 100rpx;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 30px;
+    padding: 10rpx 20rpx;
+    background: linear-gradient(to right, #5ac2bb, #8fded6);
+}
+
+.deivceBoxes .package .title {
+    font-size: 32rpx;
+}
+
+.value-class {
+    flex: none !important;
+}
+
+.radioIcon {
+    width: 50rpx;
+    height: 50rpx;
+    margin-right: 20rpx;
+}

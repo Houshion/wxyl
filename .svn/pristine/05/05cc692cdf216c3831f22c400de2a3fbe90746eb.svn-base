@@ -1,0 +1,13 @@
+@import '/css/main.wxss';
+
+.back {
+    min-height: 100vh;
+    background: linear-gradient(to right,#90dfd7, #5dc4bd);
+}
+
+.logo {
+    width: 700rpx;
+    height: 1200rpx;
+    position: absolute;
+    bottom: 0;
+}

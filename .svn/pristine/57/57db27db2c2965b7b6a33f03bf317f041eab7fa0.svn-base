@@ -1,0 +1,58 @@
+<wxs src="../../../../../../utils/filters.wxs" module="tools" />
+<form bindsubmit="submit">
+    <input class="hide" value="{{ userInfo.userId }}" placeholder="请输入昵称" name="userId" />
+    <view class="changeBox">
+        <view class="inputBox nickName" wx:if="{{type=='nickName'}}">
+            <van-cell-group>
+                <van-cell>
+                    <input type="nickName" value="{{ userInfo.nickName }}" placeholder="请输入昵称" name="nickName" />
+                </van-cell>
+            </van-cell-group>
+        </view>
+        <view class="inputBox realName" wx:if="{{type=='realName'}}">
+            <van-cell-group>
+                <van-cell>
+                    <input type="realName" value="{{ userInfo.realName }}" placeholder="请输入真实姓名" name="realName" />
+                </van-cell>
+            </van-cell-group>
+        </view>
+        <view class="inputBox email" wx:if="{{type=='email'}}">
+            <van-cell-group>
+                <van-cell>
+                    <input type="text" value="{{ userInfo.email }}" placeholder="请输入邮箱" name="email"  />
+                </van-cell>
+            </van-cell-group>
+        </view>
+        <view class="inputBox birthday" wx:if="{{type=='birthday'}}">
+            <van-cell-group>
+                <van-cell>
+                    <picker mode="date" value="{{userInfo.birthdayStr}}" start="1979-09-01" bindchange="bindDateChange">
+                        <input disabled="{{true}}" type="birthday" value="{{userInfo.birthdayStr}}" name="birthday" />
+                    </picker>
+                </van-cell>
+            </van-cell-group>
+        </view>
+        <view class="inputBox phone" wx:if="{{type=='phone' || type=='changePass'}}">
+            <van-cell-group>
+                <van-cell>
+                    <!-- <van-field type="number" input-class="mb20" value="{{ phoneMsg.phone }}" placeholder="手机号" border="{{ false }}" bind:change="changePhone" name="phone"/> -->
+                    <input type="number" placeholder="请输入手机号" name="phone" bindinput="changePhone" />
+                </van-cell>
+                <van-cell value-class="flex_sb">
+                    <input type="number" placeholder="请输入验证码" name="code" bindinput="getCodeInput" />
+                    <view class="getCode color1" bind:tap="getCode">{{codeText}}</view>
+                </van-cell>
+                <van-cell wx:if="{{type=='changePass'}}">
+                    <input type="text" placeholder="输入新的密码" name="password" bind:tap="getp1" />
+                </van-cell>
+                <van-cell wx:if="{{type=='changePass'}}">
+                    <input type="text" placeholder="再次输入密码" name="password" bind:tap="getp2" />
+                </van-cell>
+            </van-cell-group>
+        </view>
+        <view class="submitBtn mt50">
+            <button class="confirm" formType="submit">保存</button>
+        </view>
+    </view>
+</form>
+<login-component bind:myevent="listeningEvent" extendCode="{{extendCode}}" />

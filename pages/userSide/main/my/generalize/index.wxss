@@ -1,0 +1,43 @@
+@import '/css/main.wxss';
+
+.back {
+    min-height: 100vh;
+    background: linear-gradient(to right,#90dfd7, #5dc4bd);
+}
+
+.logo {
+    width: 730rpx;
+    height: 1200rpx;
+    position: absolute;
+    bottom: 0;
+}
+
+.qrcodeBox {
+    position: absolute;
+    top: 270rpx;
+    left: 150rpx;
+    z-index: 1;
+}
+
+.qrcode {
+    width: 250rpx;
+    height: 250rpx;
+    margin: auto;
+}
+
+.qrcode+view {
+    margin: auto;
+    text-align: center;
+}
+
+.inviteCode {
+    position: absolute;
+    bottom: 100rpx;
+    left: 100rpx;
+    color: #00766a;
+    text-align: center;
+}
+
+.inviteCode>view.font30 {
+    font-weight: bold;
+}

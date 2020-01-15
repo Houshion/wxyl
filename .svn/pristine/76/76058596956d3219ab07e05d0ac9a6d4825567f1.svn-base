@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "故障维修",
+  "navigationBarBackgroundColor": "#f2f2f2",
+  "enablePullDownRefresh": true,
+  "usingComponents": {}
+}

@@ -1,0 +1,12 @@
+@import '/css/main.wxss';
+
+#register {
+    padding: 40rpx;
+    background: #ffffff;
+    min-height: 100vh;
+}
+
+.inputBox {
+    margin-top: 40rpx;
+    border-bottom: 1px solid #efefef;
+}

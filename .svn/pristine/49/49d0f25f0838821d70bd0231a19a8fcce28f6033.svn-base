@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "数据统计",
+  "usingComponents": {
+    "login-component": "/components/login-component/login-component"
+  }
+}

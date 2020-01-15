@@ -1,0 +1,18 @@
+<view class="p20">
+    <view class="rechargeBox">
+        <view class="label">
+            提现金额
+            <text style="font-size:12px;color:red">
+                (实际到账:{{form.money==0?0:form.money-serverCharge/100}},手续费:{{serverCharge}}%)
+            </text>
+        </view>
+        <view class="flex_sb line">
+            <text class="unit">￥</text>
+            <input class="input" type="number" bindinput="getNum"></input>
+        </view>
+        <view class="yue">钱包余额：{{money}}</view>
+        <view class="yue">最小提现额度为{{limit}}的整数倍</view>
+    </view>
+    <view class="confirm" bind:tap="confirm">提现到微信钱包</view>
+</view>
+<login-component bind:myevent="listeningEvent" />

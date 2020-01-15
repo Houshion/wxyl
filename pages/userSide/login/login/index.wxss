@@ -1,0 +1,42 @@
+@import '/css/main.wxss';
+
+#login {
+    padding: 40rpx;
+    background: #ffffff;
+    min-height: 100vh;
+}
+
+.logo {
+    width: 200rpx;
+    height: 200rpx;
+    border-radius: 50%;
+    margin: 80rpx calc((100% - 200rpx) / 2) 40rpx;
+}
+
+.loginBox .inputBox {
+    margin-top: 40rpx;
+    border-bottom: 1px solid #efefef;
+}
+
+.loginBox .iconImage {
+    width: 30rpx;
+    margin-right: 10rpx;
+}
+
+.loginBox .tar {
+    margin-top: 14rpx;
+    text-align: right;
+    color: #999;
+}
+
+.submit .confirm {
+    margin-top: 50rpx;
+}
+
+.register {
+    color: #5ac2bb;
+    text-align: center;
+    position: absolute;
+    width: calc(100% - 80rpx);
+    bottom: 50rpx
+}

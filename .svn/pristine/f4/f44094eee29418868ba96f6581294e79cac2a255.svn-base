@@ -1,0 +1,30 @@
+@import "/css/main";
+
+.typeChoose {
+    text-align: center;
+    padding: 20rpx 0;
+}
+
+.down {
+    transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    /* IE 9 */
+    -moz-transform: rotate(90deg);
+    /* Firefox */
+    -webkit-transform: rotate(90deg);
+    /* Safari 和 Chrome */
+    -o-transform: rotate(90deg);
+    /* Opera */
+}
+
+.box {
+    padding: 30rpx;
+}
+
+.cred {
+    color: #ff0000;
+}
+
+.cred text {
+    font-size: 40rpx;
+}

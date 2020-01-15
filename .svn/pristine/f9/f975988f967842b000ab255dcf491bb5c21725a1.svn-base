@@ -1,0 +1,189 @@
+const app = getApp();
+const tools = app.tools;
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    form:{
+      device_type: '',
+      deviceCategoryId: '',
+      useNum: '',
+      device_index: -1,
+      count_index: -1
+    },
+    device_type_show: false,
+    count_show: false,
+    device_list: [],
+    list: [],
+    count_list: ['1', '2', '3', '4', '5'],
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+  listeningEvent(e){
+    this.onShow();
+  },
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    this.init();
+  },
+  init(){
+    tools.showLoading();
+    app.wxRequest(
+        '/api/deviceCategory/queryCategoryList',
+        {},
+        res => {
+          tools.hideLoading();
+          if(res.data.code == 1){
+            const result = res.data.data;
+            let device_list = new Array();
+            result.forEach(item => {
+              device_list.push(item.name);
+            });
+            this.setData({
+              list: result,
+              device_list
+            })
+          }else{
+            tools.showToast(res.data.msg)
+          }
+        }
+    )
+  },
+  chose_device_type(){
+    this.setData({
+      device_type_show: true
+    })
+  },
+  chose_count(){
+    this.setData({
+      count_show: true
+    })
+  },
+  pickerDeviceValue(e){
+    console.log(e)
+    const { list } = this.data;
+    this.setData({
+      'form.deviceCategoryId':(list[e.detail.index].id).toString(),
+      'form.device_type': e.detail.value,
+      'form.device_index':e.detail.index
+    })
+    this.setData({
+      device_type_show: false
+    })
+  },
+  pickerDeviceCancel(){
+    this.setData({
+      device_type_show: false
+    })
+  },
+  pickerCountValue(e){
+    console.log(e)
+    this.setData({
+      'form.useNum':e.detail.value,
+      'form.count_index':e.detail.index
+    })
+    this.setData({
+      count_show: false
+    })
+  },
+  pickerCountCancel(){
+    this.setData({
+      count_show: false
+    })
+  },
+  formSubmit: function (e) {
+    console.log('form发生了submit事件，携带数据为：', e.detail.value)
+    const {
+      deviceCategoryId,
+      useNum
+    } = this.data.form;
+    console.log(deviceCategoryId)
+    const {remark, price,usableDay,useTime} = e.detail.value;
+    if (tools.isNull(deviceCategoryId)) {
+      tools.showToast('请选择设备类型');
+    }else if (tools.isNull(remark)) {
+      tools.showToast('请输入套餐内容说明');
+    }else if (tools.isNull(useNum)) {
+      tools.showToast('请选择使用次数');
+    }else if (tools.isNull(price)) {
+      tools.showToast('请输入价格');
+    } else if (tools.isNull(usableDay)) {
+      tools.showToast('请输入有效天数');
+    } else if (tools.isNull(useTime)) {
+      tools.showToast('请输入使用时长');
+    }else{
+      tools.showLoading();
+      app.wxRequest(
+          '/api/combo/saveStoreCombo',
+          {
+            storeId: tools.globalData.storeId,
+            ...e.detail.value,
+            deviceCategoryId,
+            useNum
+          },
+          res => {
+            tools.hideLoading();
+            if(res.data.code == 1){
+              tools.showModal('添加成功',flag => {
+                if(flag){
+                  tools.navigateBack();
+                }
+              },false)
+            }else{
+              tools.showToast(res.data.msg)
+            }
+          }
+      )
+    }
+  },
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  }
+})

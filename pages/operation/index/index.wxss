@@ -1,0 +1,35 @@
+@import '/css/main.wxss';
+page{
+    background: #f2fdfc;
+}
+.list_box{
+    position: relative;
+    margin: 0 auto;
+    width: 306rpx;
+    height: 340rpx;
+    z-index: 1;
+}
+.list_box .bg_box{
+    width: 306rpx;
+    height: 340rpx;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+.content_box{
+    width: 100%;
+    height: 100%;
+}
+.content_box .icon4{
+    width: 76rpx;
+    height: 76rpx;
+}
+.content_box .icon5{
+    width: 76rpx;
+    height: 66rpx;
+}
+.content_box .icon6{
+    width: 72rpx;
+    height: 76rpx;
+}

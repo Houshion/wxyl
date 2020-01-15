@@ -1,0 +1,62 @@
+@import '/css/main.wxss';
+
+.msgBox {
+    background: #ffffff;
+    padding: 30rpx;
+}
+
+.mainBox {
+    background: #000000;
+    border-radius: 20rpx;
+    color: #ffffff;
+    padding: 30rpx;
+}
+
+.w100 {
+    width: 100%;
+    text-align: center;
+}
+
+.w100 text {
+    font-size: 50rpx;
+}
+
+.moneyBox {
+    margin: 30rpx 0 100rpx;
+}
+
+.cover image {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    margin-top: -100rpx;
+}
+
+.list {
+    margin-top: 100rpx;
+    padding: 30rpx;
+}
+
+.btns {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    margin-top: 10rpx;
+    display: flex;
+    justify-content: center;
+}
+
+.btns .btn {
+    width: 200rpx;
+    padding: 15rpx 0;
+    color: #dfa62e;
+    background: #fff1d6;
+    border-radius: 50rpx;
+    text-align: center;
+    margin: 0 30rpx;
+}
+
+.btns .btn2 {
+    color: #ffffff;
+    background: #dfa62e;
+}

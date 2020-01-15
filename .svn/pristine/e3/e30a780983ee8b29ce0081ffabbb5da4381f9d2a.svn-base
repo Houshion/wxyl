@@ -1,0 +1,193 @@
+const app = getApp();
+const tools = app.tools;
+
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    deviceList: [],
+    deviceNo: '2019092909194341',
+    payType: 1,
+    show: false,
+    form: '',
+    payList: [{
+        title: "钱包支付",
+        icon: "/images/bag.png",
+        type: 1
+      },
+      {
+        title: "微信支付",
+        icon: "/images/wxpay.png",
+        type: 2
+      },
+    ],
+    result: "1"
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    const url = decodeURIComponent(options.q)
+    const macno = url.split("macno=")[1]
+    this.setData({
+      // deviceNo: macno
+    })
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    this.init();
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  },
+
+  /**
+   * 初始化
+   */
+  init() {
+    app.wxRequest(
+      '/api/combo/comboListByDeviceNo', {
+        deviceNo: this.data.deviceNo
+      },
+      res => {
+        tools.hideLoading();
+        if (res.data.code == 1) {
+          console.log(res.data.data)
+          this.setData({
+            deviceList: res.data.data
+          })
+        }
+      }
+    )
+  },
+
+  /**
+   * 显示支付窗口
+   */
+  showPay(e) {
+    const i = e.currentTarget.dataset.index;
+    const message = this.data.deviceList[i]
+    const form = {
+      comboId: message.id,
+      price: message.price,
+      deviceNo: this.data.deviceNo,
+    }
+    this.setData({
+      show: true,
+      form
+    })
+  },
+
+  /**
+   * 支付
+   */
+  pay() {
+    console.log("确认了要支付")
+    const {
+      result
+    } = this.data
+    this.data.form.type = result
+    app.wxRequest(
+      '/api/order/createOrder', this.data.form,
+      res => {
+        this.setData({
+          show: false
+        })
+        tools.hideLoading();
+        if (res.data.code == 1) {
+          if (result == 1) {
+            tools.showToast(res.data.msg);
+            setTimeout(() => {
+              wx.reLaunch({
+                url: '/pages/userSide/main/my/order/index/index'
+              })
+            }, 1500);
+          } else {
+            wx.requestPayment({
+              ...res.data.data,
+              success(res) {
+                tools.showToast("支付成功")
+                setTimeout(() => {
+                  wx.reLaunch({
+                    url: '/pages/userSide/main/my/order/index/index'
+                  })
+                }, 1500);
+              },
+            })
+          }
+        } else {
+          tools.showToast(res.data.msg);
+        }
+      }
+    )
+  },
+
+  onChange(e) {
+    console.log(e)
+    this.setData({
+      result: e.detail
+    });
+  },
+
+  onClick(event) {
+    const {
+      name
+    } = event.currentTarget.dataset;
+    this.setData({
+      result: String(name)
+    });
+  },
+
+  closeWin() {
+    this.setData({
+      show: false,
+    })
+  },
+
+
+})

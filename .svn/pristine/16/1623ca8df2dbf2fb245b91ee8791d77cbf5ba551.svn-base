@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "注册",
+  "usingComponents": {
+    "van-field": "/miniprogram_npm/vant-weapp/field/index",
+    "van-button": "/miniprogram_npm/vant-weapp/button/index",
+    "van-checkbox": "/miniprogram_npm/vant-weapp/checkbox/index",
+    "login-component": "/components/login-component/login-component"
+  }
+}

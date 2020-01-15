@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "查看设备",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "login-component": "/components/login-component/login-component"
+  }
+}

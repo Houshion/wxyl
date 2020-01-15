@@ -1,0 +1,52 @@
+<wxs src="../../../../../../utils/filters.wxs" module="tools" />
+<van-tabs color="#5ac2bb" active="{{ active }}" bind:change="onChange">
+    <block wx:for="{{tabs}}" wx:key="{{index}}" wx:for-item="tab">
+        <van-tab title="{{tab}}">
+            <block wx:for="{{list}}" wx:key="{{index}}" wx:if="{{type==0}}">
+                <view class="box">
+                    <van-cell center label="{{tools.format(item.ctime,'Y-m-d H:i') || '/'}}">
+                        <view slot="title">
+                            <view class="title">{{item.nickName}}</view>
+                            <view class="van-cell-text flex_sb">
+                                <view>消费金额</view>
+                                <view>￥{{item.money}}</view>
+                            </view>
+                            <view class="van-cell-text flex_sb">
+                                <view>推荐分红</view>
+                                <view>￥{{item.getMoney}}</view>
+                            </view>
+                        </view>
+                    </van-cell>
+                </view>
+            </block>
+            <block wx:for="{{list}}" wx:key="{{index}}" wx:if="{{type==1}}">
+                <view class="box">
+                    <van-cell center label="{{tools.format(item.ctime,'Y-m-d H:i') || '/'}}">
+                        <view slot="title">
+                            <view class="title">{{item.nickName}}</view>
+                            <view class="van-cell-text flex_sb">
+                                <view>投资金额</view>
+                                <view>￥{{item.money}}</view>
+                            </view>
+                            <view class="van-cell-text flex_sb">
+                                <view>推荐分红</view>
+                                <view>￥{{item.getMoney}}</view>
+                            </view>
+                        </view>
+                    </van-cell>
+                </view>
+            </block>
+            <block wx:for="{{list}}" wx:key="{{index}}" wx:if="{{type==2}}">
+                <view class="box">
+                    <van-cell center label="{{tools.format(item.ctime,'Y-m-d H:i') || '/'}}" is-link link-type="navigateTo" url="../detail/index?id={{item.storeId}}">
+                        <view slot="title">
+                            <view class="title">{{item.name}}</view>
+                        </view>
+                        <view>盈利分红列表详情</view>
+                    </van-cell>
+                </view>
+            </block>
+        </van-tab>
+    </block>
+</van-tabs>
+<login-component bind:myevent="listeningEvent" extendCode="{{extendCode}}" />

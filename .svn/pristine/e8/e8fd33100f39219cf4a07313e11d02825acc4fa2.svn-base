@@ -1,0 +1,21 @@
+<view class="plr24">
+    <view class="font12 col6 pt30">转投资金额</view>
+    <view class="list_box">
+        <block wx:for="{{list}}" wx:key="{{index}}">
+            <view class="col9 {{o_index == index ? 'active' : ''}}" data-item="{{item}}" data-index="{{index}}" bindtap="chose_btn">
+                <view class="col3">
+                    <text class="font20">{{item.price}}</text>
+                    <text class="font14">万元</text>
+                </view>
+                <view class="font12">{{item.text}}</view>
+            </view>
+        </block>
+    </view>
+    <view class="mt40" >
+        <view class="col6 font12">{{list[o_index].text}}介绍</view>
+        <view class="col3 font14 mt20">{{list[o_index].content}}</view>
+    </view>
+    <view class="h140 flex_a bw pos_f_b">
+        <view class="confirm">微信支付</view>
+    </view>
+</view>

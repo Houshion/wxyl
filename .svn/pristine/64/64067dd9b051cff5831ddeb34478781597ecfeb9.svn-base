@@ -1,0 +1,41 @@
+<view class="plr24 pt20">
+    <block wx:for="{{list}}" wx:key="{{index}}">
+        <van-swipe-cell id="swipe-cell" right-width="{{ 50 }}">
+            <view class="bw col9 font12 plr30 ptb30 mb20 border-r1">
+                <view class="pb20 bdb">
+                    <view class="flex_sb">
+                        <text class="col3 font15">{{item.name}}</text>
+                        <text>{{item.categoryName}}</text>
+                    </view>
+                    <view class="flex_sb">
+                        <view>
+                            <view class="mt20">使用次数：{{item.useNum}} 次</view>
+                            <view>购买价格：{{item.price}} 元</view>
+                        </view>
+                        <view bindtap="edit" data-id="{{item.id}}" class="flex_a">
+                            <image src="/images/check.png" class="check"></image>
+                            <text class="col6 font10 ml10">编辑</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="pt20">
+                    <view class="col3 mb20">套餐内容说明</view>
+                    <view>{{item.remark}}</view>
+                </view>
+            </view>
+            <view slot="right" class="right_box flex_a">
+                <view bindtap="dele"  data-id="{{item.id}}">
+                    <image src="/images/dele.png" class="dele"></image>
+                    <view class="col6 font10 mt10">删除</view>
+                </view>
+            </view>
+        </van-swipe-cell>
+    </block>
+    <block wx:if='{{lock}}'>
+        <view class='tac lh80 col9'>没有更多了</view>
+    </block>
+</view>
+<navigator url="/pages/my_shop/add_combo/index" hover-class="none" class="add_box ptb20">
+    <image src="/images/add.png"></image>
+</navigator>
+<login-component bind:myevent="listeningEvent" />

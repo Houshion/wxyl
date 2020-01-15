@@ -1,0 +1,12 @@
+<view class="plr24 pt20">
+    <block wx:for="{{3}}" wx:key="{{index}}">
+        <view class="flex_sb mb20 border-r1 bw plr30 ptb30">
+            <view>
+                <view class="col3 font15">流水号：4564564</view>
+                <view class="col9 font12 mt20">2019-11-22 14:55</view>
+            </view>
+            <text  class="col3 font14">￥45645.00</text>
+        </view>
+    </block>
+</view>
+

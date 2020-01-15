@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "个人信息",
+  "usingComponents": {
+    "van-cell": "/miniprogram_npm/vant-weapp/cell/index",
+    "van-area": "/miniprogram_npm/vant-weapp/area/index",
+    "van-cell-group": "/miniprogram_npm/vant-weapp/cell-group/index",
+    "van-action-sheet": "/miniprogram_npm/vant-weapp/action-sheet/index",
+    "login-component": "/components/login-component/login-component"
+  }
+}

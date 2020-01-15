@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "我的",
+  "usingComponents": {
+    "navbar": "/components/navbar/index",
+    "van-cell": "/miniprogram_npm/vant-weapp/cell/index",
+    "login-component": "/components/login-component/login-component"
+  }
+}

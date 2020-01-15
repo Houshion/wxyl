@@ -1,0 +1,16 @@
+<view class="navbar">
+    <image class="scan" src="/images/sao.png" mode="widthFix" bind:tap="goScan" />
+    <image class="navBarImg" src="/images/navBar.png" mode="widthFix" />
+    <view class="btns">
+        <block wx:for="{{btns}}">
+            <navigator url="{{item.url}}" hover-class="navigator-hover" open-type="redirect">
+                <view bind:tap="changeNav" data-i="{{index}}">
+                    <image class="icon {{item.code}}" src="{{item.status?item.icon2:item.icon1}}" mode="widthFix" />
+                    <view class="text {{item.code}} {{item.status?'color1':''}}">
+                        {{item.title}}
+                    </view>
+                </view>
+            </navigator>
+        </block>
+    </view>
+</view>

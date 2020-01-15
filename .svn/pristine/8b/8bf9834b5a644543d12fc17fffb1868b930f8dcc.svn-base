@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "意见反馈",
+  "usingComponents": {
+    "van-cell": "/miniprogram_npm/vant-weapp/cell/index",
+    "van-picker": "/miniprogram_npm/vant-weapp/picker/index",
+    "van-action-sheet": "/miniprogram_npm/vant-weapp/action-sheet/index",
+    "login-component": "/components/login-component/login-component"
+  }
+}

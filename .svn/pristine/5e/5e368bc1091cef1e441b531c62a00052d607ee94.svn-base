@@ -1,0 +1,379 @@
+// pages/userSide/main/service/shopDetail/index.js
+const app = getApp();
+const tools = app.tools;
+
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {extendCode:'',
+    id: 0,
+    active: 0,
+    deviceList: [{
+      device_name: '设备名称',
+      category_id: "1",
+      comboList: [{
+        useNum: '使用次数',
+        price: '5',
+        name: '套餐名',
+        remark: '套餐描述',
+        id: '套餐ID'
+      }],
+      device_no: '1546816546846546351654',
+      id: 1
+    }, ],
+    commentList: [{
+      "id": "1", //ID
+      "orderId": "1", //订单ID
+      "userId": "1", //用户ID
+      "storeId": 2, //店铺ID
+      "content": "", //评论内容
+      "imgUrl": "", //图片
+      "starLevel": 0, //评论星级
+      "replyContent": "", //回复内容
+      "replyTime": "", //回复时间
+      "ctime": 1574150327000, //评论时间
+      "userName": "你二大爷我"
+    }, ],
+    storeMsg: {},
+    payType: 1,
+    show: false,
+    form: '',
+    payList: [{
+        title: "钱包支付",
+        icon: "/images/bag.png",
+        type: 1
+      },
+      {
+        title: "微信支付",
+        icon: "/images/wxpay.png",
+        type: 2
+      },
+    ],
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    this.setData({
+      id: options.id
+    })
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    this.getDeviceList()
+    this.getStore()
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function (options) {
+    let userInfo = tools.getStorage("userInfo");
+    if (userInfo.headImgUrl.indexOf("http") == -1) {
+      userInfo.headImgUrl = tools.globalData.url + userInfo.headImgUrl
+    }
+    var shareObj = {
+      path: '/pages/userSide/main/service/shopDetail/index?id=' + this.data.id, // 默认是当前页面，必须是以‘/’开头的完整路径
+      imgUrl: '', //转发时显示的图片路径，支持网络和本地，不传则使用当前页默认截图。
+      success: function (res) { // 转发成功之后的回调　　　　　
+        if (res.errMsg == 'shareAppMessage:ok') {}
+      },
+      fail: function () { // 转发失败之后的回调
+        if (res.errMsg == 'shareAppMessage:fail cancel') {
+          // 用户取消转发
+        } else if (res.errMsg == 'shareAppMessage:fail') {
+          // 转发失败，其中 detail message 为详细失败信息
+        }
+      },
+      complete: function () {
+        // 转发结束之后的回调（转发成不成功都会执行）
+      }
+    };
+    // 来自页面内的按钮的转发
+    if (options.from == 'button') {
+      var dataid = options.target.dataset; //上方data-id=shareBtn设置的值
+      // 此处可以修改 shareObj 中的内容
+      shareObj.path = '/pages/userSide/main/service/shopDetail/index?id=' + dataid.id;
+    }
+    // 返回shareObj
+    return shareObj;
+  },
+
+  /**
+   * 拨打电话
+   */
+  phoneCall() {
+    wx.showModal({
+      content: this.data.storeMsg.phone,
+      confirmText: "拨打",
+      confirmColor: "#5ac2bb",
+      success: res => {
+        if (res.confirm) {
+          wx.makePhoneCall({
+            phoneNumber: this.data.storeMsg.phone //仅为示例，并非真实的电话号码
+          })
+        }
+      }
+    })
+  },
+
+  /**
+   * 收藏
+   */
+  collect() {
+    const that = this
+    app.wxRequest(
+      '/api/userCollect/add', {
+        type: 2,
+        id: this.data.id
+      },
+      res => {
+        if (res.data.code == 1) {
+          wx.showModal({
+            title: '收藏成功',
+            content: '可在收藏列表查看',
+            confirmText: '返回',
+            showCancel: false,
+            confirmColor: '#5ac2bb',
+            success() {
+              that.onShow()
+            }
+          })
+        } else {
+          tools.showToast(res.data.msg)
+        }
+      }
+    )
+  },
+
+  /**
+   * 打开地图
+   */
+  goMap() {
+    wx.openLocation({
+      latitude: this.data.storeMsg.lat,
+      longitude: this.data.storeMsg.lon,
+      success() {
+        console.log(123)
+      }
+    })
+  },
+
+  listeningEvent() {
+    this.onShow()
+  },
+
+  /**
+   * 切换tab
+   */
+  onChangeTab(e) {
+    let index = e.detail.index
+    if (index == 0) {
+      this.getDeviceList()
+    } else {
+      this.getComment()
+    }
+  },
+
+  getDeviceList() {
+    app.wxRequest(
+      '/api/device/deviceList', {
+        storeId: this.data.id
+      },
+      res => {
+        tools.hideLoading();
+        if (res.data.code == 1) {
+          console.log(res.data)
+          this.setData({
+            deviceList: res.data.data.list
+          })
+        } else {
+          tools.showToast(res.data.msg)
+        }
+      }
+    )
+  },
+  getComment() {
+    app.wxRequest(
+      '/api/userComment/queryStoreUserCommentList', {
+        storeId: this.data.id,
+        page: 1,
+        limit: 99
+      },
+      res => {
+        tools.hideLoading();
+        if (res.data.code == 1) {
+          console.log(res.data)
+          res.data.data.list.forEach(item => {
+            let imgArr;
+            if (!!item.imgUrl && item.imgUrl != "null") {
+              imgArr = item.imgUrl.split(",")
+            } else {
+              imgArr = []
+            }
+            item.imgUrl = imgArr
+          });
+          console.log(res.data.data.list)
+          this.setData({
+            commentList: res.data.data.list
+          })
+        } else {
+          tools.showToast(res.data.msg)
+        }
+      }
+    )
+  },
+  getStore() {
+    app.wxRequest(
+      '/api/store/storeDetail', {
+        storeId: this.data.id,
+      },
+      res => {
+        tools.hideLoading();
+        if (res.data.code == 1) {
+          this.setData({
+            storeMsg: res.data.data
+          })
+        } else {
+          tools.showToast(res.data.msg)
+        }
+      }
+    )
+  },
+
+  /**
+   * 显示支付窗口
+   */
+  showPay(e) {
+    const {
+      item,
+      deviceno
+    } = e.currentTarget.dataset;
+    const form = {
+      comboId: item.id,
+      price: item.price,
+      deviceNo: deviceno,
+    }
+    this.setData({
+      show: true,
+      form
+    })
+    tools.isToken((flag) => {
+      if (flag) {
+        this.setData({
+          login_status: false,
+        })
+      } else {
+        this.setData({
+          login_status: true
+        })
+      }
+    });
+  },
+  /**
+   * 支付
+   */
+  pay() {
+    console.log("确认了要支付")
+    const {
+      result
+    } = this.data
+    this.data.form.type = result
+    app.wxRequest(
+      '/api/order/createOrder', this.data.form,
+      res => {
+        this.setData({
+          show: false
+        })
+        tools.hideLoading();
+        if (res.data.code == 1) {
+          if (result == 1) {
+            tools.showToast(res.data.msg);
+            setTimeout(() => {
+              wx.reLaunch({
+                url: '/pages/userSide/main/my/order/index/index'
+              })
+            }, 1500);
+          } else {
+            wx.requestPayment({
+              ...res.data.data,
+              success(res) {
+                tools.showToast("支付成功")
+                setTimeout(() => {
+                  wx.reLaunch({
+                    url: '/pages/userSide/main/my/order/index/index'
+                  })
+                }, 1500);
+              },
+            })
+          }
+        } else {
+          tools.showToast(res.data.msg);
+        }
+      }
+    )
+  },
+
+  onChange(e) {
+    console.log(e)
+    this.setData({
+      result: e.detail
+    });
+  },
+
+  onClick(event) {
+    const {
+      name
+    } = event.currentTarget.dataset;
+    this.setData({
+      result: String(name)
+    });
+  },
+
+  closeWin() {
+    this.setData({
+      show: false,
+    })
+  },
+})

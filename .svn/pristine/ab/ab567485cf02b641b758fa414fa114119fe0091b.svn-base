@@ -1,0 +1,35 @@
+<wxs src="../../../../../utils/filters.wxs" module="tools" />
+<van-cell-group>
+    <van-cell title="头像" clickable data-name="{{item.type}}" bind:click="changeMsg" is-link center>
+        <image class="headImg" src="{{userInfo.headImgUrl}}" mode="aspectFit" lazy-load="false" />
+    </van-cell>
+</van-cell-group>
+<van-cell-group custom-class="mt20">
+    <van-cell title="昵称" clickable data-type="nickName" bind:click="changeMsg" is-link center>
+        {{userInfo.nickName}}
+    </van-cell>
+    <van-cell title="实名" clickable data-type="realName" bind:click="changeMsg" is-link center>
+        {{userInfo.realName}}
+    </van-cell>
+    <van-cell title="手机号" clickable data-type="phone" bind:click="changeMsg" is-link center>
+        {{userInfo.phone}}
+    </van-cell>
+    <van-cell title="邮箱" clickable data-type="email" bind:click="changeMsg" is-link center>
+        {{userInfo.email}}
+    </van-cell>
+    <van-cell title="性别" clickable data-type="sex" bind:tap="changeGender" is-link center>
+        {{tools.gender(userInfo.sex)}}
+    </van-cell>
+    <van-cell title="生日" clickable data-type="birthday" bind:tap="changeMsg" is-link center>
+        {{userInfo.birthday}}
+    </van-cell>
+    <van-cell title="常住地区" clickable data-type="addr" bind:tap="changeAddress" is-link center>
+        {{userInfo.addr}}
+    </van-cell>
+    <van-cell title="用户密码修改" clickable data-type="changePass" bind:click="changeMsg" is-link center></van-cell>
+</van-cell-group>
+<van-action-sheet show="{{ genderShow }}" actions="{{ genderOption }}" cancel-text="取消" bind:close="genderClose" bind:select="genderSelect" />
+<van-action-sheet show="{{ showAddr }}">
+    <van-area area-list="{{ areaList }}" bind:cancel="addressClose" bind:confirm="pickAddress" />
+</van-action-sheet>
+<login-component bind:myevent="listeningEvent" />

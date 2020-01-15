@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "健康养生",
+  "usingComponents": {
+    "navbar": "/components/navbar/index",
+    "van-tab": "/miniprogram_npm/vant-weapp/tab/index",
+    "van-tabs": "/miniprogram_npm/vant-weapp/tabs/index",
+    "login-component": "/components/login-component/login-component"
+  }
+}

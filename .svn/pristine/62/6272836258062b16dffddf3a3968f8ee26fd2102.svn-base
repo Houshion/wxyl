@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "投资额度列表",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "login-component": "/components/login-component/login-component"
+  }
+}

@@ -1,0 +1,17 @@
+<form bindsubmit="formSubmit" class="db form_box">
+    <view class="ptb30 list bw plr24 flex_sb" bindtap="choice">
+        <view class="font16 col3">店铺头像</view>
+        <image src="{{shopUrl}}" class="head"></image>
+    </view>
+    <block wx:for="{{list}}" wx:key="index">
+        <view class="ptb30 list bw plr24" data-name="{{item.name}}" bindtap="chose_timer">
+            <view class="font16 col3">{{item.title}}</view>
+            <input type="{{item.type}}" placeholder="{{item.name=='businessHours'?'请选择':'请输入'}}" placeholder-class="font12 col6" class="font14 col3 pt20" name="{{item.name}}" value="{{list_data[item.name]}}" disabled="{{item.name=='businessHours' ? true : false}}"/>
+        </view>
+    </block>
+    <view class="ptb30">
+    <button class="confirm" formType="submit">保存</button>
+</view>
+</form>
+<timedivision-picker bind:myevent="listeningEvent" bind:myeventCancel="listeningCancel" is_show="{{is_show}}"   wx:if="{{is_show}}"/>
+<login-component bind:myevent="listeningEvent" />

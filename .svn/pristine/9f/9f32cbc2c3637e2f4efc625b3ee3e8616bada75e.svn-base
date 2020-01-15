@@ -1,0 +1,120 @@
+<wxs src="../../../../../../utils/filters.wxs" module="tools" />
+<van-search shape="round" background="#fff" custom-class="search" value="{{ searchShopName }}" placeholder="搜索订单" use-action-slot>
+    <view slot="action" bind:tap="onSearch">搜索</view>
+</van-search>
+<van-tabs color="#5ac2bb" active="{{ active }}" bind:change="onChange">
+    <van-tab title="未使用">
+        <view class="orderBox">
+            <block wx:for="{{orderListUnuse}}" wx:key="index">
+                <view class="order">
+                    <navigator class="useDevice" url="../detail/index?id={{item.id}}" hover-class="navigator-hover" open-type="navigate">
+                        <view class="orderMsg">
+                            <view>
+                                <view class="mb20">订单编号：{{item.orderNo}}</view>
+                                <view class="mb20">订单日期：{{tools.format(item.citem) || '/'}}</view>
+                                <view class="mb20">
+                                    有效日期：{{tools.format(item.expireTime) || '/'}}
+                                </view>
+                            </view>
+                            <view class="color1">未使用</view>
+                        </view>
+                        <view class="package">
+                            <image class="orderImg" src="/images/logo.png" mode="aspectFit"></image>
+                            <view class="packageMsg">
+                                <view class="title col0 font15">{{item.comboName}}</view>
+                                <view>
+                                    <text class="mr20">次数：{{item.useNum}}</text>
+                                    <text>已使用次数：{{item.remainNum}}</text>
+                                </view>
+                                <view class="mt30">￥{{item.comboPrice}}</view>
+                            </view>
+                        </view>
+                    </navigator>
+                    <view class="config">
+                        <view class="fullback" bind:tap="fullback" data-price="{{item.comboPrice}}">
+                            退款
+                        </view>
+                        <navigator class="useDevice" url="../using/index?deviceNo={{item.deviceNo}}&orderId={{item.id}}" hover-class="navigator-hover" open-type="navigate">
+                            使用设备
+                        </navigator>
+                    </view>
+                </view>
+            </block>
+        </view>
+    </van-tab>
+    <van-tab title="使用中">
+        <view class="orderBox">
+            <block wx:for="{{orderListUsing}}" wx:key="index">
+                <view class="order">
+                    <navigator class="useDevice" url="../detail/index?id={{item.id}}" hover-class="navigator-hover" open-type="navigate">
+                        <view class="orderMsg">
+                            <view>
+                                <view class="mb20">订单编号：{{item.orderNo}}</view>
+                                <view class="mb20">订单日期：{{tools.format(item.citem) || '/'}}</view>
+                                <view class="mb20">
+                                    有效日期：{{tools.format(item.expireTime) || '/'}}
+                                </view>
+                            </view>
+                            <view class="color1">使用中</view>
+                        </view>
+                        <view class="package">
+                            <image class="orderImg" src="/images/logo.png" mode="aspectFit"></image>
+                            <view class="packageMsg">
+                                <view class="title col0 font15">{{item.comboName}}</view>
+                                <view>
+                                    <text class="mr20">次数：{{item.useNum}}</text>
+                                    <text>已使用次数：{{item.remainNum}}</text>
+                                </view>
+                                <view class="mt30">￥{{item.comboPrice}}</view>
+                            </view>
+                        </view>
+                    </navigator>
+                    <view class="config">
+                        <navigator class="useDevice" url="../using/index?deviceNo={{item.deviceNo}}&orderId={{item.id}}" hover-class="navigator-hover" open-type="navigate">
+                            使用设备
+                        </navigator>
+                    </view>
+                </view>
+            </block>
+        </view>
+    </van-tab>
+    <van-tab title="已使用">
+        <view class="orderBox">
+            <block wx:for="{{orderListUsed}}" wx:key="index">
+                <view class="order">
+                    <navigator class="useDevice" url="../detail/index?id={{item.id}}" hover-class="navigator-hover" open-type="navigate">
+                        <view class="orderMsg">
+                            <view>
+                                <view class="mb20">订单编号：{{item.orderNo}}</view>
+                                <view class="mb20">订单日期：{{tools.format(item.citem) || '/'}}</view>
+                                <view class="mb20">
+                                    有效日期：{{tools.format(item.expireTime) || '/'}}
+                                </view>
+                            </view>
+                            <view class="color1">已使用</view>
+                        </view>
+                        <view class="package">
+                            <image class="orderImg" src="/images/logo.png" mode="aspectFit"></image>
+                            <view class="packageMsg">
+                                <view class="title col0 font15">{{item.comboName}}</view>
+                                <view>
+                                    <text class="mr20">次数：{{item.useNum}}</text>
+                                    <text>已使用次数：{{item.remainNum}}</text>
+                                </view>
+                                <view class="mt30">￥{{item.comboPrice}}</view>
+                            </view>
+                        </view>
+                    </navigator>
+                    <view class="config">
+                        <view class="comment" bind:tap="comment" data-id="{{item.orderNo}}">
+                            评论
+                        </view>
+                    </view>
+                </view>
+            </block>
+        </view>
+    </van-tab>
+</van-tabs>
+
+
+<login-component bind:myevent="listeningEvent" />

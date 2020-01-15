@@ -1,0 +1,15 @@
+<view class="title_box">
+    <view class="bg_box"><image src="/images/bg2.png"></image></view>
+    <view class="head_box tac">
+        <navigator url="/pages/my_shop/shop_data/index" class="head_img_box"><image src="{{shopUrl}}"></image></navigator>
+        <view class="font18 col3">{{info.name}}</view>
+    </view>
+</view>
+<view class="plr60 mt40">
+    <block wx:for="{{list}}" wx:key="{{index}}">
+        <navigator url="{{item.url}}" class="flex_sb h100 col3 font15 bdb">
+            <text>{{item.title}}</text>
+            <image src="/images/right.png" class="arrow_right"></image>
+        </navigator>
+    </block>
+</view>

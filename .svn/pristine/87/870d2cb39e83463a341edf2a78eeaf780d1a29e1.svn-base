@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "选择服务",
+  "usingComponents": {
+    "login-component": "/components/login-component/login-component",
+    "van-action-sheet": "/miniprogram_npm/vant-weapp/action-sheet/index",
+    "van-cell": "/miniprogram_npm/vant-weapp/cell/index",
+    "van-cell-group": "/miniprogram_npm/vant-weapp/cell-group/index",
+    "van-radio": "/miniprogram_npm/vant-weapp/radio/index",
+    "van-radio-group": "/miniprogram_npm/vant-weapp/radio-group/index"
+  }
+}

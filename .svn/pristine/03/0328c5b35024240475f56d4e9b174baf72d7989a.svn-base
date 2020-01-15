@@ -1,0 +1,53 @@
+@import '/css/main.wxss';
+
+.list {
+    padding: 30rpx;
+}
+
+.listItem {
+    margin-bottom: 30rpx;
+    background: #ffffff;
+    display: flex;
+    padding: 30rpx;
+}
+
+.msg {
+    margin-left: 40rpx;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    min-height: 150rpx;
+    width: 500rpx;
+}
+
+.msg .title {
+    font-size: 30rpx;
+    font-weight: bold;
+}
+
+.msg .tags .tag {
+    color: #f69626;
+    padding: 5rpx 15rpx;
+    border: 1px solid #f69626;
+    border-radius: 30rpx;
+    width: auto
+}
+
+.msg .time {
+    color: #999;
+}
+
+.listImg {
+    width: 150rpx;
+    box-shadow: 10rpx 10rpx 5rpx 5rpx rgba(0, 0, 0, .2);
+    /* margin-top: -30rpx; */
+    /* margin-left: -30rpx; */
+}
+
+.rechargeImg {
+    position: absolute;
+    right: 50rpx;
+    bottom: 300rpx;
+    width: 120rpx;
+    height: 120rpx;
+}

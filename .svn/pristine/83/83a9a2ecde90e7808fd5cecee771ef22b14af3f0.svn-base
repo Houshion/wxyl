@@ -1,0 +1,21 @@
+<wxs src="../../../utils/filters.wxs" module="tools" />
+<view class="pt20 plr24">
+    <view class="bw plr30 pb30">
+        <view class="col0 font13 flex_sb h80 bdb">
+            <text>设备编号：{{info.deviceNo}}</text>
+            <text class="color1">在线</text>
+        </view>
+        <view class="font15 col3 mt20">
+            <view>店铺名称：{{info.name}}店铺</view>
+            <view class="mt10">添加时间：{{tools.format(item.ctime,'Y-m-d H:i:s')}}</view>
+            <view class="font12 col9 flex_a mt10">
+                <image src="/images/addr.png" class="addr mr20"></image>
+                <text>{{info.province + info.city + info.addr}}</text>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="flex_a mt60">
+    <view class="confirm" bindtap="hande_device" data-type="open">启动设备</view>
+    <view class="confirm" bindtap="hande_device" data-type="stop">停止设备</view>
+</view>

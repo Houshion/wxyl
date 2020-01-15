@@ -1,0 +1,12 @@
+<wxs src="../../../../../utils/filters.wxs" module="tools" />
+<view class="box">
+    <block wx:for="{{list}}">
+        <view class="list">
+            <view class="title">{{item.title}}</view>
+            <view class="content">{{item.content}}</view>
+            <view class="time">{{tools.format(item.ctime,'Y-m-d H:i') || '/'}}</view>
+        </view>
+    </block>
+</view>
+
+<login-component bind:myevent="listeningEvent" />

@@ -1,0 +1,20 @@
+<view class="pt20 plr24">
+    <form bindsubmit="formSubmit">
+    <view class="bw border-r1 plr60 pt40 pb80">
+        <view class="font16 col9">提现金额</view>
+        <view class="mt40 ptb40 bdb flex_a">
+            <text class="font24 col3">￥</text>
+            <input type="digit" class="col3 font24" name="money"/>
+        </view>
+    </view>
+        <block wx:for="{{list}}" wx:key="{{index}}">
+            <view class="border-r1 bw flex_sb plr30 mt20">
+                <text class="col3 font15">{{item.title}}</text>
+                <input type="{{item.number}}" placeholder="请输入" class="col3 font15 h100 tae" placeholder-class="col9" name="{{item.name}}"/>
+            </view>
+        </block>
+        <view class="ptb60">
+            <button formType="submit" class="confirm">提现</button>
+        </view>
+    </form>
+</view>

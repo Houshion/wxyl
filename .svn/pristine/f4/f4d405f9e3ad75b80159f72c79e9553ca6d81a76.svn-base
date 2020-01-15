@@ -1,0 +1,17 @@
+@import '/css/main.wxss';
+.logo_box{
+    padding: 90rpx 0;
+}
+.logo_box image{
+    width: 180rpx;
+    height: 180rpx;
+    border-radius: 50%;
+}
+.phone{
+    width: 23rpx;
+    height: 32rpx;
+}
+.password{
+    width: 27rpx;
+    height: 27rpx;
+}

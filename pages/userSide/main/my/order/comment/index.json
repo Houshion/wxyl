@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "评论",
+  "usingComponents": {
+    "login-component": "/components/login-component/login-component"
+  }
+}

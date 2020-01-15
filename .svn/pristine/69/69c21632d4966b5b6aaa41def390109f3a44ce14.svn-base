@@ -1,0 +1,37 @@
+<view>
+    <view class="title_box colw plr24 ptb30">
+        <view>投资资金池累计：￥454565</view>
+        <view class="mt40 font35 tac">
+            <text class="font20">￥</text>44566464.00
+        </view>
+        <view class="tac font12">我的投资</view>
+        <view class="font10 tac mt10">最新投资：2019-11-22</view>
+        <view class="btn_box mt50">
+            <navigator url="/pages/my_ investment/voucher/index" class="color1 bw btn font14">上传充值凭证</navigator>
+            <navigator url="/pages/my_ investment/recharge/index" class="bgc1 ml40 btn font14">充值</navigator>
+        </view>
+    </view>
+    <view class="list_box plr24">
+        <view>
+            <view>
+                <image src="/images/icon1.png" class="icon"></image>
+                <view class="font13 mt10 col9">投资额度列表</view>
+            </view>
+            <image src="/images/right.png" class="arrow_right"></image>
+        </view>
+        <view>
+            <view>
+                <image src="/images/icon2.png" class="icon"></image>
+                <view class="font13 mt10 col9">我的收益</view>
+            </view>
+            <image src="/images/right.png" class="arrow_right"></image>
+        </view>
+        <view>
+            <view>
+                <image src="/images/icon3.png" class="icon3"></image>
+                <view class="font13 mt10 col9">数据统计</view>
+            </view>
+            <image src="/images/right.png" class="arrow_right"></image>
+        </view>
+    </view>
+</view>

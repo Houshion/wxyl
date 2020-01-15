@@ -1,0 +1,35 @@
+<view>
+    <view class="bw plr24 pt20 bw title_box pos_r flex_aj">
+        <view class="img_box"><image src="/images/bg1.png"></image></view>
+        <view class="colw tac">
+            <view class="font30">45645</view>
+            <view class="font12">累计xxx</view>
+        </view>
+    </view>
+    <view class="tab_box flex bw font13 col9">
+        <block wx:for="{{list}}" wx:key="{{index}}">
+            <view class="tab-item {{o_index == index ? 'active' : ''}}" bindtap="tab_click" data-index="{{index}}">{{item}}</view>
+        </block>
+    </view>
+    <view>
+        <view class="font12 flex_aj col9 pt50 pb20">
+            <view class="date_box" bindtap="chose_date">{{
+                !start ? '选择日期' : start}}</view>
+            <view class="mlr20">-</view>
+            <view class="date_box">{{
+                !end ? '选择日期' : end}}</view>
+        </view>
+    </view>
+    <view class="chart_box">
+        <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
+    </view>
+    <view class="mtb20 mlr24 border-r1 plr30 ptb30 bw num_box">
+        <block wx:for="{{5}}" wx:key="{{index}}">
+            <view class="flex_sb box">
+                <text class="font15 col3">累计数：xxxx</text>
+                <text class="font12 col9">2019-11-23</text>
+            </view>
+        </block>
+    </view>
+</view>
+<datetime-picker bind:myevent="listeningEvent" bind:myeventCancel="listeningCancel"  is_show="{{is_show}}"  wx-if="{{is_show}}" type_date="{{type_date[o_index]}}"/>

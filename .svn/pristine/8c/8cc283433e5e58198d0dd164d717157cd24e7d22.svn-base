@@ -1,0 +1,30 @@
+<view>
+    <block wx:for="{{list}}" wx:key="{{index}}">
+        <van-swipe-cell id="swipe-cell" right-width="{{ 100 }}">
+        <view class="plr24 ptb30 list flex_a bdb">
+            <view class="device_box"><image src="/images/device.png"></image></view>
+            <view class="ml20 col3 flex1">
+                <view class="font12">设备序列号：</view>
+                <view class="font15 ">{{item.device_no}}</view>
+            </view>
+        </view>
+        <view slot="right" class="right_box flex_a">
+            <view bindtap="check" data-device_no="{{item.device_no}}" data-category_id="{{item.category_id}}">
+                <image src="/images/check.png" class="check"></image>
+                <view class="col6 font10 mt10">查看</view>
+            </view>
+            <view bindtap="dele" data-id="{{item.id}}">
+                <image src="/images/dele.png" class="dele"></image>
+                <view class="col6 font10 mt10">删除</view>
+            </view>
+        </view>
+        </van-swipe-cell>
+    </block>
+    <block wx:if='{{lock}}'>
+        <view class='tac lh80 col9'>没有更多了</view>
+    </block>
+    <navigator url="/pages/my_shop/feedback/index" hover-class="none" class="feedback tac ptb30">
+        <view class="font12">故障上报</view>
+    </navigator>
+</view>
+<login-component bind:myevent="listeningEvent" extendCode="{{extendCode}}" />

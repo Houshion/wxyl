@@ -1,0 +1,38 @@
+<view id="register">
+    <van-cell-group>
+        <view class="inputBox">
+            <van-field value="{{ form.phone }}" placeholder="请输入手机号码" border="{{ false }}" bindinput="getInput" data-type="phone">
+                <!-- <view slot="left-icon">
+                    <view class="section">
+                        <picker bindchange="bindPickerChange" range="{{array}}" range-key="name">
+                            <view class="picker">{{array[index].name}}</view>
+                        </picker>
+                    </view>
+                </view> -->
+            </van-field>
+        </view>
+        <view class="inputBox">
+            <van-field value="{{ form.cms }}" placeholder="输入验证码" border="{{ false }}" bindinput="getInput" data-type="code">
+                <view slot="right-icon" class="color1" bind:tap="getCode">{{codeText}}</view>
+            </van-field>
+        </view>
+        <view class="inputBox">
+            <van-field value="{{ form.password }}" placeholder="设置登录密码，不少于六位" border="{{ false }}" bindinput="getInput" data-type="password"></van-field>
+        </view>
+        <view class="redError">*为校验安全，我们会向您的手机发送短信验证码</view>
+    </van-cell-group>
+    <view class="submit">
+        <view class="confirm" bind:tap="register">注册</view>
+    </view>
+    <view class="flex agreement">
+        <van-checkbox value="{{ checked }}" bind:change="onChange" checked-color="#5ac2bb"></van-checkbox>
+        <navigator url="/pages/userSide/login/agreement/index" class="toAgreement">阅读协议</navigator>
+    </view>
+    <navigator class="skip" url="/pages/userSide/main/recuperate/" hover-class="navigator-hover" open-type="reLaunch">
+        跳过次步骤
+    </navigator>
+    <view class="alert" wx:if="{{alert}}">
+        <cover-image class="alertImg" src="/images/alert.png"></cover-image>
+        <cover-view class="alertMsg">注册成功</cover-view>
+    </view>
+</view>

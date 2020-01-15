@@ -1,0 +1,41 @@
+<wxs src="../../../../../utils/filters.wxs" module="tools" />
+<view class="swiper">
+    <swiper indicator-dots autoplay interval="2000" duration="500" circular>
+        <swiper-item wx:for="{{swiperImgs}}" wx:key="{{index}}">
+            <navigator url="/pages/userSide/main/recuperate/detail/index?id={{item.id}}" hover-class="navigator-hover" open-type="navigate">
+                <image class="swiperImg" src="{{item.img_url}}" mode="widthFix"></image>
+            </navigator>
+        </swiper-item>
+    </swiper>
+</view>
+<view class="tab">
+    <van-tabs color="#5ac2bb" active="{{ active }}" bind:change="onChange">
+        <block wx:for="{{tabs}}" wx:key="{{index}}" wx:for-item="tab">
+            <van-tab title="{{tab.name}}">
+                <view class="list">
+                    <view wx:for="{{list}}" wx:for-index="lindex" wx:key="{{lindex}}">
+                        <navigator class="listItem" url="/pages/userSide/main/recuperate/detail/index?id={{item.id}}">
+                            <image class="listImg" src="{{item.cover_img_url}}" bindload="" binderror=""></image>
+                            <view class="msg">
+                                <view class="title w100">{{item.title}}</view>
+                                <view class="tags w100">
+                                    <span class="tag">{{item.name}}</span>
+                                </view>
+                                <view class="time w100">
+                                    发布时间：{{tools.format(item.ctime,'Y-m-d H:i:s') || '/'}}
+                                </view>
+                            </view>
+                        </navigator>
+                    </view>
+                </view>
+            </van-tab>
+        </block>
+    </van-tabs>
+</view>
+<navigator class="recharge" url="/pages/userSide/main/recuperate/recharge/index">
+    <image class="rechargeImg" src="/images/i_recharge.png" mode="aspectFit"></image>
+</navigator>
+<image class="touziImg" src="/images/i_touzhi.png" mode="aspectFit" bind:tap="touzi"></image>
+<image class="yunwei" src="/images/i_login.png" mode="aspectFit" bind:tap="goYunwei"></image>
+<navbar index="0"></navbar>
+<login-component bind:myevent="listeningEvent" val="{{login_status}}" wx-if="{{login_status}}" />

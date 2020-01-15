@@ -1,0 +1,123 @@
+const app = getApp();
+const tools = app.tools;
+// components/login/login.js
+Component({
+  /**
+   * 组件的属性列表
+   */
+  properties: {
+    val:{
+      type:String,
+      value:false,
+    }
+  },
+
+  /**
+   * 组件的初始数据
+   */
+  data: {
+    is_show:false,
+    get_phone:false,
+    login:true,
+    userInfo: {},
+    lang:{}
+  },
+  observers:{
+    'val':function (res) {
+      console.log(res)
+      if(res){
+        this.show();
+      }
+    }
+  },
+  pageLifetimes: {
+    // 组件所在页面的生命周期函数
+    show: function () {
+      this.show();
+    },
+  },
+  /**
+   * 组件的方法列表
+   */
+  methods: {
+    show(){
+      this.setData({
+        lang: app.globalData.lang
+      });
+      const that = this;
+      tools.hideLoading();
+      tools.isToken((flag) => {
+        if(flag){
+          wx.showTabBar();
+          that.setData({
+            is_show:false
+          })
+        }else{
+          wx.hideTabBar();
+          this.setData({
+            is_show:true
+          })
+        }
+      });
+    },
+    bindGetUserInfo: function (e) {
+      const userInfo = e.detail.userInfo;
+      const that = this;
+      if (userInfo) { //用户授权
+        wx.login({
+          success(e){
+            console.log(e);
+            let code = e.code;
+            const info = {
+              headimgurl: userInfo.avatarUrl,
+              nickname: userInfo.nickName,
+              code,
+              sex: userInfo.gender,
+            };
+            that.setData({
+              userInfo: info,
+              get_phone: true,
+              login: false
+            })
+          }
+        })
+      } else { //用户取消授权
+        tools.hideLoading();
+      }
+    },
+    getPhoneNumber(e) {//获取手机号
+      let that = this;
+      let encryptedData = encodeURIComponent(e.detail.encryptedData);
+      let iv = encodeURIComponent(e.detail.iv);
+      console.log(e)
+      console.log(e.detail.iv)
+      console.log(e.detail.encryptedData)
+      tools.showLoading(app.globalData.lang.pubilc.please_wait);
+      if (e.detail.errMsg == 'getPhoneNumber:ok'){//获取手机号成功
+        const info = {
+          iv,
+          encryptedData,
+          ...that.data.userInfo
+        };
+        app.wxRequest('/wxsite/Public/wxlogin', info, function (res) {
+          tools.hideLoading();
+          if (res.data.code == 1) {
+            const token = res.data.data.token;
+            tools.setStorage('token',token);
+            wx.showTabBar();
+            that.setData({
+              is_show:false
+            });
+            that.triggerEvent('myevent', 1);
+          } else {
+            tools.showToast(res.data.msg);
+          }
+        })
+      } else {//获取手机号失败或者取消
+        tools.hideLoading();
+        tools.showToast(app.globalData.lang.login.get_fail);
+      }
+
+    },
+  }
+})

@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "套餐列表",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "van-swipe-cell": "/miniprogram_npm/vant-weapp/swipe-cell/index",
+    "login-component": "/components/login-component/login-component"
+  }
+}

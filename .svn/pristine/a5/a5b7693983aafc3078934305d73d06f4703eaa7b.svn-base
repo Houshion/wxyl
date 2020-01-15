@@ -1,0 +1,55 @@
+<view id="apply">
+    <form bindsubmit="apply" class="db form_box">
+        <block wx:for="{{list}}" wx:key="index" wx:if="{{item.show}}">
+            <view class="ptb30 list bw plr24">
+                <view class="font16 col3">{{item.title}}</view>
+                <input type="{{item.type}}" placeholder="请输入" placeholder-class="font12 col6" class="font14 col3 pt20" name="{{item.name}}" />
+            </view>
+        </block>
+        <view class="ptb30 list bw plr24" wx:if="{{type==2}}" bind:tap="chooseShop">
+            <view class="font16 col3">选择店铺</view>
+            <input class="hideInput" name="storeId" value="{{shopTotalList[shopIndex].id}}" />
+            <input disabled value="{{shopList[shopIndex]}}" placeholder="请选择" placeholder-class="font12 col6" class="font14 col3 pt20" />
+        </view>
+        <view class="ptb30 list bw plr24" wx:if="{{type==3}}" bind:tap="setLocation">
+            <view class="font16 col3">店铺位置</view>
+            <input disabled value="{{myShopMsg.storeAddr}}" placeholder="请选择" placeholder-class="font12 col6" class="font14 col3 pt20" name="storeAddr" />
+        </view>
+        <view class="mt20 bw pl24">
+            <view class="col3 font16 pt20">上传身份证正面</view>
+            <view class="pt20 font0 clearfix">
+                <view class='pic_wrap' wx:if="{{cardFrontImgPath}}">
+                    <image class="pic" src="{{cardFrontImgPath}}" bindtap='choice' data-index='cardFrontImg'></image>
+                </view>
+                <view class='pic_wrap' bindtap='choice' wx:else data-index='cardFrontImg'>
+                    <image class="pic" src="/images/add_img.png"></image>
+                </view>
+            </view>
+            <view class="col3 font16 pt20">上传身份证反面</view>
+            <view class="pt20 font0 clearfix">
+                <view class='pic_wrap' wx:if="{{cardBackImgPath}}">
+                    <image class="pic" src="{{cardBackImgPath}}" bindtap='choice' data-index='cardBackImg'></image>
+                </view>
+                <view class='pic_wrap' bindtap='choice' wx:else data-index='cardBackImg'>
+                    <image class="pic" src="/images/add_img.png"></image>
+                </view>
+            </view>
+            <view class="col3 font16 pt20">上传营业执照</view>
+            <view class="pt20 font0 clearfix">
+                <view class='pic_wrap' wx:if="{{businessImgPath}}">
+                    <image class="pic" src="{{businessImgPath}}" bindtap='choice' data-index='businessImg'></image>
+                </view>
+                <view class='pic_wrap' bindtap='choice' wx:else data-index='businessImg'>
+                    <image class="pic" src="/images/add_img.png"></image>
+                </view>
+            </view>
+        </view>
+        <view class="ptb30">
+            <button class="confirm" formType="submit">
+                {{type==1?'投资人申请':type==2?'新店加盟管理申请':'加盟店申请'}}
+            </button>
+        </view>
+    </form>
+    <common-picker bind:pickerValue="pickerShopValue" bind:pickerCancel="pickerShopCancel" is_show="{{shopShow}}" range="{{shopList}}"  wx-if="{{shopShow}}"/>
+</view>
+<login-component bind:myevent="listeningEvent" />

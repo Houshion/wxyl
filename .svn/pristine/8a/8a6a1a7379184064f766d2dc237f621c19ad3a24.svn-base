@@ -1,0 +1,128 @@
+const app = getApp();
+const tools = app.tools;
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    list: [
+      {price: 30,text: '方式一',content:'方式一'},
+      {price: 40,text: '方式二',content:'方式二'},
+      {price: 50,text: '方式三',content:'方式三'},
+      {price: 60,text: '方式四',content:'方式四'},
+      {price: 70,text: '方式五',content:'方式五'},
+      {price: 80,text: '方式六',content:'方式六'},
+    ],
+    o_index: 0,
+    id: ''
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    this.init();
+  },
+  init(){
+    tools.showLoading();
+    app.wxRequest(
+        '/api/investCombo/queryInvestComboList',
+        {},
+        res => {
+          tools.hideLoading();
+          console.log(res)
+          if(res.data.code == 1){
+            this.setData({
+              list: res.data.data
+            })
+          }else{
+            tools.showToast(res.data.msg)
+          }
+        }
+    )
+  },
+  chose_btn(e){
+    const {  index } = e.currentTarget.dataset;
+    this.setData({
+      o_index: index,
+    })
+  },
+  confirm(){
+    const {o_index, list } = this.data;
+    tools.showLoading();
+    app.wxRequest(
+        '/api/rechargeOrder/createRechargeOrder',
+        {
+          type: 1,
+          money: list[o_index].price
+        },
+        res => {
+          if(res.data.code == 1){
+            tool.Pay(res.data.data,res => {
+              tools.hideLoading();
+              tools.showModal('支付成功',flag => {
+                if(flag){
+                  tools.navigateBack(-1);
+                }
+              },false)
+            },err => {
+              tools.hideLoading();
+              tools.showToast(err.msg == 'cancel' ? '取消支付' : '支付失败');
+            })
+          }else{
+            tools.hideLoading();
+            tools.showToast(res.data.msg)
+          }
+        }
+    )
+  },
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  }
+})

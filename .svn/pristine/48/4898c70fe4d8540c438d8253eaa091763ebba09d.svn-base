@@ -1,0 +1,26 @@
+<view class="tab_box flex bw font13 col9 pos_f_t">
+    <block wx:for="{{tab}}" wx:key="{{index}}">
+        <view class="tab-item {{o_index == index ? 'active' : ''}}" bindtap="tab_click" data-index="{{index}}">{{item}}</view>
+    </block>
+</view>
+<view class="content_box plr24">
+    <block wx:for="{{list}}" wx:key="{{index}}">
+        <view class=" list ptb20 plr30 border-r1 bw mt20">
+            <view class="font15 col3 main_content pb20">
+                <view>设备编号：{{item.device_no}}</view>
+                <view>所属店铺：{{item.name}}店铺</view>
+                <view class="font12 col9 flex_a">
+                    <image src="/images/addr.png" class="addr mr20"></image>
+                    <text>{{item.province+item.city+item.addr}}</text>
+                </view>
+            </view>
+            <view class="tae pt20 bdt">
+                <navigator url="/pages/operation/list_detail/index?id={{item.id}}" class="dib colw bgc1 border-r4 font14 ptb10  btn plr30" wx:if="{{o_index == 0}}">故障详情</navigator>
+                <navigator url="/pages/operation/list_detail/index?type=record&id={{item.id}}" class="dib colw bgc1 border-r4 font14 ptb10  btn plr10" wx:else>查看维修记录</navigator>
+            </view>
+        </view>
+    </block>
+    <block wx:if='{{lock}}'>
+        <view class='tac lh80 col9'>没有更多了</view>
+    </block>
+</view>

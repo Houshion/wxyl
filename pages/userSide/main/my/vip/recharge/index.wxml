@@ -1,0 +1,11 @@
+<view class="p20">
+    <view class="rechargeBox">
+        <view class="label">充值金额</view>
+        <view class="flex_sb line">
+            <text class="unit">￥</text>
+            <input class="input" type="number" bindinput="getNum"></input>
+        </view>
+    </view>
+    <view class="confirm" bind:tap="confirm">微信支付</view>
+</view>
+<login-component bind:myevent="listeningEvent" extendCode="{{extendCode}}" />
